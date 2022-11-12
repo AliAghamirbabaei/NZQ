@@ -1,5 +1,6 @@
 package NZQ.Forms;
 
+import java.awt.Color;
 import java.awt.ComponentOrientation;
 
 public class DashboardForm extends javax.swing.JFrame {
@@ -7,6 +8,8 @@ public class DashboardForm extends javax.swing.JFrame {
     public DashboardForm() {
         initComponents();
         menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        menuBar.setBackground(Color.BLUE);
+        menuBar.setForeground (Color.BLUE);
         
     }
 
@@ -14,6 +17,7 @@ public class DashboardForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         addAcountButton = new javax.swing.JButton();
         welcomeLabel = new javax.swing.JLabel();
         reportButton = new javax.swing.JButton();
@@ -21,14 +25,18 @@ public class DashboardForm extends javax.swing.JFrame {
         logoutButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         AddPersonOrGroupMenuItem = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        newSanadMenu = new javax.swing.JMenu();
+        gozareshaatMenu = new javax.swing.JMenu();
+        tarazNamehMenuItem = new javax.swing.JMenuItem();
+        daftarHesabMenuItem = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nizek Q!");
         setBackground(new java.awt.Color(0, 0, 0));
-        setForeground(new java.awt.Color(204, 255, 0));
+        setForeground(new java.awt.Color(255, 255, 255));
 
         addAcountButton.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         addAcountButton.setText("افزودن حساب");
@@ -38,17 +46,17 @@ public class DashboardForm extends javax.swing.JFrame {
 
         reportButton.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         reportButton.setText("گزارش");
-        reportButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                reportButtonMouseClicked(evt);
+        reportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportButtonActionPerformed(evt);
             }
         });
 
         addPersonOrGroupButton.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         addPersonOrGroupButton.setText("افزودن شخص/گروه");
-        addPersonOrGroupButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addPersonOrGroupButtonMouseClicked(evt);
+        addPersonOrGroupButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPersonOrGroupButtonActionPerformed(evt);
             }
         });
 
@@ -61,6 +69,9 @@ public class DashboardForm extends javax.swing.JFrame {
             }
         });
 
+        menuBar.setBackground(new java.awt.Color(53, 103, 152));
+        menuBar.setToolTipText("");
+
         AddPersonOrGroupMenuItem.setText("افزودن شخص/گروه");
         AddPersonOrGroupMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         AddPersonOrGroupMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,13 +81,20 @@ public class DashboardForm extends javax.swing.JFrame {
         });
         menuBar.add(AddPersonOrGroupMenuItem);
 
-        jMenu1.setText("افزودن حساب");
-        jMenu1.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        menuBar.add(jMenu1);
+        newSanadMenu.setText("ثبت سند");
+        newSanadMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        menuBar.add(newSanadMenu);
 
-        jMenu2.setText("گزارش");
-        jMenu2.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        menuBar.add(jMenu2);
+        gozareshaatMenu.setText("گزارشات");
+        gozareshaatMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+
+        tarazNamehMenuItem.setText("ترازنامه");
+        gozareshaatMenu.add(tarazNamehMenuItem);
+
+        daftarHesabMenuItem.setText("دفتر کل");
+        gozareshaatMenu.add(daftarHesabMenuItem);
+
+        menuBar.add(gozareshaatMenu);
 
         exitMenu.setText("خروج");
         exitMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
@@ -110,10 +128,6 @@ public class DashboardForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(addPersonOrGroupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -122,20 +136,12 @@ public class DashboardForm extends javax.swing.JFrame {
                     .addComponent(welcomeLabel))
                 .addGap(26, 26, 26)
                 .addComponent(reportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void reportButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportButtonMouseClicked
-        ReportFrom reportFrom = new ReportFrom();
-        reportFrom.setVisible(true);
-    }//GEN-LAST:event_reportButtonMouseClicked
-
-    private void addPersonOrGroupButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addPersonOrGroupButtonMouseClicked
-        showAddPersonOrGroupForm();
-    }//GEN-LAST:event_addPersonOrGroupButtonMouseClicked
 
     private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
         logout();
@@ -148,6 +154,15 @@ public class DashboardForm extends javax.swing.JFrame {
     private void exitMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMouseClicked
         logout();
     }//GEN-LAST:event_exitMenuMouseClicked
+
+    private void addPersonOrGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPersonOrGroupButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addPersonOrGroupButtonActionPerformed
+
+    private void reportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportButtonActionPerformed
+        //ReportFrom reportFrom = new ReportFrom();
+        //reportFrom.setVisible(true);
+    }//GEN-LAST:event_reportButtonActionPerformed
 
     private void showAddPersonOrGroupForm() {
         AddPersonOrGroup addPersonOrGroup = new AddPersonOrGroup();
@@ -194,12 +209,15 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JMenu AddPersonOrGroupMenuItem;
     private javax.swing.JButton addAcountButton;
     private javax.swing.JButton addPersonOrGroupButton;
+    private javax.swing.JMenuItem daftarHesabMenuItem;
     private javax.swing.JMenu exitMenu;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu gozareshaatMenu;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton logoutButton;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu newSanadMenu;
     private javax.swing.JButton reportButton;
+    private javax.swing.JMenuItem tarazNamehMenuItem;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

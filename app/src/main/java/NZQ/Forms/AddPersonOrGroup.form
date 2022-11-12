@@ -25,44 +25,59 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="25" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="addressTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="validationErrorLabel" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="addressTextField" min="-2" pref="155" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="groupItemsScrollPanel" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="emailTextField" min="-2" pref="155" max="-2" attributes="0"/>
+                                              <Component id="tellTextField" min="-2" pref="155" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="telLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                                  <Component id="enableGroupsCheckBox" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="nameTextField" pref="155" max="32767" attributes="0"/>
+                                      <Component id="nationalCodeTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="nationalCodeLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="emailTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                          <Component id="tellTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="telLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nameTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                          <Component id="nationalCodeTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nationalCodeLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="submitButton" min="-2" pref="147" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-              <Component id="submitButton" min="-2" pref="147" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Component id="validationErrorLabel" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -73,10 +88,9 @@
                   <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nationalCodeTextField" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="nationalCodeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="nationalCodeTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -93,11 +107,16 @@
                   <Component id="emailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
-              <Component id="validationErrorLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="enableGroupsCheckBox" min="-2" max="-2" attributes="0"/>
+                  <Component id="groupItemsScrollPanel" min="-2" pref="56" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <Component id="validationErrorLabel" min="-2" pref="16" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="submitButton" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -198,13 +217,47 @@
         <Property name="text" type="java.lang.String" value="Validation Error Text"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="nationalCodeTextField">
+    <Component class="javax.swing.JTextField" name="nationalCodeTextField">
       <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-          <Format format="##########" subtype="-1" type="0"/>
-        </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nationalCodeTextFieldActionPerformed"/>
+      </Events>
     </Component>
+    <Component class="javax.swing.JCheckBox" name="enableGroupsCheckBox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x6af;&#x631;&#x648;&#x647;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="enableGroupsCheckBoxMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enableGroupsCheckBoxActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="groupItemsScrollPanel">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="groupItemsList">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+                <StringItem index="4" value="Item 5"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

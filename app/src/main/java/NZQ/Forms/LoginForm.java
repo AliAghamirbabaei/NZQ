@@ -54,6 +54,11 @@ public class LoginForm extends javax.swing.JFrame {
                 loginButtonMouseClicked(evt);
             }
         });
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         passwordTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -105,6 +110,7 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
+        /*
         if (usernameTextField.getText().equals(username) && passwordTextField.getText().equals(password)) {
             DashboardForm dashboardForm = new DashboardForm();
             dashboardForm.setVisible(true);
@@ -113,7 +119,20 @@ public class LoginForm extends javax.swing.JFrame {
         } else {
             wrongCredentialLabel.setVisible(true);
         }
+        */
+        
     }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        if (usernameTextField.getText().equals(username) && passwordTextField.getText().equals(password)) {
+            DashboardForm dashboardForm = new DashboardForm();
+            dashboardForm.setVisible(true);
+            wrongCredentialLabel.setVisible(false);
+            this.setVisible(false);
+        } else {
+            wrongCredentialLabel.setVisible(true);
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
