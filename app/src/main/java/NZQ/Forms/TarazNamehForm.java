@@ -46,6 +46,8 @@ public class TarazNamehForm extends javax.swing.JFrame {
         taraznamehTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         taraznamehMenuBar = new javax.swing.JMenuBar();
+        filterTarazNamehMenu = new javax.swing.JMenu();
+        applyFilterMenuItem = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -75,6 +77,25 @@ public class TarazNamehForm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ترازنامه");
+
+        filterTarazNamehMenu.setText("فیلتر");
+        filterTarazNamehMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterTarazNamehMenuActionPerformed(evt);
+            }
+        });
+
+        applyFilterMenuItem.setText("اعمال فیلتر");
+        applyFilterMenuItem.setToolTipText("");
+        applyFilterMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applyFilterMenuItemActionPerformed(evt);
+            }
+        });
+        filterTarazNamehMenu.add(applyFilterMenuItem);
+
+        taraznamehMenuBar.add(filterTarazNamehMenu);
+
         setJMenuBar(taraznamehMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -84,21 +105,35 @@ public class TarazNamehForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(308, 308, 308)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(370, 370, 370))
+                .addContainerGap(467, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void filterTarazNamehMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterTarazNamehMenuActionPerformed
+        if(filterTarazNamehMenu.isSelected()){
+            DateFilterTarazNameh dateFilterTarazNameh = new DateFilterTarazNameh();
+            dateFilterTarazNameh.setVisible(true);
+        }
+    }//GEN-LAST:event_filterTarazNamehMenuActionPerformed
+
+    private void applyFilterMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyFilterMenuItemActionPerformed
+            DateFilterTarazNameh dateFilterTarazNameh = new DateFilterTarazNameh();
+            dateFilterTarazNameh.setVisible(true);
+        
+    }//GEN-LAST:event_applyFilterMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,6 +172,8 @@ public class TarazNamehForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem applyFilterMenuItem;
+    private javax.swing.JMenu filterTarazNamehMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;

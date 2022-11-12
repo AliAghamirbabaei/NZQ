@@ -8,6 +8,27 @@
       </Properties>
     </Component>
     <Menu class="javax.swing.JMenuBar" name="taraznamehMenuBar">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="filterTarazNamehMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x641;&#x6cc;&#x644;&#x62a;&#x631;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="filterTarazNamehMenuActionPerformed"/>
+          </Events>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="applyFilterMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x627;&#x639;&#x645;&#x627;&#x644; &#x641;&#x6cc;&#x644;&#x62a;&#x631;"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="applyFilterMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+      </SubComponents>
     </Menu>
   </NonVisualComponents>
   <Properties>
@@ -37,18 +58,19 @@
               <Component id="jScrollPane1" min="-2" pref="827" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="308" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="144" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="370" max="-2" attributes="0"/>
+              <EmptySpace pref="467" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="34" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="523" max="-2" attributes="0"/>
           </Group>
       </Group>
