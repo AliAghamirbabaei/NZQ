@@ -14,7 +14,10 @@ import java.util.regex.Pattern;
  * @author muhamadtalebi
  */
 public class DateFilterTarazNameh extends javax.swing.JFrame {
-    public static final Pattern VALID_DATE_REGEX = Pattern.compile("[۰-۹0-9]+");
+        public static final Pattern VALID_DATE_REGEX = Pattern.compile("[۰-۹0-9]+");
+public static final Pattern VALID_DIGIT_REGEX = Pattern.compile("[\\d]{2}");
+public static final Pattern VALID_DAY_REGEX = Pattern.compile("[\\d]{1,30}");
+public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
 
     /**
      * Creates new form DateFilterTarazNameh
@@ -94,6 +97,7 @@ public class DateFilterTarazNameh extends javax.swing.JFrame {
 
         placeHolderDate2.setText("/");
 
+        yearDateField.setColumns(4);
         yearDateField.setDragEnabled(false);
         yearDateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,9 +214,19 @@ public class DateFilterTarazNameh extends javax.swing.JFrame {
     }//GEN-LAST:event_yearDateFieldActionPerformed
     private boolean isDateValid(){
     Matcher matcher = VALID_DATE_REGEX.matcher(dayDateField.getText());
+    Matcher matcherDigitDay = VALID_DIGIT_REGEX.matcher(dayDateField.getText());
+    Matcher matcherDigitMonth = VALID_DIGIT_REGEX.matcher(monthDateField.getText());
+    Matcher matcherLimitMonth = VALID_MONTH_REGEX.matcher(monthDateField.getText());
+    Matcher matcherLimitDay = VALID_DAY_REGEX.matcher(dayDateField.getText());
     Matcher matcherMonth = VALID_DATE_REGEX.matcher(monthDateField.getText());
     Matcher matcherYear = VALID_DATE_REGEX.matcher(yearDateField.getText());
-        if (!matcher.find()&& !matcherMonth.find() && !matcherYear.find()) {
+        if (!matcher.find() &&
+                !matcherMonth.find() &&
+                !matcherYear.find() &&
+                !matcherLimitDay.find() &&
+                !matcherLimitMonth.find() &&
+                !matcherDigitDay.find() &&
+                !matcherDigitMonth.find()) {
             dateValidationErrorLabel.setText("تاریخ معتبر نیست!");
             dateValidationErrorLabel.setVisible(true);
             return false;
