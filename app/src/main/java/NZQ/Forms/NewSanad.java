@@ -13,6 +13,8 @@ public class NewSanad extends javax.swing.JFrame {
         initComponents();
         paidTypeSanadButton.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
         prepaidTypeSanadButton.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
+        bedehkaarTypeButton.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
+        bestankaarTypeButton.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
     }
 
     /**
@@ -26,6 +28,7 @@ public class NewSanad extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         sabtSanadLabel = new javax.swing.JLabel();
         sanadOwnerAccount = new javax.swing.JLabel();
@@ -36,6 +39,9 @@ public class NewSanad extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jPanel2 = new javax.swing.JPanel();
+        bedehkaarTypeButton = new javax.swing.JRadioButton();
+        bestankaarTypeButton = new javax.swing.JRadioButton();
 
         jLabel3.setText("jLabel3");
 
@@ -69,6 +75,32 @@ public class NewSanad extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
+        buttonGroup2.add(bedehkaarTypeButton);
+        bedehkaarTypeButton.setText("بدهکار");
+
+        buttonGroup2.add(bestankaarTypeButton);
+        bestankaarTypeButton.setText("بستانکار");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 51, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bestankaarTypeButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bedehkaarTypeButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bedehkaarTypeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bestankaarTypeButton)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -85,7 +117,9 @@ public class NewSanad extends javax.swing.JFrame {
                             .addComponent(sanadOwnerAccount, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(sanadPriceLabel, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(prepaidTypeSanadButton)
                             .addComponent(paidTypeSanadButton))
@@ -95,7 +129,7 @@ public class NewSanad extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(140, 140, 140)
                 .addComponent(sabtSanadLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,13 +144,16 @@ public class NewSanad extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sanadPriceLabel)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sanadTypeLabel)
-                    .addComponent(paidTypeSanadButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(prepaidTypeSanadButton)
-                .addContainerGap(191, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sanadTypeLabel)
+                            .addComponent(paidTypeSanadButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(prepaidTypeSanadButton))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(157, 157, 157))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,10 +206,14 @@ public class NewSanad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton bedehkaarTypeButton;
+    private javax.swing.JRadioButton bestankaarTypeButton;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JRadioButton paidTypeSanadButton;

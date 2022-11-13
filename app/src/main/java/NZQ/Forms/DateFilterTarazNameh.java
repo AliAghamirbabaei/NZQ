@@ -4,7 +4,7 @@
  */
 package NZQ.Forms;
 
-import static NZQ.Forms.AddPersonOrGroup.VALID_EMAIL_ADDRESS_REGEX;
+import static NZQ.Forms.AddPerson.VALID_EMAIL_ADDRESS_REGEX;
 import java.awt.ComponentOrientation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -212,7 +212,7 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
     private void yearDateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearDateFieldActionPerformed
     
     }//GEN-LAST:event_yearDateFieldActionPerformed
-    private boolean isDateValid(){
+    private void isDateValid(){
     Matcher matcher = VALID_DATE_REGEX.matcher(dayDateField.getText());
     Matcher matcherDigitDay = VALID_DIGIT_REGEX.matcher(dayDateField.getText());
     Matcher matcherDigitMonth = VALID_DIGIT_REGEX.matcher(monthDateField.getText());
@@ -220,7 +220,8 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
     Matcher matcherLimitDay = VALID_DAY_REGEX.matcher(dayDateField.getText());
     Matcher matcherMonth = VALID_DATE_REGEX.matcher(monthDateField.getText());
     Matcher matcherYear = VALID_DATE_REGEX.matcher(yearDateField.getText());
-        if (!matcher.find() &&
+       System.out.println("if test");
+    if (!matcher.find() &&
                 !matcherMonth.find() &&
                 !matcherYear.find() &&
                 !matcherLimitDay.find() &&
@@ -229,9 +230,10 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
                 !matcherDigitMonth.find()) {
             dateValidationErrorLabel.setText("تاریخ معتبر نیست!");
             dateValidationErrorLabel.setVisible(true);
-            return false;
+            System.out.println("valid test");
+           // return false;
         }
-        return true;
+       
     }
     private void dailyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyButtonActionPerformed
         if(dailyButton.isSelected()){
@@ -256,7 +258,8 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
     }//GEN-LAST:event_monthlyButtonActionPerformed
 
     private void filterApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterApplyActionPerformed
-isDateValid();        // TODO add your handling code here:
+System.out.println("Btest");
+        isDateValid();      // TODO add your handling code here:
     }//GEN-LAST:event_filterApplyActionPerformed
 
     /**

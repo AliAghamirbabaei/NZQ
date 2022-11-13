@@ -3,18 +3,16 @@ package NZQ.Forms;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AddPersonOrGroup extends javax.swing.JFrame {
+public class AddPerson extends javax.swing.JFrame {
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     public static final Pattern VALID_TELL = Pattern.compile("[۰-۹0-9]+");
     public static final Pattern VALID_NATIONAL_ID_REGEX = Pattern.compile("[۰-۹0-9]+");
     
 
-    public AddPersonOrGroup() {
+    public AddPerson() {
         initComponents();
         validationErrorLabel.setVisible(false);
-        groupItemsList.setEnabled(false);
-       groupItemsScrollPanel.setEnabled(false);
         //groupItemsScrollPanel.setVisible(false);
     }
 
@@ -31,18 +29,17 @@ public class AddPersonOrGroup extends javax.swing.JFrame {
         addressTextField = new javax.swing.JTextField();
         tellTextField = new javax.swing.JTextField();
         emailTextField = new javax.swing.JTextField();
-        submitButton = new javax.swing.JButton();
+        submitPersonButton = new javax.swing.JButton();
         validationErrorLabel = new javax.swing.JLabel();
         nationalCodeTextField = new javax.swing.JTextField();
-        enableGroupsCheckBox = new javax.swing.JCheckBox();
-        groupItemsScrollPanel = new javax.swing.JScrollPane();
-        groupItemsList = new javax.swing.JList<>();
+        addPersonLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("افزودن شخص یا گروه");
 
-        nameLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        nameLabel.setText("نام و نام خانوادگی");
+        nameLabel.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        nameLabel.setText("نام صاحب حساب :");
 
         nationalCodeLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         nationalCodeLabel.setText("کد ملی");
@@ -56,7 +53,7 @@ public class AddPersonOrGroup extends javax.swing.JFrame {
         emailLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         emailLabel.setText("ایمیل");
 
-        nameTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        nameTextField.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         nameTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         addressTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
@@ -68,11 +65,11 @@ public class AddPersonOrGroup extends javax.swing.JFrame {
         emailTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         emailTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        submitButton.setFont(new java.awt.Font("IRANSansX", 1, 13)); // NOI18N
-        submitButton.setText("ثبت");
-        submitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        submitPersonButton.setFont(new java.awt.Font("IRANSansX", 1, 13)); // NOI18N
+        submitPersonButton.setText("ثبت");
+        submitPersonButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                submitButtonMouseClicked(evt);
+                submitPersonButtonMouseClicked(evt);
             }
         });
 
@@ -88,24 +85,10 @@ public class AddPersonOrGroup extends javax.swing.JFrame {
             }
         });
 
-        enableGroupsCheckBox.setText("گروه");
-        enableGroupsCheckBox.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                enableGroupsCheckBoxMouseClicked(evt);
-            }
-        });
-        enableGroupsCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enableGroupsCheckBoxActionPerformed(evt);
-            }
-        });
-
-        groupItemsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        groupItemsScrollPanel.setViewportView(groupItemsList);
+        addPersonLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        addPersonLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addPersonLabel.setText("افزودن شخص");
+        addPersonLabel.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,56 +98,58 @@ public class AddPersonOrGroup extends javax.swing.JFrame {
                 .addComponent(validationErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(addressLabel))
+                        .addComponent(submitPersonButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(groupItemsScrollPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(tellTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(emailLabel)
-                                                .addComponent(telLabel))))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                                    .addComponent(enableGroupsCheckBox))
+                                    .addComponent(tellTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(telLabel))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                                        .addComponent(nationalCodeTextField))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(nationalCodeLabel)
-                                        .addComponent(nameLabel)))))
-                        .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76))))
+                                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(addressLabel))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(nationalCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nationalCodeLabel))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(emailLabel)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nameLabel)))
+                        .addGap(35, 35, 35))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(addPersonLabel)
+                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addContainerGap()
+                .addComponent(addPersonLabel)
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nationalCodeLabel)
                     .addComponent(nationalCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addressLabel))
-                .addGap(18, 18, 18)
+                    .addComponent(addressLabel)
+                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tellTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(telLabel))
@@ -172,41 +157,25 @@ public class AddPersonOrGroup extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(emailLabel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(enableGroupsCheckBox)
-                    .addComponent(groupItemsScrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addComponent(validationErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addComponent(submitPersonButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
+    private void submitPersonButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitPersonButtonMouseClicked
         if (isFieldsValid()) {
             // TODO: implements account.
         }
-    }//GEN-LAST:event_submitButtonMouseClicked
+    }//GEN-LAST:event_submitPersonButtonMouseClicked
 
     private void nationalCodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationalCodeTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nationalCodeTextFieldActionPerformed
-
-    private void enableGroupsCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enableGroupsCheckBoxActionPerformed
-    
-    }//GEN-LAST:event_enableGroupsCheckBoxActionPerformed
-
-    private void enableGroupsCheckBoxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enableGroupsCheckBoxMouseClicked
-      if(enableGroupsCheckBox.isSelected()) {
-          groupItemsList.setEnabled(true);
-      } else {
-          groupItemsList.setEnabled(false);
-      }
-    }//GEN-LAST:event_enableGroupsCheckBoxMouseClicked
 
     private boolean isFieldsValid() {
         if (nameTextField.getText().equals("")) {
@@ -275,36 +244,35 @@ public class AddPersonOrGroup extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPersonOrGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPerson.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPersonOrGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPerson.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPersonOrGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPerson.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPersonOrGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddPerson.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPersonOrGroup().setVisible(true);
+                new AddPerson().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel addPersonLabel;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField addressTextField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
-    private javax.swing.JCheckBox enableGroupsCheckBox;
-    private javax.swing.JList<String> groupItemsList;
-    private javax.swing.JScrollPane groupItemsScrollPanel;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField nameTextField;
     private javax.swing.JLabel nationalCodeLabel;
     private javax.swing.JTextField nationalCodeTextField;
-    private javax.swing.JButton submitButton;
+    private javax.swing.JButton submitPersonButton;
     private javax.swing.JLabel telLabel;
     private javax.swing.JTextField tellTextField;
     private javax.swing.JLabel validationErrorLabel;

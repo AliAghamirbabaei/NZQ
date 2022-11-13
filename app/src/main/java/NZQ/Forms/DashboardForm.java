@@ -10,6 +10,8 @@ public class DashboardForm extends javax.swing.JFrame {
         menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         menuBar.setBackground(Color.BLUE);
         menuBar.setForeground (Color.BLUE);
+        //addPersonMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
+        //addGroupMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
         
     }
 
@@ -19,13 +21,19 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         addAcountButton = new javax.swing.JButton();
-        welcomeLabel = new javax.swing.JLabel();
         reportButton = new javax.swing.JButton();
         addPersonOrGroupButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         AddPersonOrGroupMenuItem = new javax.swing.JMenu();
+        addPersonMenuItem = new javax.swing.JMenuItem();
+        addGroupMenuItem = new javax.swing.JMenuItem();
         newSanadMenu = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         gozareshaatMenu = new javax.swing.JMenu();
         tarazNamehMenuItem = new javax.swing.JMenuItem();
         daftarHesabMenuItem = new javax.swing.JMenuItem();
@@ -40,9 +48,6 @@ public class DashboardForm extends javax.swing.JFrame {
 
         addAcountButton.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         addAcountButton.setText("افزودن حساب");
-
-        welcomeLabel.setFont(new java.awt.Font("IRANSansX", 1, 48)); // NOI18N
-        welcomeLabel.setText("خوش آمدید");
 
         reportButton.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         reportButton.setText("گزارش");
@@ -69,6 +74,13 @@ public class DashboardForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/113a6199-e5b1-42b6-b9be-c8137caaf740-removebg.png"))); // NOI18N
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("user name");
+
+        jLabel3.setText("system time");
+
         menuBar.setBackground(new java.awt.Color(53, 103, 152));
         menuBar.setToolTipText("");
 
@@ -79,10 +91,24 @@ public class DashboardForm extends javax.swing.JFrame {
                 AddPersonOrGroupMenuItemMouseClicked(evt);
             }
         });
+
+        addPersonMenuItem.setText("افزودن شخص");
+        AddPersonOrGroupMenuItem.add(addPersonMenuItem);
+
+        addGroupMenuItem.setText("افزودن گروه");
+        AddPersonOrGroupMenuItem.add(addGroupMenuItem);
+
         menuBar.add(AddPersonOrGroupMenuItem);
 
         newSanadMenu.setText("ثبت سند");
         newSanadMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+
+        jMenuItem2.setText("jMenuItem2");
+        newSanadMenu.add(jMenuItem2);
+
+        jMenuItem3.setText("jMenuItem3");
+        newSanadMenu.add(jMenuItem3);
+
         menuBar.add(newSanadMenu);
 
         gozareshaatMenu.setText("گزارشات");
@@ -113,30 +139,38 @@ public class DashboardForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(reportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addAcountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addPersonOrGroupButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(64, 64, 64)
-                .addComponent(welcomeLabel)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(addAcountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addPersonOrGroupButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(reportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(66, 66, 66))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(addPersonOrGroupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addAcountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(welcomeLabel))
-                .addGap(26, 26, 26)
-                .addComponent(reportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addPersonOrGroupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(addAcountButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(reportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -164,7 +198,7 @@ public class DashboardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_reportButtonActionPerformed
 
     private void showAddPersonOrGroupForm() {
-        AddPersonOrGroup addPersonOrGroup = new AddPersonOrGroup();
+        AddPerson addPersonOrGroup = new AddPerson();
         addPersonOrGroup.setVisible(true);
     }
     
@@ -207,16 +241,22 @@ public class DashboardForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AddPersonOrGroupMenuItem;
     private javax.swing.JButton addAcountButton;
+    private javax.swing.JMenuItem addGroupMenuItem;
+    private javax.swing.JMenuItem addPersonMenuItem;
     private javax.swing.JButton addPersonOrGroupButton;
     private javax.swing.JMenuItem daftarHesabMenuItem;
     private javax.swing.JMenu exitMenu;
     private javax.swing.JMenu gozareshaatMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JButton logoutButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu newSanadMenu;
     private javax.swing.JButton reportButton;
     private javax.swing.JMenuItem tarazNamehMenuItem;
-    private javax.swing.JLabel welcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

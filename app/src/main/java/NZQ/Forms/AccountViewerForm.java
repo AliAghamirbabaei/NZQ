@@ -77,7 +77,17 @@ public class AccountViewerForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        accountInforamtionTable.setCellSelectionEnabled(true);
+        accountInforamtionTable.setColumnSelectionAllowed(true);
+        accountInforamtionTable.setShowGrid(true);
         jScrollPane1.setViewportView(accountInforamtionTable);
+        if (accountInforamtionTable.getColumnModel().getColumnCount() > 0) {
+            accountInforamtionTable.getColumnModel().getColumn(0).setHeaderValue("ایمیل");
+            accountInforamtionTable.getColumnModel().getColumn(1).setHeaderValue("آدرس");
+            accountInforamtionTable.getColumnModel().getColumn(2).setHeaderValue("شماره تماس");
+            accountInforamtionTable.getColumnModel().getColumn(3).setHeaderValue("کد ملی");
+            accountInforamtionTable.getColumnModel().getColumn(4).setHeaderValue("نام صاحب حساب");
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
