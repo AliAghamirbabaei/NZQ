@@ -15,6 +15,8 @@ public class NewSanad extends javax.swing.JFrame {
         prepaidTypeSanadButton.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
         bedehkaarTypeButton.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
         bestankaarTypeButton.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
+        //bedehkaarTypeButton.setVisible(false); 
+        //bestankaarTypeButton.setVisible(false); 
     }
 
     /**
@@ -33,15 +35,17 @@ public class NewSanad extends javax.swing.JFrame {
         sabtSanadLabel = new javax.swing.JLabel();
         sanadOwnerAccount = new javax.swing.JLabel();
         sanadPriceLabel = new javax.swing.JLabel();
-        sanadTypeLabel = new javax.swing.JLabel();
-        paidTypeSanadButton = new javax.swing.JRadioButton();
-        prepaidTypeSanadButton = new javax.swing.JRadioButton();
         jTextField2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        accountList = new javax.swing.JList<>();
         jPanel2 = new javax.swing.JPanel();
         bedehkaarTypeButton = new javax.swing.JRadioButton();
         bestankaarTypeButton = new javax.swing.JRadioButton();
+        jPanel3 = new javax.swing.JPanel();
+        paidTypeSanadButton = new javax.swing.JRadioButton();
+        prepaidTypeSanadButton = new javax.swing.JRadioButton();
+        jPanel4 = new javax.swing.JPanel();
+        sanadTypeLabel = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
 
@@ -57,29 +61,25 @@ public class NewSanad extends javax.swing.JFrame {
         sanadPriceLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         sanadPriceLabel.setText("مبلغ :");
 
-        sanadTypeLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        sanadTypeLabel.setText("نوع سند :");
-
-        buttonGroup1.add(paidTypeSanadButton);
-        paidTypeSanadButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        paidTypeSanadButton.setText("نقدی");
-
-        buttonGroup1.add(prepaidTypeSanadButton);
-        prepaidTypeSanadButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        prepaidTypeSanadButton.setText("اعتباری");
-
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        accountList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(accountList);
 
         buttonGroup2.add(bedehkaarTypeButton);
+        bedehkaarTypeButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         bedehkaarTypeButton.setText("بدهکار");
 
         buttonGroup2.add(bestankaarTypeButton);
+        bestankaarTypeButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         bestankaarTypeButton.setText("بستانکار");
+        bestankaarTypeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bestankaarTypeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,9 +96,69 @@ public class NewSanad extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bedehkaarTypeButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bestankaarTypeButton)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bestankaarTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+
+        buttonGroup1.add(paidTypeSanadButton);
+        paidTypeSanadButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        paidTypeSanadButton.setText("نقدی");
+        paidTypeSanadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paidTypeSanadButtonActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(prepaidTypeSanadButton);
+        prepaidTypeSanadButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        prepaidTypeSanadButton.setText("اعتباری");
+        prepaidTypeSanadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prepaidTypeSanadButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(paidTypeSanadButton)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 21, Short.MAX_VALUE)
+                .addComponent(prepaidTypeSanadButton))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(paidTypeSanadButton)
+                .addGap(18, 18, 18)
+                .addComponent(prepaidTypeSanadButton)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        sanadTypeLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        sanadTypeLabel.setText("نوع سند :");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(sanadTypeLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(sanadTypeLabel)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -107,7 +167,7 @@ public class NewSanad extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
@@ -117,14 +177,12 @@ public class NewSanad extends javax.swing.JFrame {
                             .addComponent(sanadOwnerAccount, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(sanadPriceLabel, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addGap(43, 43, 43)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(prepaidTypeSanadButton)
-                            .addComponent(paidTypeSanadButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(sanadTypeLabel)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(19, 19, 19))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(140, 140, 140)
@@ -144,16 +202,13 @@ public class NewSanad extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sanadPriceLabel)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sanadTypeLabel)
-                            .addComponent(paidTypeSanadButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(prepaidTypeSanadButton))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(157, 157, 157))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -169,6 +224,26 @@ public class NewSanad extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void paidTypeSanadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paidTypeSanadButtonActionPerformed
+    if(paidTypeSanadButton.isSelected()){
+       bedehkaarTypeButton.setEnabled(false); 
+       bestankaarTypeButton.setEnabled(false); 
+    }
+    }//GEN-LAST:event_paidTypeSanadButtonActionPerformed
+
+    private void prepaidTypeSanadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prepaidTypeSanadButtonActionPerformed
+        /*
+        if(prepaidTypeSanadButton.isSelected()){
+        bedehkaarTypeButton.setVisible(false); 
+       bestankaarTypeButton.setVisible(false);
+        }
+        */
+    }//GEN-LAST:event_prepaidTypeSanadButtonActionPerformed
+
+    private void bestankaarTypeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bestankaarTypeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bestankaarTypeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,14 +281,16 @@ public class NewSanad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> accountList;
     private javax.swing.JRadioButton bedehkaarTypeButton;
     private javax.swing.JRadioButton bestankaarTypeButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JRadioButton paidTypeSanadButton;

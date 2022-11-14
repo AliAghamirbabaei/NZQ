@@ -28,7 +28,10 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
         monthlyButton.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
         yearlyButton.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
         dateValidationErrorLabel.setVisible(false);
-        dayDateField.setColumns(2);
+        
+                
+        //dayComboBox.setModel();
+        //dayDateField.setColumns(2);
         
           
      
@@ -50,13 +53,13 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
         yearlyButton = new javax.swing.JRadioButton();
         filterTarikhHeaderLabel = new javax.swing.JLabel();
         taarikhLabel = new javax.swing.JLabel();
-        dayDateField = new javax.swing.JTextField();
         placeHolderDate2 = new javax.swing.JLabel();
-        monthDateField = new javax.swing.JTextField();
-        yearDateField = new javax.swing.JTextField();
         placeHolderDate1 = new javax.swing.JLabel();
         filterApply = new javax.swing.JButton();
         dateValidationErrorLabel = new javax.swing.JLabel();
+        dayComboBox = new javax.swing.JComboBox<>();
+        monthComboBox = new javax.swing.JComboBox<>();
+        yearTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,14 +100,6 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
 
         placeHolderDate2.setText("/");
 
-        yearDateField.setColumns(4);
-        yearDateField.setDragEnabled(false);
-        yearDateField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearDateFieldActionPerformed(evt);
-            }
-        });
-
         placeHolderDate1.setText("/");
 
         filterApply.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
@@ -119,6 +114,17 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
         dateValidationErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateValidationErrorLabel.setText("date validation!");
 
+        dayComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+
+        monthComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
+
+        yearTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        yearTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,27 +132,27 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(yearDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(filterTarikhHeaderLabel)
                             .addComponent(filterApply)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(placeHolderDate1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(monthDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(placeHolderDate2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dayDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(taarikhLabel)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(dailyButton)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(placeHolderDate1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(placeHolderDate2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(dailyButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(monthlyButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(yearlyButton, javax.swing.GroupLayout.Alignment.TRAILING))))))
+                                        .addComponent(yearlyButton)
+                                        .addComponent(taarikhLabel)
+                                        .addComponent(monthlyButton))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(dateValidationErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -157,21 +163,21 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(filterTarikhHeaderLabel)
-                .addGap(60, 60, 60)
+                .addGap(59, 59, 59)
                 .addComponent(dailyButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(monthlyButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(yearlyButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(taarikhLabel)
-                    .addComponent(dayDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(placeHolderDate2)
-                    .addComponent(monthDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yearDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(placeHolderDate1))
-                .addGap(30, 30, 30)
+                    .addComponent(placeHolderDate1)
+                    .addComponent(dayComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addComponent(filterApply)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dateValidationErrorLabel)
@@ -192,26 +198,52 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void filterApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterApplyActionPerformed
+        System.out.println("Btest");
+       // isDateValid();      // TODO add your handling code here:
+    }//GEN-LAST:event_filterApplyActionPerformed
+
     private void yearlyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlyButtonActionPerformed
-         if(yearlyButton.isSelected()){
-            dayDateField.setEditable(false);
-            dayDateField.setEnabled(false);
-            monthDateField.setEditable(false);
-            monthDateField.setEnabled(false);
+        if(yearlyButton.isSelected()){
+            dayComboBox.setEditable(false);
+            monthComboBox.setEditable(false);
+            yearComboBox.setEditable(true);
         }
-            else{
-            dayDateField.setEditable(true);
-            dayDateField.setEnabled(true);
-            monthDateField.setEditable(true);
-            monthDateField.setEnabled(true);
-                               
+        else{
+           dayComboBox.setEditable(true);
+            monthComboBox.setEditable(true);
+            yearComboBox.setEditable(true);
+
         }
-    
+
     }//GEN-LAST:event_yearlyButtonActionPerformed
 
-    private void yearDateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearDateFieldActionPerformed
-    
-    }//GEN-LAST:event_yearDateFieldActionPerformed
+    private void monthlyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlyButtonActionPerformed
+        if(monthlyButton.isSelected()){
+            //dayDateField.setEditable(false);
+            //dayDateField.setEnabled(false);
+            //monthDateField.setEditable(true);
+            //monthDateField.setEnabled(true);
+        }
+        else{
+           // dayDateField.setEditable(true);
+            //dayDateField.setEnabled(true);
+        }
+    }//GEN-LAST:event_monthlyButtonActionPerformed
+
+    private void dailyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyButtonActionPerformed
+        if(dailyButton.isSelected()){
+           // dayDateField.setEditable(true);
+           // dayDateField.setEnabled(true);
+            //monthDateField.setEditable(true);
+           // monthDateField.setEnabled(true);
+        }
+    }//GEN-LAST:event_dailyButtonActionPerformed
+
+    private void yearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_yearTextFieldActionPerformed
+    /*
     private void isDateValid(){
     Matcher matcher = VALID_DATE_REGEX.matcher(dayDateField.getText());
     Matcher matcherDigitDay = VALID_DIGIT_REGEX.matcher(dayDateField.getText());
@@ -235,33 +267,7 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
         }
        
     }
-    private void dailyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyButtonActionPerformed
-        if(dailyButton.isSelected()){
-            dayDateField.setEditable(true);
-            dayDateField.setEnabled(true);
-            monthDateField.setEditable(true);
-            monthDateField.setEnabled(true);
-        }
-    }//GEN-LAST:event_dailyButtonActionPerformed
-
-    private void monthlyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlyButtonActionPerformed
-        if(monthlyButton.isSelected()){
-            dayDateField.setEditable(false);
-            dayDateField.setEnabled(false);
-            monthDateField.setEditable(true);
-            monthDateField.setEnabled(true);
-        }
-        else{
-            dayDateField.setEditable(true);
-            dayDateField.setEnabled(true);
-        }
-    }//GEN-LAST:event_monthlyButtonActionPerformed
-
-    private void filterApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterApplyActionPerformed
-System.out.println("Btest");
-        isDateValid();      // TODO add your handling code here:
-    }//GEN-LAST:event_filterApplyActionPerformed
-
+    */
     /**
      * @param args the command line arguments
      */
@@ -301,16 +307,16 @@ System.out.println("Btest");
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton dailyButton;
     private javax.swing.JLabel dateValidationErrorLabel;
-    private javax.swing.JTextField dayDateField;
+    private javax.swing.JComboBox<String> dayComboBox;
     private javax.swing.JButton filterApply;
     private javax.swing.JLabel filterTarikhHeaderLabel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField monthDateField;
+    private javax.swing.JComboBox<String> monthComboBox;
     private javax.swing.JRadioButton monthlyButton;
     private javax.swing.JLabel placeHolderDate1;
     private javax.swing.JLabel placeHolderDate2;
     private javax.swing.JLabel taarikhLabel;
-    private javax.swing.JTextField yearDateField;
+    private javax.swing.JTextField yearTextField;
     private javax.swing.JRadioButton yearlyButton;
     // End of variables declaration//GEN-END:variables
 }

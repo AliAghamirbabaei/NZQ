@@ -72,6 +72,11 @@ public class AddPerson extends javax.swing.JFrame {
                 submitPersonButtonMouseClicked(evt);
             }
         });
+        submitPersonButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitPersonButtonActionPerformed(evt);
+            }
+        });
 
         validationErrorLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         validationErrorLabel.setForeground(new java.awt.Color(204, 0, 0));
@@ -176,6 +181,10 @@ public class AddPerson extends javax.swing.JFrame {
     private void nationalCodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationalCodeTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nationalCodeTextFieldActionPerformed
+
+    private void submitPersonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitPersonButtonActionPerformed
+       
+    }//GEN-LAST:event_submitPersonButtonActionPerformed
 
     private boolean isFieldsValid() {
         if (nameTextField.getText().equals("")) {
