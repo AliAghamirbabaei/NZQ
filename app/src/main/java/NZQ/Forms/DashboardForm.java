@@ -1,18 +1,24 @@
 package NZQ.Forms;
 
+import ViewModel.AccountManager;
+import ViewModel.Transaction.PaidManager;
+import ViewModel.Transaction.PrePaidManager;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 
 public class DashboardForm extends javax.swing.JFrame {
 
+    AccountManager accountManager = new AccountManager();
+    PaidManager paidManager = new PaidManager();
+    PrePaidManager prePaidManager = new PrePaidManager();
+
     public DashboardForm() {
         initComponents();
         menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         menuBar.setBackground(Color.BLUE);
-        menuBar.setForeground (Color.BLUE);
+        menuBar.setForeground(Color.BLUE);
         //addPersonMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
         //addGroupMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -203,7 +209,7 @@ public class DashboardForm extends javax.swing.JFrame {
         AddPerson addPersonOrGroup = new AddPerson();
         addPersonOrGroup.setVisible(true);
     }
-    
+
     private void logout() {
         LoginForm loginform = new LoginForm();
         loginform.setVisible(true);
@@ -261,4 +267,8 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JButton reportButton;
     private javax.swing.JMenuItem tarazNamehMenuItem;
     // End of variables declaration//GEN-END:variables
+
+    private void initModel() {
+
+    }
 }

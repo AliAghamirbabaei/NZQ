@@ -67,15 +67,32 @@
             <Component class="javax.swing.JTable" name="accountInforamtionTable">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="IRANSansX" size="13" style="0"/>
+                  <Font name="IRANSansFaNum" size="13" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="13">
-                    <Column editable="false" title="&#x627;&#x6cc;&#x645;&#x6cc;&#x644;" type="java.lang.String"/>
-                    <Column editable="false" title="&#x622;&#x62f;&#x631;&#x633;" type="java.lang.String"/>
-                    <Column editable="false" title="&#x634;&#x645;&#x627;&#x631;&#x647; &#x62a;&#x645;&#x627;&#x633;" type="java.lang.String"/>
-                    <Column editable="false" title="&#x6a9;&#x62f; &#x645;&#x644;&#x6cc;" type="java.lang.String"/>
-                    <Column editable="false" title="&#x646;&#x627;&#x645; &#x635;&#x627;&#x62d;&#x628; &#x62d;&#x633;&#x627;&#x628;" type="java.lang.String"/>
+                  <Table columnCount="22" rowCount="13">
+                    <Column editable="true" title="&#x627;&#x6cc;&#x645;&#x6cc;&#x644;" type="java.lang.String"/>
+                    <Column editable="true" title="&#x622;&#x62f;&#x631;&#x633;" type="java.lang.String"/>
+                    <Column editable="true" title="&#x634;&#x645;&#x627;&#x631;&#x647; &#x62a;&#x645;&#x627;&#x633;" type="java.lang.String"/>
+                    <Column editable="true" title="&#x6a9;&#x62f; &#x645;&#x644;&#x6cc;" type="java.lang.String"/>
+                    <Column editable="true" title="&#x646;&#x627;&#x645; &#x635;&#x627;&#x62d;&#x628; &#x62d;&#x633;&#x627;&#x628;" type="java.lang.String"/>
+                    <Column editable="false" title="&#x634;&#x646;&#x627;&#x633;&#x647;" type="java.lang.Integer"/>
+                    <Column editable="true" title="Title 7" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 8" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 9" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 10" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 11" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 12" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 13" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 14" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 15" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 16" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 17" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 18" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 19" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 20" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 21" type="java.lang.Object"/>
+                    <Column editable="true" title="Title 22" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="cellSelectionEnabled" type="boolean" value="true"/>

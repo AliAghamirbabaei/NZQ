@@ -4,28 +4,38 @@
  */
 package NZQ.Forms;
 
+import ViewModel.AccountManager;
 import java.awt.ComponentOrientation;
 import javax.swing.JLabel;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author muhamadtalebi
  */
-public class AccountViewerForm extends javax.swing.JFrame {
+public class AccountViewerForm extends javax.swing.JFrame implements TableModel {
+
+    private AccountManager accountManager;
 
     /**
      * Creates new form AccountViewerForm
      */
     public AccountViewerForm() {
         initComponents();
-         accountInforamtionTable.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
-         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
-         rightRenderer.setHorizontalAlignment(accountInformationLabel.RIGHT);
-         accountInforamtionTable.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+        accountInforamtionTable.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(accountInformationLabel.RIGHT);
+        accountInforamtionTable.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
+        accountInforamtionTable.setModel(this);
 
     }
-    
+
+    public void setAccountManager(AccountManager accountManager) {
+        this.accountManager = accountManager;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,32 +52,32 @@ public class AccountViewerForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        accountInforamtionTable.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        accountInforamtionTable.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
         accountInforamtionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ایمیل", "آدرس", "شماره تماس", "کد ملی", "نام صاحب حساب"
+                "ایمیل", "آدرس", "شماره تماس", "کد ملی", "نام صاحب حساب", "شناسه", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16", "Title 17", "Title 18", "Title 19", "Title 20", "Title 21", "Title 22"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -159,6 +169,7 @@ public class AccountViewerForm extends javax.swing.JFrame {
             }
         });
     }
+
     public boolean isCellEditable(int row, int col) {
         return true;
     }
@@ -169,4 +180,76 @@ public class AccountViewerForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public int getRowCount() {
+        return accountManager.accounts.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return 6;
+    }
+
+    @Override
+    public String getColumnName(int columnIndex) {
+        return switch (columnIndex) {
+            case 0 -> "شناسه";
+            case 1 -> "نام";
+            case 2 -> "کد ملی";
+            case 3 -> "آدرس";
+            case 4 -> "تلفن";
+            case 5 -> "ایمیل";
+            default -> "";
+        };
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        return switch (columnIndex) {
+            case 0 -> Integer.class;
+            case 1 -> String.class;
+            case 2 -> String.class;
+            case 3 -> String.class;
+            case 4 -> String.class;
+            case 5 -> String.class;
+            default -> String.class;
+        };
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        return switch (columnIndex) {
+            case 0 -> accountManager.accounts.get(rowIndex).getId();
+            case 1 -> accountManager.accounts.get(rowIndex).getName();
+            case 2 -> accountManager.accounts.get(rowIndex).getNationalCode();
+            case 3 -> accountManager.accounts.get(rowIndex).getAddress();
+            case 4 -> accountManager.accounts.get(rowIndex).getTell();
+            case 5 -> accountManager.accounts.get(rowIndex).getEmail();
+            default -> "";
+        };
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        switch (columnIndex) {
+            case 0 -> accountManager.accounts.get(rowIndex).setId((int) aValue);
+            case 1 -> accountManager.accounts.get(rowIndex).setName(String.valueOf(aValue));
+            case 2 -> accountManager.accounts.get(rowIndex).setNationalCode(String.valueOf(aValue));
+            case 3 -> accountManager.accounts.get(rowIndex).setAddress(String.valueOf(aValue));
+            case 4 -> accountManager.accounts.get(rowIndex).setTell(String.valueOf(aValue));
+            case 5 -> accountManager.accounts.get(rowIndex).setEmail(String.valueOf(aValue));
+        }
+    }
+
+    @Override
+    public void addTableModelListener(TableModelListener l) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void removeTableModelListener(TableModelListener l) {
+       // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
