@@ -59,6 +59,11 @@ public class LoginForm extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
+        loginButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginButtonKeyPressed(evt);
+            }
+        });
 
         passwordTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -133,6 +138,17 @@ public class LoginForm extends javax.swing.JFrame {
             wrongCredentialLabel.setVisible(true);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
+        if (usernameTextField.getText().equals(username) && passwordTextField.getText().equals(password)) {
+            DashboardForm dashboardForm = new DashboardForm(username);
+            dashboardForm.setVisible(true);
+            wrongCredentialLabel.setVisible(false);
+            this.setVisible(false);
+        } else {
+            wrongCredentialLabel.setVisible(true);
+        }
+    }//GEN-LAST:event_loginButtonKeyPressed
 
     /**
      * @param args the command line arguments

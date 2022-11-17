@@ -75,16 +75,21 @@ public class DashboardForm extends javax.swing.JFrame {
 
         AddPersonOrGroupMenuItem.setText("افزودن شخص/گروه");
         AddPersonOrGroupMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        AddPersonOrGroupMenuItem.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddPersonOrGroupMenuItemMouseClicked(evt);
-            }
-        });
 
         addPersonMenuItem.setText("افزودن شخص");
+        addPersonMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPersonMenuItemActionPerformed(evt);
+            }
+        });
         AddPersonOrGroupMenuItem.add(addPersonMenuItem);
 
         addGroupMenuItem.setText("افزودن گروه");
+        addGroupMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addGroupMenuItemActionPerformed(evt);
+            }
+        });
         AddPersonOrGroupMenuItem.add(addGroupMenuItem);
 
         menuBar.add(AddPersonOrGroupMenuItem);
@@ -168,10 +173,6 @@ public class DashboardForm extends javax.swing.JFrame {
         logout();
     }//GEN-LAST:event_logoutButtonMouseClicked
 
-    private void AddPersonOrGroupMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPersonOrGroupMenuItemMouseClicked
-        showAddPersonOrGroupForm();
-    }//GEN-LAST:event_AddPersonOrGroupMenuItemMouseClicked
-
     private void exitMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMenuMouseClicked
         logout();
     }//GEN-LAST:event_exitMenuMouseClicked
@@ -181,10 +182,15 @@ public class DashboardForm extends javax.swing.JFrame {
         accountViewerForm.setVisible(true);
     }//GEN-LAST:event_AccountViewerMenuItemActionPerformed
 
-    private void showAddPersonOrGroupForm() {
+    private void addGroupMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGroupMenuItemActionPerformed
+        AddGroupForm addGroupForm = new AddGroupForm(accountManager);
+        addGroupForm.setVisible(true);
+    }//GEN-LAST:event_addGroupMenuItemActionPerformed
+
+    private void addPersonMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPersonMenuItemActionPerformed
         AddPerson addPersonOrGroup = new AddPerson(accountManager);
         addPersonOrGroup.setVisible(true);
-    }
+    }//GEN-LAST:event_addPersonMenuItemActionPerformed
 
     private void logout() {
         LoginForm loginform = new LoginForm();
