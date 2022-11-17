@@ -36,7 +36,6 @@ public class DashboardForm extends javax.swing.JFrame {
         addPersonMenuItem = new javax.swing.JMenuItem();
         addGroupMenuItem = new javax.swing.JMenuItem();
         newSanadMenu = new javax.swing.JMenu();
-        NewTransactionMenuItem = new javax.swing.JMenuItem();
         gozareshaatMenu = new javax.swing.JMenu();
         tarazNamehMenuItem = new javax.swing.JMenuItem();
         daftarHesabMenuItem = new javax.swing.JMenuItem();
@@ -95,15 +94,11 @@ public class DashboardForm extends javax.swing.JFrame {
 
         newSanadMenu.setText("ثبت سند");
         newSanadMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-
-        NewTransactionMenuItem.setText("jMenuItem2");
-        NewTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        newSanadMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewTransactionMenuItemActionPerformed(evt);
+                newSanadMenuActionPerformed(evt);
             }
         });
-        newSanadMenu.add(NewTransactionMenuItem);
-
         menuBar.add(newSanadMenu);
 
         gozareshaatMenu.setText("گزارشات");
@@ -113,6 +108,11 @@ public class DashboardForm extends javax.swing.JFrame {
         gozareshaatMenu.add(tarazNamehMenuItem);
 
         daftarHesabMenuItem.setText("دفتر کل");
+        daftarHesabMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daftarHesabMenuItemActionPerformed(evt);
+            }
+        });
         gozareshaatMenu.add(daftarHesabMenuItem);
 
         AccountViewerMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
@@ -193,9 +193,14 @@ public class DashboardForm extends javax.swing.JFrame {
         addPersonOrGroup.setVisible(true);
     }//GEN-LAST:event_addPersonMenuItemActionPerformed
 
-    private void NewTransactionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewTransactionMenuItemActionPerformed
+    private void newSanadMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSanadMenuActionPerformed
+        NewSanad newSanad = new NewSanad(accountManager, paidManager, prePaidManager);
+        newSanad.setVisible(true);
+    }//GEN-LAST:event_newSanadMenuActionPerformed
+
+    private void daftarHesabMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarHesabMenuItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NewTransactionMenuItemActionPerformed
+    }//GEN-LAST:event_daftarHesabMenuItemActionPerformed
 
     private void logout() {
         LoginForm loginform = new LoginForm();
@@ -236,7 +241,6 @@ public class DashboardForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AccountViewerMenuItem;
     private javax.swing.JMenu AddPersonOrGroupMenuItem;
-    private javax.swing.JMenuItem NewTransactionMenuItem;
     private javax.swing.JMenuItem addGroupMenuItem;
     private javax.swing.JMenuItem addPersonMenuItem;
     private javax.swing.JMenuItem daftarHesabMenuItem;

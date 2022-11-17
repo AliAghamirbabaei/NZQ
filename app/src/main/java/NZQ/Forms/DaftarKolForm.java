@@ -4,16 +4,26 @@
  */
 package NZQ.Forms;
 
+import ViewModel.AccountManager;
+import ViewModel.Transaction.PaidManager;
+import ViewModel.Transaction.PrePaidManager;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author muhamadtalebi
  */
-public class DaftarKolForm extends javax.swing.JFrame {
+public class DaftarKolForm extends javax.swing.JFrame implements TableModel{
 
-    /**
-     * Creates new form DaftarKolForm
-     */
-    public DaftarKolForm() {
+    AccountManager accountManager = new AccountManager();
+    PaidManager paidManager = new PaidManager();
+    PrePaidManager prePaidManager = new PrePaidManager();
+
+    public DaftarKolForm(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
+        this.accountManager = accountManager;
+        this.paidManager = paidManager;
+        this.prePaidManager = prePaidManager;
         initComponents();
     }
 
@@ -128,7 +138,10 @@ public class DaftarKolForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DaftarKolForm().setVisible(true);
+                AccountManager accountManager = new AccountManager();
+                PaidManager paidManager = new PaidManager();
+                PrePaidManager prePaidManager = new PrePaidManager();
+                new DaftarKolForm(accountManager, paidManager, prePaidManager).setVisible(true);
             }
         });
     }
@@ -143,4 +156,49 @@ public class DaftarKolForm extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public int getRowCount() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public int getColumnCount() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String getColumnName(int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void addTableModelListener(TableModelListener l) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void removeTableModelListener(TableModelListener l) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

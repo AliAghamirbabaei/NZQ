@@ -7,7 +7,6 @@ package NZQ.Forms;
 import Model.Account;
 import Model.Date;
 import Model.Transaction.TransactionType;
-import static NZQ.Forms.AddPerson.VALID_TELL;
 import ViewModel.AccountManager;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
@@ -15,8 +14,6 @@ import java.awt.ComponentOrientation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
-import javax.swing.event.ListDataListener;
 
 public class NewSanad extends javax.swing.JFrame {
 
@@ -29,10 +26,11 @@ public class NewSanad extends javax.swing.JFrame {
     private boolean isTransactionRadioButtonNull = true;
 
     public NewSanad(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
-        initComponents();
         this.accountManager = accountManager;
         this.paidManager = paidManager;
         this.prePaidManager = prePaidManager;
+        initComponents();
+        validatoinLabel.setVisible(false);
         paidTypeSanadButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         prepaidTypeSanadButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         bedehkaarTypeButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -74,7 +72,7 @@ public class NewSanad extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         sabtSanadLabel.setFont(new java.awt.Font("IRANSansX", 1, 24)); // NOI18N
         sabtSanadLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -303,7 +301,7 @@ public class NewSanad extends javax.swing.JFrame {
             System.out.println("test1");
             return;
         }
-        
+
         if (transactionType == null) {
             validatoinLabel.setText("لطفا طرف حساب را وارد کنید.");
             validatoinLabel.setVisible(true);
@@ -350,7 +348,7 @@ public class NewSanad extends javax.swing.JFrame {
                 prePaidManager.save();
             }
         }
-        
+
         setVisible(false);
     }//GEN-LAST:event_submitButtonActionPerformed
 
@@ -373,6 +371,14 @@ public class NewSanad extends javax.swing.JFrame {
     private void bestankaarTypeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bestankaarTypeButtonActionPerformed
         transactionType = TransactionType.CREDIT;
     }//GEN-LAST:event_bestankaarTypeButtonActionPerformed
+
+    private void initList() {
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        accountList.setModel(listModel);
+        for (Account account : accountManager.accounts) {
+            listModel.addElement(account.getName());
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -436,13 +442,5 @@ public class NewSanad extends javax.swing.JFrame {
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel validatoinLabel;
     // End of variables declaration//GEN-END:variables
-
-    private void initList() {
-        DefaultListModel<String> listModel = new DefaultListModel<>();
-        accountList.setModel(listModel);
-        for (Account account : accountManager.accounts) {
-            listModel.addElement(account.getName());
-        }
-    }
 
 }
