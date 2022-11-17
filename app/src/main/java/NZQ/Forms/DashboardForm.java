@@ -36,8 +36,7 @@ public class DashboardForm extends javax.swing.JFrame {
         addPersonMenuItem = new javax.swing.JMenuItem();
         addGroupMenuItem = new javax.swing.JMenuItem();
         newSanadMenu = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        NewTransactionMenuItem = new javax.swing.JMenuItem();
         gozareshaatMenu = new javax.swing.JMenu();
         tarazNamehMenuItem = new javax.swing.JMenuItem();
         daftarHesabMenuItem = new javax.swing.JMenuItem();
@@ -97,11 +96,13 @@ public class DashboardForm extends javax.swing.JFrame {
         newSanadMenu.setText("ثبت سند");
         newSanadMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
 
-        jMenuItem2.setText("jMenuItem2");
-        newSanadMenu.add(jMenuItem2);
-
-        jMenuItem3.setText("jMenuItem3");
-        newSanadMenu.add(jMenuItem3);
+        NewTransactionMenuItem.setText("jMenuItem2");
+        NewTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewTransactionMenuItemActionPerformed(evt);
+            }
+        });
+        newSanadMenu.add(NewTransactionMenuItem);
 
         menuBar.add(newSanadMenu);
 
@@ -192,6 +193,10 @@ public class DashboardForm extends javax.swing.JFrame {
         addPersonOrGroup.setVisible(true);
     }//GEN-LAST:event_addPersonMenuItemActionPerformed
 
+    private void NewTransactionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewTransactionMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewTransactionMenuItemActionPerformed
+
     private void logout() {
         LoginForm loginform = new LoginForm();
         loginform.setVisible(true);
@@ -231,6 +236,7 @@ public class DashboardForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AccountViewerMenuItem;
     private javax.swing.JMenu AddPersonOrGroupMenuItem;
+    private javax.swing.JMenuItem NewTransactionMenuItem;
     private javax.swing.JMenuItem addGroupMenuItem;
     private javax.swing.JMenuItem addPersonMenuItem;
     private javax.swing.JMenuItem daftarHesabMenuItem;
@@ -239,8 +245,6 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JButton logoutButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu newSanadMenu;
