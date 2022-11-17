@@ -38,8 +38,6 @@ public class NewSanad extends javax.swing.JFrame {
         bedehkaarTypeButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         bestankaarTypeButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         initList();
-        //bedehkaarTypeButton.setVisible(false); 
-        //bestankaarTypeButton.setVisible(false); 
     }
 
     /**
@@ -352,6 +350,8 @@ public class NewSanad extends javax.swing.JFrame {
                 prePaidManager.save();
             }
         }
+        
+        setVisible(false);
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void accountListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_accountListValueChanged
