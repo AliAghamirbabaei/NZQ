@@ -4,17 +4,21 @@
  */
 package NZQ.Forms;
 
+import ViewModel.AccountManager;
+
 /**
  *
  * @author muhamadtalebi
  */
 public class AddGroupForm extends javax.swing.JFrame {
 
+    private AccountManager accountManager;
     /**
      * Creates new form AddGroupForm
      */
-    public AddGroupForm() {
+    public AddGroupForm(AccountManager accountManager) {
         initComponents();
+        this.accountManager = accountManager;
     }
 
     /**
@@ -34,7 +38,7 @@ public class AddGroupForm extends javax.swing.JFrame {
         companyCodeLabel = new javax.swing.JLabel();
         companyCodeTextField = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         addGroupLabel.setFont(new java.awt.Font("IRANSansX", 1, 24)); // NOI18N
         addGroupLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -48,6 +52,11 @@ public class AddGroupForm extends javax.swing.JFrame {
 
         submitGroupButton.setFont(new java.awt.Font("IRANSansX", 1, 14)); // NOI18N
         submitGroupButton.setText("ثبت");
+        submitGroupButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitGroupButtonActionPerformed(evt);
+            }
+        });
 
         companyCodeLabel.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         companyCodeLabel.setText("کد حقوقی :");
@@ -113,6 +122,18 @@ public class AddGroupForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void submitGroupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitGroupButtonActionPerformed
+        accountManager.add(accountManager.accounts.size() + 1,
+                groupNameTextField.getText(),
+                companyCodeTextField.getText(), 
+                "-",
+                "-", 
+                "-");
+        
+        accountManager.save();
+        setVisible(false);
+    }//GEN-LAST:event_submitGroupButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -143,7 +164,8 @@ public class AddGroupForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddGroupForm().setVisible(true);
+                AccountManager accountManager = new AccountManager();
+                new AddGroupForm(accountManager).setVisible(true);
             }
         });
     }

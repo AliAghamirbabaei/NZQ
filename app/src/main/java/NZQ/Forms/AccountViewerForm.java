@@ -22,18 +22,16 @@ public class AccountViewerForm extends javax.swing.JFrame implements TableModel 
     /**
      * Creates new form AccountViewerForm
      */
-    public AccountViewerForm() {
+    public AccountViewerForm(AccountManager accountManager) {
         initComponents();
+        this.accountManager = accountManager;
         accountInforamtionTable.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
         rightRenderer.setHorizontalAlignment(accountInformationLabel.RIGHT);
         accountInforamtionTable.getColumnModel().getColumn(4).setCellRenderer(rightRenderer);
         accountInforamtionTable.setModel(this);
+        
 
-    }
-
-    public void setAccountManager(AccountManager accountManager) {
-        this.accountManager = accountManager;
     }
 
     /**
@@ -50,34 +48,34 @@ public class AccountViewerForm extends javax.swing.JFrame implements TableModel 
         accountInforamtionTable = new javax.swing.JTable();
         accountInformationLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         accountInforamtionTable.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
         accountInforamtionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ایمیل", "آدرس", "شماره تماس", "کد ملی", "نام صاحب حساب", "شناسه", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16", "Title 17", "Title 18", "Title 19", "Title 20", "Title 21", "Title 22"
+                "ایمیل", "آدرس", "شماره تماس", "کد ملی", "نام صاحب حساب", "شناسه"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true
+                true, true, true, true, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -165,13 +163,22 @@ public class AccountViewerForm extends javax.swing.JFrame implements TableModel 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccountViewerForm().setVisible(true);
+                AccountManager accountManager = new AccountManager();
+                new AccountViewerForm(accountManager).setVisible(true);
             }
         });
     }
 
     public boolean isCellEditable(int row, int col) {
-        return true;
+        return switch (col) {
+            case 0 -> false;
+            case 1 -> true;
+            case 2 -> true;
+            case 3 -> true;
+            case 4 -> true;
+            case 5 -> true;
+            default -> false;
+        };
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -240,6 +247,7 @@ public class AccountViewerForm extends javax.swing.JFrame implements TableModel 
             case 4 -> accountManager.accounts.get(rowIndex).setTell(String.valueOf(aValue));
             case 5 -> accountManager.accounts.get(rowIndex).setEmail(String.valueOf(aValue));
         }
+        accountManager.save();
     }
 
     @Override

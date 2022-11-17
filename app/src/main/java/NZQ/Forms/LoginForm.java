@@ -125,7 +125,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         if (usernameTextField.getText().equals(username) && passwordTextField.getText().equals(password)) {
-            DashboardForm dashboardForm = new DashboardForm();
+            DashboardForm dashboardForm = new DashboardForm(username);
             dashboardForm.setVisible(true);
             wrongCredentialLabel.setVisible(false);
             this.setVisible(false);

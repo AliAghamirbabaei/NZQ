@@ -3,25 +3,11 @@
  */
 package NZQ; 
 
-import NZQ.Forms.AccountViewerForm;
 import NZQ.Forms.LoginForm;
-import ViewModel.AccountManager;
 
 public class App {
     public static void main(String[] args) {
-        //LoginForm loginForm = new LoginForm();
-        //loginForm.setVisible(true);
-        AccountManager accountManager = new AccountManager();
-
-        for (int i = 0; i < 10; i++) {
-            accountManager.add(accountManager.accounts.size() + 1, "Ali", "12312413", "asdsef", "12334", "asdasd");
-        }
-
-        accountManager.save();
-        
-        AccountViewerForm accountViewerForm = new AccountViewerForm();
-        accountViewerForm.setAccountManager(accountManager);
-        
-        accountViewerForm.setVisible(true);
+        LoginForm loginForm = new LoginForm();
+        loginForm.setVisible(true);
     }
 }
