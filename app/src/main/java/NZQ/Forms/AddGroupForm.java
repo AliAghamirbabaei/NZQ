@@ -36,19 +36,23 @@ public class AddGroupForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        addGroupLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        addGroupLabel.setFont(new java.awt.Font("IRANSansX", 1, 24)); // NOI18N
         addGroupLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addGroupLabel.setText("افزودن گروه");
 
+        groupOrCompanyNameLabel.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         groupOrCompanyNameLabel.setText("نام گروه/شرکت :");
 
+        groupNameTextField.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         groupNameTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        submitGroupButton.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        submitGroupButton.setFont(new java.awt.Font("IRANSansX", 1, 14)); // NOI18N
         submitGroupButton.setText("ثبت");
 
+        companyCodeLabel.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         companyCodeLabel.setText("کد حقوقی :");
 
+        companyCodeTextField.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         companyCodeTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -79,7 +83,7 @@ public class AddGroupForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(addGroupLabel)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(groupOrCompanyNameLabel)
                     .addComponent(groupNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -87,7 +91,7 @@ public class AddGroupForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(companyCodeLabel)
                     .addComponent(companyCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(submitGroupButton)
                 .addContainerGap())
         );

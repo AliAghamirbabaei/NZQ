@@ -42,6 +42,7 @@ public class AccountViewerForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        accountInforamtionTable.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         accountInforamtionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -78,7 +79,6 @@ public class AccountViewerForm extends javax.swing.JFrame {
             }
         });
         accountInforamtionTable.setCellSelectionEnabled(true);
-        accountInforamtionTable.setColumnSelectionAllowed(true);
         accountInforamtionTable.setShowGrid(true);
         jScrollPane1.setViewportView(accountInforamtionTable);
         if (accountInforamtionTable.getColumnModel().getColumnCount() > 0) {
@@ -100,26 +100,25 @@ public class AccountViewerForm extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
         );
 
-        accountInformationLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        accountInformationLabel.setFont(new java.awt.Font("IRANSansX", 1, 18)); // NOI18N
         accountInformationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        accountInformationLabel.setText("اطلاعات حسابها");
+        accountInformationLabel.setText("اطلاعات حساب ها");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(256, 256, 256)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(accountInformationLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(275, 275, 275))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(accountInformationLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(accountInformationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

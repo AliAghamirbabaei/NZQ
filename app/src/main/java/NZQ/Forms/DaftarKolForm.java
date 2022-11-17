@@ -39,7 +39,7 @@ public class DaftarKolForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("IRANSansX", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("دفتر کل");
 
@@ -62,7 +62,7 @@ public class DaftarKolForm extends javax.swing.JFrame {
             daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
             .addGroup(daftarKolPanelLayout.createSequentialGroup()
-                .addGap(352, 352, 352)
+                .addGap(381, 381, 381)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -71,13 +71,15 @@ public class DaftarKolForm extends javax.swing.JFrame {
             .addGroup(daftarKolPanelLayout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))
         );
 
         filterDaftarKolMenu.setText("فیلتر");
+        filterDaftarKolMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         jMenuBar1.add(filterDaftarKolMenu);
 
         jMenu2.setText("Edit");
+        jMenu2.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);

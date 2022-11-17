@@ -53,6 +53,7 @@ public class TarazNamehForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        taraznamehTable.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         taraznamehTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -74,17 +75,19 @@ public class TarazNamehForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(taraznamehTable);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("IRANSansX", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ترازنامه");
 
         filterTarazNamehMenu.setText("فیلتر");
+        filterTarazNamehMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         filterTarazNamehMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filterTarazNamehMenuActionPerformed(evt);
             }
         });
 
+        applyFilterMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         applyFilterMenuItem.setText("اعمال فیلتر");
         applyFilterMenuItem.setToolTipText("");
         applyFilterMenuItem.addActionListener(new java.awt.event.ActionListener() {

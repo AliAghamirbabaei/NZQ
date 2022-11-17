@@ -64,7 +64,7 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         buttonGroup1.add(dailyButton);
-        dailyButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        dailyButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         dailyButton.setSelected(true);
         dailyButton.setText("روزانه");
         dailyButton.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +74,7 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
         });
 
         buttonGroup1.add(monthlyButton);
-        monthlyButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        monthlyButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         monthlyButton.setText("ماهانه");
         monthlyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +83,7 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
         });
 
         buttonGroup1.add(yearlyButton);
-        yearlyButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        yearlyButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         yearlyButton.setText("سالانه");
         yearlyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,10 +91,10 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
             }
         });
 
-        filterTarikhHeaderLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        filterTarikhHeaderLabel.setFont(new java.awt.Font("IRANSansX", 1, 24)); // NOI18N
         filterTarikhHeaderLabel.setText("فیلتر تاریخ");
 
-        taarikhLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        taarikhLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         taarikhLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         taarikhLabel.setText("تاریخ :");
 
@@ -102,7 +102,7 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
 
         placeHolderDate1.setText("/");
 
-        filterApply.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        filterApply.setFont(new java.awt.Font("IRANSansX", 1, 13)); // NOI18N
         filterApply.setText("اعمال");
         filterApply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,14 +110,18 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
             }
         });
 
+        dateValidationErrorLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         dateValidationErrorLabel.setForeground(new java.awt.Color(250, 0, 0));
         dateValidationErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dateValidationErrorLabel.setText("date validation!");
 
+        dayComboBox.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         dayComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
+        monthComboBox.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         monthComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", " " }));
 
+        yearTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         yearTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         yearTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +173,7 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
                 .addComponent(monthlyButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(yearlyButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(taarikhLabel)
                     .addComponent(placeHolderDate2)
@@ -207,12 +211,12 @@ public static final Pattern VALID_MONTH_REGEX = Pattern.compile("[\\d]{1,12}");
         if(yearlyButton.isSelected()){
             dayComboBox.setEditable(false);
             monthComboBox.setEditable(false);
-            yearComboBox.setEditable(true);
+//            yearComboBox.setEditable(true);
         }
         else{
            dayComboBox.setEditable(true);
             monthComboBox.setEditable(true);
-            yearComboBox.setEditable(true);
+//            yearComboBox.setEditable(true);
 
         }
 

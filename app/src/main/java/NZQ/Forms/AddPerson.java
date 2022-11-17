@@ -53,7 +53,7 @@ public class AddPerson extends javax.swing.JFrame {
         emailLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         emailLabel.setText("ایمیل");
 
-        nameTextField.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
+        nameTextField.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
         nameTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         addressTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
@@ -90,7 +90,7 @@ public class AddPerson extends javax.swing.JFrame {
             }
         });
 
-        addPersonLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        addPersonLabel.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
         addPersonLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addPersonLabel.setText("افزودن شخص");
         addPersonLabel.setToolTipText("");
@@ -166,7 +166,7 @@ public class AddPerson extends javax.swing.JFrame {
                 .addComponent(validationErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submitPersonButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();

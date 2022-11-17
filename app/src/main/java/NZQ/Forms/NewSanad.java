@@ -51,16 +51,17 @@ public class NewSanad extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sabtSanadLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        sabtSanadLabel.setFont(new java.awt.Font("IRANSansX", 1, 24)); // NOI18N
         sabtSanadLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sabtSanadLabel.setText("ثبت سند");
 
-        sanadOwnerAccount.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        sanadOwnerAccount.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
         sanadOwnerAccount.setText("صاحب حساب :");
 
-        sanadPriceLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        sanadPriceLabel.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
         sanadPriceLabel.setText("مبلغ :");
 
+        accountList.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         accountList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -69,11 +70,11 @@ public class NewSanad extends javax.swing.JFrame {
         jScrollPane1.setViewportView(accountList);
 
         buttonGroup2.add(bedehkaarTypeButton);
-        bedehkaarTypeButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        bedehkaarTypeButton.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
         bedehkaarTypeButton.setText("بدهکار");
 
         buttonGroup2.add(bestankaarTypeButton);
-        bestankaarTypeButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        bestankaarTypeButton.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
         bestankaarTypeButton.setText("بستانکار");
         bestankaarTypeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +103,7 @@ public class NewSanad extends javax.swing.JFrame {
         );
 
         buttonGroup1.add(paidTypeSanadButton);
-        paidTypeSanadButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        paidTypeSanadButton.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
         paidTypeSanadButton.setText("نقدی");
         paidTypeSanadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +112,7 @@ public class NewSanad extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(prepaidTypeSanadButton);
-        prepaidTypeSanadButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        prepaidTypeSanadButton.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
         prepaidTypeSanadButton.setText("اعتباری");
         prepaidTypeSanadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +142,7 @@ public class NewSanad extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        sanadTypeLabel.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        sanadTypeLabel.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
         sanadTypeLabel.setText("نوع سند :");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -199,9 +200,9 @@ public class NewSanad extends javax.swing.JFrame {
                     .addComponent(sanadOwnerAccount)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sanadPriceLabel)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sanadPriceLabel))
                 .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)

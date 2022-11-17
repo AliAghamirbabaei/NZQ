@@ -76,9 +76,11 @@ public class DashboardForm extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/113a6199-e5b1-42b6-b9be-c8137caaf740-removebg.png"))); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("user name");
 
+        jLabel3.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         jLabel3.setText("system time");
 
         menuBar.setBackground(new java.awt.Color(53, 103, 152));
