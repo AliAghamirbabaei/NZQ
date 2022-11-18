@@ -4,9 +4,13 @@
  */
 package NZQ.Forms;
 
+import Model.Date;
+import Model.Transaction.PrePaidStatus;
+import Model.Transaction.TransactionType;
 import ViewModel.AccountManager;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
+import java.awt.ComponentOrientation;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -14,17 +18,21 @@ import javax.swing.table.TableModel;
  *
  * @author muhamadtalebi
  */
-public class DaftarKolForm extends javax.swing.JFrame implements TableModel{
+public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
 
     AccountManager accountManager = new AccountManager();
     PaidManager paidManager = new PaidManager();
     PrePaidManager prePaidManager = new PrePaidManager();
+    boolean isPaidShows = true;
 
     public DaftarKolForm(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
         this.accountManager = accountManager;
         this.paidManager = paidManager;
         this.prePaidManager = prePaidManager;
         initComponents();
+        transactionTable.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        transactionTable.setModel(this);
+
     }
 
     /**
@@ -37,23 +45,25 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel{
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
+        showTypeButtonGroup = new javax.swing.ButtonGroup();
         daftarKolPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        transactionTable = new javax.swing.JTable();
+        ShowPaidRadioButton = new javax.swing.JRadioButton();
+        showPrePaidRadioButton = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        filterDaftarKolMenu = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         jToolBar1.setRollover(true);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("IRANSansX", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("IRANSansX", 1, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("دفتر کل");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        transactionTable.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        transactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -64,33 +74,51 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel{
                 "صاحب حساب", "تاریح", "مبلغ", "بدهکار", "لستانکار"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(transactionTable);
+
+        showTypeButtonGroup.add(ShowPaidRadioButton);
+        ShowPaidRadioButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        ShowPaidRadioButton.setSelected(true);
+        ShowPaidRadioButton.setText("نمایش نقدی");
+        ShowPaidRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowPaidRadioButtonActionPerformed(evt);
+            }
+        });
+
+        showTypeButtonGroup.add(showPrePaidRadioButton);
+        showPrePaidRadioButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        showPrePaidRadioButton.setText("نمایش چک");
+        showPrePaidRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPrePaidRadioButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout daftarKolPanelLayout = new javax.swing.GroupLayout(daftarKolPanel);
         daftarKolPanel.setLayout(daftarKolPanelLayout);
         daftarKolPanelLayout.setHorizontalGroup(
             daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .addGroup(daftarKolPanelLayout.createSequentialGroup()
-                .addGap(381, 381, 381)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ShowPaidRadioButton)
+                .addGap(18, 18, 18)
+                .addComponent(showPrePaidRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         daftarKolPanelLayout.setVerticalGroup(
             daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(daftarKolPanelLayout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(ShowPaidRadioButton)
+                    .addComponent(showPrePaidRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE))
         );
-
-        filterDaftarKolMenu.setText("فیلتر");
-        filterDaftarKolMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        jMenuBar1.add(filterDaftarKolMenu);
-
-        jMenu2.setText("Edit");
-        jMenu2.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -107,6 +135,16 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel{
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ShowPaidRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPaidRadioButtonActionPerformed
+        isPaidShows = true;
+        transactionTable.updateUI();
+    }//GEN-LAST:event_ShowPaidRadioButtonActionPerformed
+
+    private void showPrePaidRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrePaidRadioButtonActionPerformed
+        isPaidShows = false;
+        transactionTable.updateUI();
+    }//GEN-LAST:event_showPrePaidRadioButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,58 +185,238 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton ShowPaidRadioButton;
     private javax.swing.JPanel daftarKolPanel;
-    private javax.swing.JMenu filterDaftarKolMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JRadioButton showPrePaidRadioButton;
+    private javax.swing.ButtonGroup showTypeButtonGroup;
+    private javax.swing.JTable transactionTable;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (isPaidShows) {
+            return paidManager.paids.size();
+        } else {
+            return prePaidManager.prePaids.size();
+        }
     }
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (isPaidShows) {
+            return 6;
+        } else {
+            return 7;
+        }
     }
 
     @Override
     public String getColumnName(int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (isPaidShows) {
+            return switch (columnIndex) {
+                case 0 ->
+                    "شناسه";
+                case 1 ->
+                    "نام حساب";
+                case 2 ->
+                    "تاریخ";
+                case 3 ->
+                    "توضیحات";
+                case 4 ->
+                    "مبلغ";
+                case 5 ->
+                    "طرف حساب";
+                default ->
+                    "";
+            };
+        } else {
+            return switch (columnIndex) {
+                case 0 ->
+                    "شناسه";
+                case 1 ->
+                    "نام حساب";
+                case 2 ->
+                    "تاریخ";
+                case 3 ->
+                    "توضیحات";
+                case 4 ->
+                    "مبلغ";
+                case 5 ->
+                    "طرف حساب";
+                case 6 ->
+                    "آیا وصول شده؟";
+                default ->
+                    "";
+            };
+        }
     }
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (isPaidShows) {
+            return switch (columnIndex) {
+                case 0 ->
+                    Integer.class;
+                case 1 ->
+                    String.class;
+                case 2 ->
+                    Date.class;
+                case 3 ->
+                    String.class;
+                case 4 ->
+                    Integer.class;
+                case 5 ->
+                    TransactionType.class;
+                default ->
+                    String.class;
+            };
+        } else {
+            return switch (columnIndex) {
+                case 0 ->
+                    Integer.class;
+                case 1 ->
+                    String.class;
+                case 2 ->
+                    Date.class;
+                case 3 ->
+                    String.class;
+                case 4 ->
+                    Integer.class;
+                case 5 ->
+                    TransactionType.class;
+                case 6 ->
+                    PrePaidStatus.class;
+                default ->
+                    String.class;
+            };
+        }
     }
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (isPaidShows) {
+            return switch (columnIndex) {
+                case 0 ->
+                    false;
+                case 1 ->
+                    true;
+                case 2 ->
+                    true;
+                case 3 ->
+                    true;
+                case 4 ->
+                    true;
+                case 5 ->
+                    true;
+                default ->
+                    false;
+            };
+        } else {
+            return switch (columnIndex) {
+                case 0 ->
+                    false;
+                case 1 ->
+                    true;
+                case 2 ->
+                    true;
+                case 3 ->
+                    true;
+                case 4 ->
+                    true;
+                case 5 ->
+                    true;
+                case 6 ->
+                    true;
+                default ->
+                    false;
+            };
+        }
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String name = "";
+
+        if (isPaidShows) {
+            if (columnIndex == 1) {
+                name = accountManager.accounts.get(paidManager.paids.get(rowIndex).getAccountId()).getName();
+            }
+            
+            return switch (columnIndex) {
+                case 0 -> paidManager.paids.get(rowIndex).getId();
+                case 1 -> name;
+                case 2 -> paidManager.paids.get(rowIndex).getTime();
+                case 3 -> paidManager.paids.get(rowIndex).getDescription();
+                case 4 -> paidManager.paids.get(rowIndex).getPrice();
+                case 5 -> paidManager.paids.get(rowIndex).getTransactionType();
+                default -> "";
+            };
+        } else {
+            if (columnIndex == 1) {
+                name = accountManager.accounts.get(prePaidManager.prePaids.get(rowIndex).getAccountId()).getName();
+            }
+            
+            return switch (columnIndex) {
+                case 0 -> prePaidManager.prePaids.get(rowIndex).getId();
+                case 1 -> name;
+                case 2 -> prePaidManager.prePaids.get(rowIndex).getTime();
+                case 3 -> prePaidManager.prePaids.get(rowIndex).getDescription();
+                case 4 -> prePaidManager.prePaids.get(rowIndex).getPrice();
+                case 5 -> prePaidManager.prePaids.get(rowIndex).getTransactionType();
+                case 6 -> prePaidManager.prePaids.get(rowIndex).isPrePaidPassed();
+                default -> "";
+            };
+        }
     }
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (isPaidShows) {
+            switch (columnIndex) {
+                case 0 ->
+                    paidManager.paids.get(rowIndex).setId((int) aValue);
+                case 1 ->
+                    paidManager.paids.get(rowIndex).setAccountId((int) aValue);
+                case 2 ->
+                    paidManager.paids.get(rowIndex).setTime(Date.stringToDate(aValue.toString()));
+                case 3 ->
+                    paidManager.paids.get(rowIndex).setDescription(String.valueOf(aValue));
+                case 4 ->
+                    paidManager.paids.get(rowIndex).setPrice((int) aValue);
+                case 5 ->
+                    paidManager.paids.get(rowIndex).setTransactionType(TransactionType.findByName(String.valueOf(aValue)));
+            }
+            paidManager.save();
+        } else {
+            switch (columnIndex) {
+                case 0 ->
+                    prePaidManager.prePaids.get(rowIndex).setId((int) aValue);
+                case 1 ->
+                    prePaidManager.prePaids.get(rowIndex).setAccountId((int) aValue);
+                case 2 ->
+                    prePaidManager.prePaids.get(rowIndex).setTime(Date.stringToDate(aValue.toString()));
+                case 3 ->
+                    prePaidManager.prePaids.get(rowIndex).setDescription(String.valueOf(aValue));
+                case 4 ->
+                    prePaidManager.prePaids.get(rowIndex).setPrice((int) aValue);
+                case 5 ->
+                    prePaidManager.prePaids.get(rowIndex).setTransactionType(TransactionType.findByName(String.valueOf(aValue)));
+                case 6 ->
+                    prePaidManager.prePaids.get(rowIndex).setPrePaidPassed(PrePaidStatus.findByName(String.valueOf(aValue)));
+            }
+            prePaidManager.save();
+        }
     }
 
     @Override
     public void addTableModelListener(TableModelListener l) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

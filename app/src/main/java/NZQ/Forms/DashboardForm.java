@@ -1,23 +1,29 @@
 package NZQ.Forms;
 
+import Model.Date;
 import ViewModel.AccountManager;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DashboardForm extends javax.swing.JFrame {
 
-    AccountManager accountManager = new AccountManager();
-    PaidManager paidManager = new PaidManager();
-    PrePaidManager prePaidManager = new PrePaidManager();
-
+    private AccountManager accountManager = new AccountManager();
+    private PaidManager paidManager = new PaidManager();
+    private PrePaidManager prePaidManager = new PrePaidManager();
+    private Timer timer = new Timer();
+    private TimerTask task = new TimerHandler();
+    
     public DashboardForm(String username) {
         initComponents();
         menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         menuBar.setBackground(Color.BLUE);
         menuBar.setForeground(Color.BLUE);
-        usernameLabel.setText(username);
+        usernameLabel.setText("نام کاربری: " + username);
+        timer.schedule(task, 1000, 5000);
         //addPersonMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
         //addGroupMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
     }
@@ -30,12 +36,13 @@ public class DashboardForm extends javax.swing.JFrame {
         logoutButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        timerLabel = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         AddPersonOrGroupMenuItem = new javax.swing.JMenu();
         addPersonMenuItem = new javax.swing.JMenuItem();
         addGroupMenuItem = new javax.swing.JMenuItem();
         newSanadMenu = new javax.swing.JMenu();
+        NewTransactionMenuItem = new javax.swing.JMenuItem();
         gozareshaatMenu = new javax.swing.JMenu();
         tarazNamehMenuItem = new javax.swing.JMenuItem();
         daftarHesabMenuItem = new javax.swing.JMenuItem();
@@ -65,8 +72,8 @@ public class DashboardForm extends javax.swing.JFrame {
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         usernameLabel.setText("user name");
 
-        jLabel3.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        jLabel3.setText("system time");
+        timerLabel.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
+        timerLabel.setText("system time");
 
         menuBar.setBackground(new java.awt.Color(53, 103, 152));
         menuBar.setToolTipText("");
@@ -74,6 +81,7 @@ public class DashboardForm extends javax.swing.JFrame {
         AddPersonOrGroupMenuItem.setText("افزودن شخص/گروه");
         AddPersonOrGroupMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
 
+        addPersonMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         addPersonMenuItem.setText("افزودن شخص");
         addPersonMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +90,7 @@ public class DashboardForm extends javax.swing.JFrame {
         });
         AddPersonOrGroupMenuItem.add(addPersonMenuItem);
 
+        addGroupMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         addGroupMenuItem.setText("افزودن گروه");
         addGroupMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,19 +103,26 @@ public class DashboardForm extends javax.swing.JFrame {
 
         newSanadMenu.setText("ثبت سند");
         newSanadMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        newSanadMenu.addActionListener(new java.awt.event.ActionListener() {
+
+        NewTransactionMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        NewTransactionMenuItem.setText("سند جدید");
+        NewTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newSanadMenuActionPerformed(evt);
+                NewTransactionMenuItemActionPerformed(evt);
             }
         });
+        newSanadMenu.add(NewTransactionMenuItem);
+
         menuBar.add(newSanadMenu);
 
         gozareshaatMenu.setText("گزارشات");
         gozareshaatMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
 
+        tarazNamehMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         tarazNamehMenuItem.setText("ترازنامه");
         gozareshaatMenu.add(tarazNamehMenuItem);
 
+        daftarHesabMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         daftarHesabMenuItem.setText("دفتر کل");
         daftarHesabMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,9 +166,9 @@ public class DashboardForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(timerLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(usernameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
@@ -160,7 +176,7 @@ public class DashboardForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(timerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(61, 61, 61)
@@ -193,14 +209,15 @@ public class DashboardForm extends javax.swing.JFrame {
         addPersonOrGroup.setVisible(true);
     }//GEN-LAST:event_addPersonMenuItemActionPerformed
 
-    private void newSanadMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSanadMenuActionPerformed
+    private void daftarHesabMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarHesabMenuItemActionPerformed
+        DaftarKolForm daftarKolForm = new DaftarKolForm(accountManager, paidManager, prePaidManager);
+        daftarKolForm.setVisible(true);
+    }//GEN-LAST:event_daftarHesabMenuItemActionPerformed
+
+    private void NewTransactionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewTransactionMenuItemActionPerformed
         NewSanad newSanad = new NewSanad(accountManager, paidManager, prePaidManager);
         newSanad.setVisible(true);
-    }//GEN-LAST:event_newSanadMenuActionPerformed
-
-    private void daftarHesabMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarHesabMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_daftarHesabMenuItemActionPerformed
+    }//GEN-LAST:event_NewTransactionMenuItemActionPerformed
 
     private void logout() {
         LoginForm loginform = new LoginForm();
@@ -238,21 +255,35 @@ public class DashboardForm extends javax.swing.JFrame {
         });
     }
 
+    public class TimerHandler extends TimerTask {
+        public void run() {
+            Date date = new Date(Date.getCurrentDate().getDay(),
+                    Date.getCurrentDate().getMonth(),
+            Date.getCurrentDate().getYear(),
+            Date.getCurrentDate().getHour(),
+            Date.getCurrentDate().getMinute());
+            
+            timerLabel.setText("تاریخ سیستم: " + date.toIran().toString());
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AccountViewerMenuItem;
     private javax.swing.JMenu AddPersonOrGroupMenuItem;
+    private javax.swing.JMenuItem NewTransactionMenuItem;
     private javax.swing.JMenuItem addGroupMenuItem;
     private javax.swing.JMenuItem addPersonMenuItem;
     private javax.swing.JMenuItem daftarHesabMenuItem;
     private javax.swing.JMenu exitMenu;
     private javax.swing.JMenu gozareshaatMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton logoutButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu newSanadMenu;
     private javax.swing.JMenuItem tarazNamehMenuItem;
+    private javax.swing.JLabel timerLabel;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 
