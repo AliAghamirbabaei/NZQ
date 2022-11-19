@@ -5,6 +5,7 @@
 package NZQ.Forms;
 
 import java.awt.ComponentOrientation;
+import java.time.DayOfWeek;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,8 +26,18 @@ public class FilterForm extends javax.swing.JFrame {
         monthlyButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         yearlyButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         dateValidationErrorLabel.setVisible(false);
+        
+        dailyButton.setEnabled(false);
+        monthlyButton.setEnabled(false);
+        yearlyButton.setEnabled(false);
         monthComboBox.setEnabled(false);
         yearTextField.setEnabled(false);
+        
+        fromPriceTextField.setEnabled(false);
+        toPriceTextField.setEnabled(false);
+        
+        debtRadioButton.setEnabled(false);
+        creditRadioButton.setEnabled(false);
     }
 
     /**
@@ -38,52 +49,37 @@ public class FilterForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        dateButtonGroup = new javax.swing.ButtonGroup();
+        filterTypeButtonGroup = new javax.swing.ButtonGroup();
+        transactionTypeButtonGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        dailyButton = new javax.swing.JRadioButton();
-        monthlyButton = new javax.swing.JRadioButton();
-        yearlyButton = new javax.swing.JRadioButton();
         filterTarikhHeaderLabel = new javax.swing.JLabel();
         filterApply = new javax.swing.JButton();
         dateValidationErrorLabel = new javax.swing.JLabel();
-        datePickersPanel = new javax.swing.JPanel();
+        dateFilterPanel = new javax.swing.JPanel();
         yearTextField = new javax.swing.JTextField();
         placeHolderDate1 = new javax.swing.JLabel();
         monthComboBox = new javax.swing.JComboBox<>();
         taarikhLabel = new javax.swing.JLabel();
+        dailyButton = new javax.swing.JRadioButton();
+        monthlyButton = new javax.swing.JRadioButton();
+        yearlyButton = new javax.swing.JRadioButton();
+        priceFilterPanel = new javax.swing.JPanel();
+        debtRadioButton = new javax.swing.JRadioButton();
+        creditRadioButton = new javax.swing.JRadioButton();
+        dateFilterRadioButton = new javax.swing.JRadioButton();
+        transactionTypeRadioButton = new javax.swing.JRadioButton();
+        jPanel2 = new javax.swing.JPanel();
+        fromPriceLabel = new javax.swing.JLabel();
+        toPriceLabel = new javax.swing.JLabel();
+        fromPriceTextField = new javax.swing.JTextField();
+        toPriceTextField = new javax.swing.JTextField();
+        priceFilterRadioButton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        buttonGroup1.add(dailyButton);
-        dailyButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        dailyButton.setSelected(true);
-        dailyButton.setText("روزانه");
-        dailyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dailyButtonActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(monthlyButton);
-        monthlyButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        monthlyButton.setText("ماهانه");
-        monthlyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                monthlyButtonActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(yearlyButton);
-        yearlyButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        yearlyButton.setText("سالانه");
-        yearlyButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearlyButtonActionPerformed(evt);
-            }
-        });
-
         filterTarikhHeaderLabel.setFont(new java.awt.Font("IRANSansX", 1, 24)); // NOI18N
-        filterTarikhHeaderLabel.setText("فیلتر تاریخ");
+        filterTarikhHeaderLabel.setText("اعمال فیلتر");
 
         filterApply.setFont(new java.awt.Font("IRANSansX", 1, 13)); // NOI18N
         filterApply.setText("اعمال");
@@ -100,11 +96,6 @@ public class FilterForm extends javax.swing.JFrame {
 
         yearTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         yearTextField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        yearTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yearTextFieldActionPerformed(evt);
-            }
-        });
 
         placeHolderDate1.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         placeHolderDate1.setText("/");
@@ -116,80 +107,227 @@ public class FilterForm extends javax.swing.JFrame {
         taarikhLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         taarikhLabel.setText("تاریخ :");
 
-        javax.swing.GroupLayout datePickersPanelLayout = new javax.swing.GroupLayout(datePickersPanel);
-        datePickersPanel.setLayout(datePickersPanelLayout);
-        datePickersPanelLayout.setHorizontalGroup(
-            datePickersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(datePickersPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(placeHolderDate1)
-                .addGap(18, 18, 18)
-                .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
-            .addGroup(datePickersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(datePickersPanelLayout.createSequentialGroup()
-                    .addGap(250, 250, 250)
-                    .addComponent(taarikhLabel)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        dateButtonGroup.add(dailyButton);
+        dailyButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        dailyButton.setSelected(true);
+        dailyButton.setText("روزانه");
+        dailyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dailyButtonActionPerformed(evt);
+            }
+        });
+
+        dateButtonGroup.add(monthlyButton);
+        monthlyButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        monthlyButton.setText("ماهانه");
+        monthlyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monthlyButtonActionPerformed(evt);
+            }
+        });
+
+        dateButtonGroup.add(yearlyButton);
+        yearlyButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        yearlyButton.setText("سالانه");
+        yearlyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yearlyButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dateFilterPanelLayout = new javax.swing.GroupLayout(dateFilterPanel);
+        dateFilterPanel.setLayout(dateFilterPanelLayout);
+        dateFilterPanelLayout.setHorizontalGroup(
+            dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dateFilterPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dateFilterPanelLayout.createSequentialGroup()
+                        .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(placeHolderDate1)
+                        .addGap(18, 18, 18)
+                        .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(taarikhLabel)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dateFilterPanelLayout.createSequentialGroup()
+                        .addComponent(yearlyButton)
+                        .addGap(20, 20, 20)
+                        .addComponent(monthlyButton)
+                        .addGap(26, 26, 26)
+                        .addComponent(dailyButton)
+                        .addGap(49, 49, 49))))
         );
-        datePickersPanelLayout.setVerticalGroup(
-            datePickersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(datePickersPanelLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(datePickersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        dateFilterPanelLayout.setVerticalGroup(
+            dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dateFilterPanelLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(monthlyButton)
+                    .addComponent(dailyButton)
+                    .addComponent(yearlyButton))
+                .addGap(29, 29, 29)
+                .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(taarikhLabel)
                     .addComponent(monthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(placeHolderDate1))
-                .addContainerGap(37, Short.MAX_VALUE))
-            .addGroup(datePickersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(datePickersPanelLayout.createSequentialGroup()
-                    .addGap(40, 40, 40)
-                    .addComponent(taarikhLabel)
-                    .addContainerGap(37, Short.MAX_VALUE)))
+                    .addComponent(placeHolderDate1)
+                    .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
+
+        transactionTypeButtonGroup.add(debtRadioButton);
+        debtRadioButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        debtRadioButton.setText("بدهکار");
+
+        transactionTypeButtonGroup.add(creditRadioButton);
+        creditRadioButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        creditRadioButton.setText("بستانکار");
+
+        javax.swing.GroupLayout priceFilterPanelLayout = new javax.swing.GroupLayout(priceFilterPanel);
+        priceFilterPanel.setLayout(priceFilterPanelLayout);
+        priceFilterPanelLayout.setHorizontalGroup(
+            priceFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, priceFilterPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(debtRadioButton)
+                .addGap(18, 18, 18)
+                .addComponent(creditRadioButton)
+                .addGap(83, 83, 83))
+        );
+        priceFilterPanelLayout.setVerticalGroup(
+            priceFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(priceFilterPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(priceFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(debtRadioButton)
+                    .addComponent(creditRadioButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        filterTypeButtonGroup.add(dateFilterRadioButton);
+        dateFilterRadioButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        dateFilterRadioButton.setText("فیلتر بر اساس تاریخ");
+        dateFilterRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateFilterRadioButtonActionPerformed(evt);
+            }
+        });
+
+        filterTypeButtonGroup.add(transactionTypeRadioButton);
+        transactionTypeRadioButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        transactionTypeRadioButton.setText("فیلتر بر اساس طرف حساب");
+        transactionTypeRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionTypeRadioButtonActionPerformed(evt);
+            }
+        });
+
+        fromPriceLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        fromPriceLabel.setText("از");
+
+        toPriceLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        toPriceLabel.setText("تا");
+
+        fromPriceTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+
+        toPriceTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(fromPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(toPriceLabel)
+                    .addComponent(fromPriceLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fromPriceLabel)
+                    .addComponent(fromPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(toPriceLabel)
+                    .addComponent(toPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        filterTypeButtonGroup.add(priceFilterRadioButton);
+        priceFilterRadioButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        priceFilterRadioButton.setText("فیلتر بر اساس قیمت");
+        priceFilterRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceFilterRadioButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(yearlyButton)
-                        .addGap(20, 20, 20)
-                        .addComponent(monthlyButton)
-                        .addGap(26, 26, 26)
-                        .addComponent(dailyButton))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(datePickersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(11, Short.MAX_VALUE))
             .addComponent(dateValidationErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(filterApply)
-                        .addGap(121, 121, 121))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(filterTarikhHeaderLabel)
+                                .addGap(100, 100, 100))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(dateFilterRadioButton)
+                                .addContainerGap())))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(dateFilterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(filterApply)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(filterTarikhHeaderLabel)
-                        .addGap(103, 103, 103))))
+                        .addGap(170, 170, 170)
+                        .addComponent(priceFilterRadioButton)
+                        .addContainerGap())
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(priceFilterPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(transactionTypeRadioButton)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(filterTarikhHeaderLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(monthlyButton)
-                    .addComponent(dailyButton)
-                    .addComponent(yearlyButton))
-                .addGap(3, 3, 3)
-                .addComponent(datePickersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(dateFilterRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateFilterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(transactionTypeRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(priceFilterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(priceFilterRadioButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(filterApply)
                 .addGap(18, 18, 18)
@@ -211,10 +349,6 @@ public class FilterForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void yearTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_yearTextFieldActionPerformed
-
     private void filterApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterApplyActionPerformed
         if (isDateValid()) {
             dateValidationErrorLabel.setVisible(false);
@@ -235,6 +369,48 @@ public class FilterForm extends javax.swing.JFrame {
         monthComboBox.setEnabled(false);
         yearTextField.setEnabled(false);
     }//GEN-LAST:event_dailyButtonActionPerformed
+
+    private void dateFilterRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFilterRadioButtonActionPerformed
+        dailyButton.setEnabled(true);
+        monthlyButton.setEnabled(true);
+        yearlyButton.setEnabled(true);
+        monthComboBox.setEnabled(true);
+        yearTextField.setEnabled(true);
+        
+        fromPriceTextField.setEnabled(false);
+        toPriceTextField.setEnabled(false);
+        
+        debtRadioButton.setEnabled(false);
+        creditRadioButton.setEnabled(false);
+    }//GEN-LAST:event_dateFilterRadioButtonActionPerformed
+
+    private void transactionTypeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionTypeRadioButtonActionPerformed
+        dailyButton.setEnabled(false);
+        monthlyButton.setEnabled(false);
+        yearlyButton.setEnabled(false);
+        monthComboBox.setEnabled(false);
+        yearTextField.setEnabled(false);
+        
+        fromPriceTextField.setEnabled(false);
+        toPriceTextField.setEnabled(false);
+        
+        debtRadioButton.setEnabled(true);
+        creditRadioButton.setEnabled(true);
+    }//GEN-LAST:event_transactionTypeRadioButtonActionPerformed
+
+    private void priceFilterRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceFilterRadioButtonActionPerformed
+        dailyButton.setEnabled(false);
+        monthlyButton.setEnabled(false);
+        yearlyButton.setEnabled(false);
+        monthComboBox.setEnabled(false);
+        yearTextField.setEnabled(false);
+        
+        fromPriceTextField.setEnabled(true);
+        toPriceTextField.setEnabled(true);
+        
+        debtRadioButton.setEnabled(false);
+        creditRadioButton.setEnabled(false);
+    }//GEN-LAST:event_priceFilterRadioButtonActionPerformed
 
     private boolean isDateValid() {
         Matcher yearMathcher = VALID_DATE_REGEX.matcher(yearTextField.getText());
@@ -283,17 +459,30 @@ public class FilterForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton creditRadioButton;
     private javax.swing.JRadioButton dailyButton;
-    private javax.swing.JPanel datePickersPanel;
+    private javax.swing.ButtonGroup dateButtonGroup;
+    private javax.swing.JPanel dateFilterPanel;
+    private javax.swing.JRadioButton dateFilterRadioButton;
     private javax.swing.JLabel dateValidationErrorLabel;
+    private javax.swing.JRadioButton debtRadioButton;
     private javax.swing.JButton filterApply;
     private javax.swing.JLabel filterTarikhHeaderLabel;
+    private javax.swing.ButtonGroup filterTypeButtonGroup;
+    private javax.swing.JLabel fromPriceLabel;
+    private javax.swing.JTextField fromPriceTextField;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JComboBox<String> monthComboBox;
     private javax.swing.JRadioButton monthlyButton;
     private javax.swing.JLabel placeHolderDate1;
+    private javax.swing.JPanel priceFilterPanel;
+    private javax.swing.JRadioButton priceFilterRadioButton;
     private javax.swing.JLabel taarikhLabel;
+    private javax.swing.JLabel toPriceLabel;
+    private javax.swing.JTextField toPriceTextField;
+    private javax.swing.ButtonGroup transactionTypeButtonGroup;
+    private javax.swing.JRadioButton transactionTypeRadioButton;
     private javax.swing.JTextField yearTextField;
     private javax.swing.JRadioButton yearlyButton;
     // End of variables declaration//GEN-END:variables
