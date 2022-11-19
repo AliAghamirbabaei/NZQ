@@ -40,7 +40,6 @@ public class DashboardForm extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         AddPersonOrGroupMenuItem = new javax.swing.JMenu();
         addPersonMenuItem = new javax.swing.JMenuItem();
-        addGroupMenuItem = new javax.swing.JMenuItem();
         newSanadMenu = new javax.swing.JMenu();
         NewTransactionMenuItem = new javax.swing.JMenuItem();
         gozareshaatMenu = new javax.swing.JMenu();
@@ -81,6 +80,7 @@ public class DashboardForm extends javax.swing.JFrame {
         AddPersonOrGroupMenuItem.setText("افزودن شخص/گروه");
         AddPersonOrGroupMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
 
+        addPersonMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_DOWN_MASK));
         addPersonMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         addPersonMenuItem.setText("افزودن شخص");
         addPersonMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -90,20 +90,12 @@ public class DashboardForm extends javax.swing.JFrame {
         });
         AddPersonOrGroupMenuItem.add(addPersonMenuItem);
 
-        addGroupMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        addGroupMenuItem.setText("افزودن گروه");
-        addGroupMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addGroupMenuItemActionPerformed(evt);
-            }
-        });
-        AddPersonOrGroupMenuItem.add(addGroupMenuItem);
-
         menuBar.add(AddPersonOrGroupMenuItem);
 
         newSanadMenu.setText("ثبت سند");
         newSanadMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
 
+        NewTransactionMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         NewTransactionMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         NewTransactionMenuItem.setText("سند جدید");
         NewTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -199,11 +191,6 @@ public class DashboardForm extends javax.swing.JFrame {
         accountViewerForm.setVisible(true);
     }//GEN-LAST:event_AccountViewerMenuItemActionPerformed
 
-    private void addGroupMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGroupMenuItemActionPerformed
-        AddGroupForm addGroupForm = new AddGroupForm(accountManager);
-        addGroupForm.setVisible(true);
-    }//GEN-LAST:event_addGroupMenuItemActionPerformed
-
     private void addPersonMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPersonMenuItemActionPerformed
         AddPerson addPersonOrGroup = new AddPerson(accountManager);
         addPersonOrGroup.setVisible(true);
@@ -272,7 +259,6 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem AccountViewerMenuItem;
     private javax.swing.JMenu AddPersonOrGroupMenuItem;
     private javax.swing.JMenuItem NewTransactionMenuItem;
-    private javax.swing.JMenuItem addGroupMenuItem;
     private javax.swing.JMenuItem addPersonMenuItem;
     private javax.swing.JMenuItem daftarHesabMenuItem;
     private javax.swing.JMenu exitMenu;

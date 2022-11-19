@@ -339,7 +339,7 @@ public class NewSanad extends javax.swing.JFrame {
         if (prepaidTypeSanadButton.isSelected()) {
             if (transactionType != null) {
                 transactionType = ((bedehkaarTypeButton.isSelected()) ? TransactionType.DEBT : TransactionType.CREDIT);
-                prePaidManager.add(paidManager.paids.size() + 1,
+                prePaidManager.add(prePaidManager.prePaids.size() + 1,
                         selectedAccount,
                         Date.getCurrentDate(),
                         descriptionTextField.getText(),

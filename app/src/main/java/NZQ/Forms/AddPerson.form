@@ -24,14 +24,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="addPersonLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-          </Group>
           <Component id="validationErrorLabel" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -40,36 +35,36 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="emailTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                                  <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="emailTextField" min="-2" pref="155" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="tellTextField" min="-2" pref="155" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="telLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="addressTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="nationalCodeTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-                                      <Component id="nationalCodeLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="addressTextField" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                                  <Component id="nationalCodeTextField" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="nationalCodeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addressLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="telLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emailLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
+                      <Component id="addPersonLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="submitPersonButton" min="-2" pref="147" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -80,7 +75,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="addPersonLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="56" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -121,7 +116,7 @@
           <Font name="IRANSansX" size="14" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="&#x646;&#x627;&#x645; &#x635;&#x627;&#x62d;&#x628; &#x62d;&#x633;&#x627;&#x628;"/>
+        <Property name="text" type="java.lang.String" value="&#x646;&#x627;&#x645; &#x635;&#x627;&#x62d;&#x628; &#x62d;&#x633;&#x627;&#x628; / &#x6af;&#x631;&#x648;&#x647;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="nationalCodeLabel">
@@ -129,7 +124,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="IRANSansX" size="13" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#x6a9;&#x62f; &#x645;&#x644;&#x6cc;"/>
+        <Property name="text" type="java.lang.String" value="&#x6a9;&#x62f; &#x645;&#x644;&#x6cc; / &#x6a9;&#x62f; &#x62d;&#x642;&#x648;&#x642;&#x6cc;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="addressLabel">
@@ -226,7 +221,7 @@
           <Font name="IRANSansX" size="18" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="&#x627;&#x641;&#x632;&#x648;&#x62f;&#x646; &#x634;&#x62e;&#x635;"/>
+        <Property name="text" type="java.lang.String" value="&#x627;&#x641;&#x632;&#x648;&#x62f;&#x646; &#x634;&#x62e;&#x635; / &#x6af;&#x631;&#x648;&#x647;"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
