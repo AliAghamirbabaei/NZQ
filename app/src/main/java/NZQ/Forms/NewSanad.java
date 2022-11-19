@@ -298,21 +298,18 @@ public class NewSanad extends javax.swing.JFrame {
         if (isTransactionRadioButtonNull == true) {
             validatoinLabel.setText("لطفا چک یا نقدی را انتخاب کنید.");
             validatoinLabel.setVisible(true);
-            System.out.println("test1");
             return;
         }
 
         if (transactionType == null) {
             validatoinLabel.setText("لطفا طرف حساب را وارد کنید.");
             validatoinLabel.setVisible(true);
-            System.out.println("test3");
             return;
         }
 
         if (priceTextField.getText().equals("")) {
             validatoinLabel.setText("لطفا قیمت را وارد کنید.");
             validatoinLabel.setVisible(true);
-            System.out.println("test5");
             return;
         }
 
