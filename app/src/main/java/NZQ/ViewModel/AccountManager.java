@@ -30,7 +30,7 @@ public class AccountManager {
         accounts.set(id - 1, accountElement);
     }
 
-    public void deleteAccount(int id) {
+    public void delete(int id) {
         System.out.println(accounts.size());
         accounts.remove(id - 1);
         System.out.println(accounts.size());

@@ -50,11 +50,6 @@ public class LoginForm extends javax.swing.JFrame {
 
         loginButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         loginButton.setText("ورود");
-        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loginButtonMouseClicked(evt);
-            }
-        });
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -114,20 +109,6 @@ public class LoginForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-        /*
-        if (usernameTextField.getText().equals(username) && passwordTextField.getText().equals(password)) {
-            DashboardForm dashboardForm = new DashboardForm();
-            dashboardForm.setVisible(true);
-            wrongCredentialLabel.setVisible(false);
-            this.setVisible(false);
-        } else {
-            wrongCredentialLabel.setVisible(true);
-        }
-        */
-        
-    }//GEN-LAST:event_loginButtonMouseClicked
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         if (usernameTextField.getText().equals(username) && passwordTextField.getText().equals(password)) {

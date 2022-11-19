@@ -52,13 +52,14 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         transactionTable = new javax.swing.JTable();
         ShowPaidRadioButton = new javax.swing.JRadioButton();
         showPrePaidRadioButton = new javax.swing.JRadioButton();
+        deleteButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jToolBar1.setRollover(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("IRANSansX", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("IRANSansX", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("دفتر کل");
 
@@ -95,28 +96,44 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
             }
         });
 
+        deleteButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        deleteButton.setText("حذف");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout daftarKolPanelLayout = new javax.swing.GroupLayout(daftarKolPanel);
         daftarKolPanel.setLayout(daftarKolPanelLayout);
         daftarKolPanelLayout.setHorizontalGroup(
             daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
+            .addComponent(jScrollPane1)
+            .addGroup(daftarKolPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ShowPaidRadioButton)
-                .addGap(18, 18, 18)
-                .addComponent(showPrePaidRadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
+                        .addComponent(ShowPaidRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(showPrePaidRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 595, Short.MAX_VALUE)
+                        .addComponent(deleteButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         daftarKolPanelLayout.setVerticalGroup(
             daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(daftarKolPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton)
                     .addComponent(ShowPaidRadioButton)
                     .addComponent(showPrePaidRadioButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
+                .addGap(0, 16, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         setJMenuBar(jMenuBar1);
@@ -144,6 +161,16 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         isPaidShows = false;
         transactionTable.updateUI();
     }//GEN-LAST:event_showPrePaidRadioButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        if (isPaidShows) {
+            paidManager.delete(transactionTable.getSelectedRow() + 1);
+        }else {
+            prePaidManager.delete(transactionTable.getSelectedRow() + 1);
+        }
+        
+        transactionTable.updateUI();
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,6 +213,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ShowPaidRadioButton;
     private javax.swing.JPanel daftarKolPanel;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

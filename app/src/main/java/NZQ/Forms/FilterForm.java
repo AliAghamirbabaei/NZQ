@@ -4,7 +4,6 @@
  */
 package NZQ.Forms;
 
-import static NZQ.Forms.AddPerson.VALID_EMAIL_ADDRESS_REGEX;
 import java.awt.ComponentOrientation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,14 +12,14 @@ import java.util.regex.Pattern;
  *
  * @author muhamadtalebi
  */
-public class DateFilterTarazNameh extends javax.swing.JFrame {
+public class FilterForm extends javax.swing.JFrame {
 
     public static final Pattern VALID_DATE_REGEX = Pattern.compile("[۰-۹0-9]{4}");
 
     /**
      * Creates new form DateFilterTarazNameh
      */
-    public DateFilterTarazNameh() {
+    public FilterForm() {
         initComponents();
         dailyButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         monthlyButton.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -264,20 +263,21 @@ public class DateFilterTarazNameh extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DateFilterTarazNameh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DateFilterTarazNameh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DateFilterTarazNameh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DateFilterTarazNameh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FilterForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DateFilterTarazNameh().setVisible(true);
+                new FilterForm().setVisible(true);
             }
         });
     }
