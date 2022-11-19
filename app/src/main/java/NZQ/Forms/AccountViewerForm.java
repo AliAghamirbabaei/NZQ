@@ -167,11 +167,15 @@ public class AccountViewerForm extends javax.swing.JFrame implements TableModel 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         accountManager.add(accountManager.accounts.size() + 1,"", "", "", "", "");
         accountInforamtionTable.updateUI();
+        
+        accountManager.save();
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
         accountManager.delete(accountInforamtionTable.getSelectedRow() + 1);
         accountInforamtionTable.updateUI();
+        
+        accountManager.save();
     }//GEN-LAST:event_DeleteButtonActionPerformed
 
     /**
