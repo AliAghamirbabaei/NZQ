@@ -472,7 +472,7 @@ public class FilterForm extends javax.swing.JFrame {
                 if (yearlyButton.isSelected()) {
                     transactionFilter.getYearlyPaidTransactions(Integer.parseInt(fromYearTextField.getText()),
                             Integer.parseInt(toYearTextField.getText()));
-                    DaftarKolForm daftarKolForm = new DaftarKolForm(accountManager, paidManager, prePaidManager)
+                   // DaftarKolForm daftarKolForm = new DaftarKolForm(accountManager, paidManager, prePaidManager)
                 } else if (monthlyButton.isSelected()) {
                     // call monthly filter
                 } else if (dailyButton.isSelected()) {
