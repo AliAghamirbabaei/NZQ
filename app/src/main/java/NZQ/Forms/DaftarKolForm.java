@@ -20,10 +20,10 @@ import javax.swing.table.TableModel;
  */
 public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
 
-    AccountManager accountManager = new AccountManager();
-    PaidManager paidManager = new PaidManager();
-    PrePaidManager prePaidManager = new PrePaidManager();
-    boolean isPaidShows = true;
+    private AccountManager accountManager;
+    private PaidManager paidManager;
+    private PrePaidManager prePaidManager;
+    private boolean isPaidShows = true;
 
     public DaftarKolForm(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
         this.accountManager = accountManager;

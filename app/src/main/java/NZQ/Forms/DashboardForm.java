@@ -197,8 +197,7 @@ public class DashboardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_addPersonMenuItemActionPerformed
 
     private void daftarHesabMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarHesabMenuItemActionPerformed
-        DaftarKolForm daftarKolForm = new DaftarKolForm(accountManager, paidManager, prePaidManager);
-        daftarKolForm.setVisible(true);
+        // present filter form here...
     }//GEN-LAST:event_daftarHesabMenuItemActionPerformed
 
     private void NewTransactionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewTransactionMenuItemActionPerformed
