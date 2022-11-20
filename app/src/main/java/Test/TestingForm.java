@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Test;
+
 import java.awt.Color;
 
 import javax.swing.UIManager;
@@ -18,6 +19,7 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 
 import org.jfree.data.category.DefaultCategoryDataset;
+
 /**
  *
  * @author aliaghamirbabaei
@@ -94,29 +96,29 @@ public class TestingForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-dataset.setValue(80, “Marks”, “Value 1”);
+        dataset.setValue(80, "Marks", "Value 1");
 
-dataset.setValue(70, “Marks”, “Value 2”);
+        dataset.setValue(70, "Marks", "Value 2");
 
-dataset.setValue(75, “Marks”, “Value 3”);
+        dataset.setValue(75, "Marks", "Value 3");
 
-dataset.setValue(85, “Marks”, “Value 4”);
+        dataset.setValue(85, "Marks", "Value 4");
 
-dataset.setValue(90, “Marks”, “Value 5”);
+        dataset.setValue(90, "Marks", "Value 5");
 
-JFreeChart chart = ChartFactory.createBarChart(“Student’s Score”, “Student’s Name”,”Marks”, dataset, PlotOrientation.VERTICAL,false,true,false);
+        JFreeChart chart = ChartFactory.createBarChart("Students Score", "Students Name","Marks", dataset, PlotOrientation.VERTICAL,false,true,false);
 
-CategoryPlot p = chart.getCategoryPlot();
+        CategoryPlot p = chart.getCategoryPlot();
 
-p.setRangeGridlinePaint(Color.black);
+        p.setRangeGridlinePaint(Color.black);
 
-ChartFrame frame = new ChartFrame(“Bar Chart Report”,chart);
+        ChartFrame frame = new ChartFrame("Bar Chart Report", chart);
 
-frame.setVisible(true);
+        frame.setVisible(true);
 
-frame.setSize(650,550);
+        frame.setSize(650, 550);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
