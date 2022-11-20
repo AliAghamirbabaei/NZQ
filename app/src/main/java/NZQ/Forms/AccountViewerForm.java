@@ -5,8 +5,9 @@
 package NZQ.Forms;
 
 import ViewModel.AccountManager;
+import ViewModel.Transaction.PaidManager;
+import ViewModel.Transaction.PrePaidManager;
 import java.awt.ComponentOrientation;
-import javax.swing.JLabel;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
@@ -18,13 +19,14 @@ import javax.swing.table.TableModel;
 public class AccountViewerForm extends javax.swing.JFrame implements TableModel {
 
     private AccountManager accountManager;
+    private PaidManager paidManager;
+    private PrePaidManager prePaidManager;
 
-    /**
-     * Creates new form AccountViewerForm
-     */
-    public AccountViewerForm(AccountManager accountManager) {
+    public AccountViewerForm(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
         initComponents();
         this.accountManager = accountManager;
+        this.paidManager = paidManager;
+        this.prePaidManager = prePaidManager;
         accountInforamtionTable.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
         rightRenderer.setHorizontalAlignment(accountInformationLabel.RIGHT);
@@ -173,6 +175,8 @@ public class AccountViewerForm extends javax.swing.JFrame implements TableModel 
 
     private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
         accountManager.delete(accountInforamtionTable.getSelectedRow() + 1);
+        paidManager.deleteTransactionsByAccountId(accountInforamtionTable.getSelectedRow() + 1);
+        prePaidManager.deleteTransactionsByAccountId(accountInforamtionTable.getSelectedRow() + 1);
         accountInforamtionTable.updateUI();
         
         accountManager.save();
@@ -209,7 +213,10 @@ public class AccountViewerForm extends javax.swing.JFrame implements TableModel 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 AccountManager accountManager = new AccountManager();
-                new AccountViewerForm(accountManager).setVisible(true);
+                PaidManager paidManager = new PaidManager();
+                PrePaidManager prePaidManager = new PrePaidManager();
+                
+                new AccountViewerForm(accountManager, paidManager, prePaidManager).setVisible(true);
             }
         });
     }

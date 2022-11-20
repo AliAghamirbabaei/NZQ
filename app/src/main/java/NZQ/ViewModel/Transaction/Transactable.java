@@ -9,6 +9,7 @@ public interface Transactable {
     void edit(int id, int accountId, Date time, String description, int price, TransactionType transactionType);
 
     void delete(int id);
+    void deleteTransactionsByAccountId(int accountId);
 
     void save();
     void reloadData();

@@ -41,10 +41,10 @@ public class DashboardForm extends javax.swing.JFrame {
         AddPersonOrGroupMenuItem = new javax.swing.JMenu();
         addPersonMenuItem = new javax.swing.JMenuItem();
         newSanadMenu = new javax.swing.JMenu();
-        NewTransactionMenuItem = new javax.swing.JMenuItem();
+        newTransactionMenuItem = new javax.swing.JMenuItem();
         gozareshaatMenu = new javax.swing.JMenu();
         tarazNamehMenuItem = new javax.swing.JMenuItem();
-        daftarHesabMenuItem = new javax.swing.JMenuItem();
+        daftarKolMenuItem = new javax.swing.JMenuItem();
         AccountViewerMenuItem = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenu();
 
@@ -95,15 +95,15 @@ public class DashboardForm extends javax.swing.JFrame {
         newSanadMenu.setText("ثبت سند");
         newSanadMenu.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
 
-        NewTransactionMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        NewTransactionMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        NewTransactionMenuItem.setText("سند جدید");
-        NewTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        newTransactionMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        newTransactionMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        newTransactionMenuItem.setText("سند جدید");
+        newTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewTransactionMenuItemActionPerformed(evt);
+                newTransactionMenuItemActionPerformed(evt);
             }
         });
-        newSanadMenu.add(NewTransactionMenuItem);
+        newSanadMenu.add(newTransactionMenuItem);
 
         menuBar.add(newSanadMenu);
 
@@ -112,16 +112,21 @@ public class DashboardForm extends javax.swing.JFrame {
 
         tarazNamehMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         tarazNamehMenuItem.setText("ترازنامه");
-        gozareshaatMenu.add(tarazNamehMenuItem);
-
-        daftarHesabMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        daftarHesabMenuItem.setText("دفتر کل");
-        daftarHesabMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        tarazNamehMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                daftarHesabMenuItemActionPerformed(evt);
+                tarazNamehMenuItemActionPerformed(evt);
             }
         });
-        gozareshaatMenu.add(daftarHesabMenuItem);
+        gozareshaatMenu.add(tarazNamehMenuItem);
+
+        daftarKolMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        daftarKolMenuItem.setText("دفتر کل");
+        daftarKolMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daftarKolMenuItemActionPerformed(evt);
+            }
+        });
+        gozareshaatMenu.add(daftarKolMenuItem);
 
         AccountViewerMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         AccountViewerMenuItem.setText("نمایش اشخاص");
@@ -187,7 +192,7 @@ public class DashboardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuMouseClicked
 
     private void AccountViewerMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountViewerMenuItemActionPerformed
-        AccountViewerForm accountViewerForm = new AccountViewerForm(accountManager);
+        AccountViewerForm accountViewerForm = new AccountViewerForm(accountManager, paidManager, prePaidManager);
         accountViewerForm.setVisible(true);
     }//GEN-LAST:event_AccountViewerMenuItemActionPerformed
 
@@ -196,14 +201,20 @@ public class DashboardForm extends javax.swing.JFrame {
         addPersonOrGroup.setVisible(true);
     }//GEN-LAST:event_addPersonMenuItemActionPerformed
 
-    private void daftarHesabMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarHesabMenuItemActionPerformed
-        // present filter form here...
-    }//GEN-LAST:event_daftarHesabMenuItemActionPerformed
+    private void daftarKolMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarKolMenuItemActionPerformed
+        DaftarKolForm daftarKolForm = new DaftarKolForm(accountManager, paidManager, prePaidManager);
+        daftarKolForm.setVisible(true);
+    }//GEN-LAST:event_daftarKolMenuItemActionPerformed
 
-    private void NewTransactionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewTransactionMenuItemActionPerformed
+    private void newTransactionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newTransactionMenuItemActionPerformed
         NewSanad newSanad = new NewSanad(accountManager, paidManager, prePaidManager);
         newSanad.setVisible(true);
-    }//GEN-LAST:event_NewTransactionMenuItemActionPerformed
+    }//GEN-LAST:event_newTransactionMenuItemActionPerformed
+
+    private void tarazNamehMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarazNamehMenuItemActionPerformed
+        TarazNamehForm tarazNamehForm = new TarazNamehForm(accountManager, paidManager);
+        tarazNamehForm.setVisible(true);
+    }//GEN-LAST:event_tarazNamehMenuItemActionPerformed
 
     private void logout() {
         LoginForm loginform = new LoginForm();
@@ -257,9 +268,8 @@ public class DashboardForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AccountViewerMenuItem;
     private javax.swing.JMenu AddPersonOrGroupMenuItem;
-    private javax.swing.JMenuItem NewTransactionMenuItem;
     private javax.swing.JMenuItem addPersonMenuItem;
-    private javax.swing.JMenuItem daftarHesabMenuItem;
+    private javax.swing.JMenuItem daftarKolMenuItem;
     private javax.swing.JMenu exitMenu;
     private javax.swing.JMenu gozareshaatMenu;
     private javax.swing.JLabel jLabel1;
@@ -267,24 +277,10 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JButton logoutButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu newSanadMenu;
+    private javax.swing.JMenuItem newTransactionMenuItem;
     private javax.swing.JMenuItem tarazNamehMenuItem;
     private javax.swing.JLabel timerLabel;
     private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 
 }
-
-//--------------------------------------------- Account viewer form ---------------------------------------------
-//
-//        AccountManager accountManager = new AccountManager();
-//
-//        for (int i = 0; i < 10; i++) {
-//            accountManager.add(accountManager.accounts.size() + 1, "Ali", "12312413", "asdsef", "12334", "asdasd");
-//        }
-//
-//        accountManager.save();
-//        
-//        AccountViewerForm accountViewerForm = new AccountViewerForm();
-//        accountViewerForm.setAccountManager(accountManager);
-//        
-//        accountViewerForm.setVisible(true);

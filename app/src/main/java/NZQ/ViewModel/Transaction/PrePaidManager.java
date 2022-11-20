@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrePaidManager implements Transactable {
+
     public ArrayList<PrePaid> prePaids = new ArrayList<>();
 
     public PrePaidManager() {
@@ -36,7 +37,7 @@ public class PrePaidManager implements Transactable {
         prePaids.remove(id - 1);
         System.out.println(prePaids.size());
         for (int i = id; i <= prePaids.size(); i++) {
-            PrePaid element = prePaids.get(i-1);
+            PrePaid element = prePaids.get(i - 1);
             edit(element.getId() - 1,
                     element.getAccountId(),
                     element.getTime(),
@@ -46,9 +47,18 @@ public class PrePaidManager implements Transactable {
         }
     }
 
+    public void deleteTransactionsByAccountId(int accountId) {
+        for (PrePaid prePaid : prePaids) {
+            if (prePaid.getAccountId() == accountId) {
+                delete(prePaid.getId());
+            }
+        }
+    }
+
     public void save() {
         PrePaidFileManager.saveData(prePaids);
     }
+
     public void reloadData() {
         prePaids.clear();
         init();
@@ -56,7 +66,7 @@ public class PrePaidManager implements Transactable {
 
     public void checkPrePaidsDeadline(PaidManager paidManager) {
         for (PrePaid prePaid : prePaids) {
-            if(Date.isDeadlinePassed(prePaid.getTime()) && prePaid.isPrePaidPassed() == PrePaidStatus.NO) {
+            if (Date.isDeadlinePassed(prePaid.getTime()) && prePaid.isPrePaidPassed() == PrePaidStatus.NO) {
                 prePaid.setPrePaidPassed(PrePaidStatus.YES);
                 paidManager.add(paidManager.paids.size() + 1, prePaid.getAccountId(), prePaid.getTime(), prePaid.getDescription(), prePaid.getPrice(), prePaid.getTransactionType());
                 prePaids.set(prePaid.getId() - 1, prePaid);
@@ -95,4 +105,5 @@ public class PrePaidManager implements Transactable {
     private PrePaidStatus stringToPrePaidStatus(String name) {
         return PrePaidStatus.findByName(name);
     }
+
 }

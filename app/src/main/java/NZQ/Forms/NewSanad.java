@@ -17,7 +17,7 @@ import javax.swing.DefaultListModel;
 
 public class NewSanad extends javax.swing.JFrame {
 
-    public static final Pattern VALID_PRICE = Pattern.compile("[۰-۹0-9]+");
+    public static final Pattern VALID_PRICE = Pattern.compile("[0-9]+");
     private AccountManager accountManager;
     private PaidManager paidManager;
     private PrePaidManager prePaidManager;

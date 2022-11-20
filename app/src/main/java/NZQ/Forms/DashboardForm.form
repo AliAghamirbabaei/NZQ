@@ -47,7 +47,7 @@
             </Property>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="NewTransactionMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="newTransactionMenuItem">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+N"/>
@@ -58,7 +58,7 @@
                 <Property name="text" type="java.lang.String" value="&#x633;&#x646;&#x62f; &#x62c;&#x62f;&#x6cc;&#x62f;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewTransactionMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newTransactionMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -78,8 +78,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#x62a;&#x631;&#x627;&#x632;&#x646;&#x627;&#x645;&#x647;"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tarazNamehMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="daftarHesabMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="daftarKolMenuItem">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="IRANSansX" size="13" style="0"/>
@@ -87,7 +90,7 @@
                 <Property name="text" type="java.lang.String" value="&#x62f;&#x641;&#x62a;&#x631; &#x6a9;&#x644;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="daftarHesabMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="daftarKolMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="AccountViewerMenuItem">

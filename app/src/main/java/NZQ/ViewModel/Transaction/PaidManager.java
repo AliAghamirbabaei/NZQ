@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaidManager implements Transactable {
+
     public ArrayList<Paid> paids = new ArrayList<>();
 
     public PaidManager() {
@@ -46,9 +47,18 @@ public class PaidManager implements Transactable {
         }
     }
 
+    public void deleteTransactionsByAccountId(int accountId) {
+        for (Paid paid : paids) {
+            if (paid.getAccountId() == accountId) {
+                delete(paid.getId());
+            }
+        }
+    }
+
     public void save() {
         PaidFileManager.saveData(paids);
     }
+
     public void reloadData() {
         paids.clear();
         init();

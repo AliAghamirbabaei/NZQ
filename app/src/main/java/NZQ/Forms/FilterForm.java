@@ -4,13 +4,20 @@
  */
 package NZQ.Forms;
 
+import Model.Account;
+import Model.Transaction.Paid;
+import Model.Transaction.PrePaid;
+import Model.Transaction.TransactionType;
 import ViewModel.AccountManager;
 import ViewModel.Report.TransactionFilter;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
 import java.awt.ComponentOrientation;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -18,9 +25,11 @@ import java.util.regex.Pattern;
  */
 public class FilterForm extends javax.swing.JFrame {
 
-    private AccountManager accountManager = new AccountManager();
-    private PaidManager paidManager = new PaidManager();
-    private PrePaidManager prePaidManager = new PrePaidManager();
+    private AccountManager accountManager;
+    private PaidManager paidManager;
+    private PrePaidManager prePaidManager;
+    private ArrayList<Paid> paids;
+    private ArrayList<PrePaid> prePaids;
     private static final Pattern VALID_DATE_REGEX = Pattern.compile("[۰-۹0-9]{4}");
     private static final Pattern VALID_PRICE_REGEX = Pattern.compile("[0-9]+");
 
@@ -40,8 +49,10 @@ public class FilterForm extends javax.swing.JFrame {
         dailyButton.setEnabled(false);
         monthlyButton.setEnabled(false);
         yearlyButton.setEnabled(false);
-        fromMonthComboBox.setEnabled(false);
+        fromMonthTextField.setEnabled(false);
         fromYearTextField.setEnabled(false);
+        toYearTextField.setEnabled(false);
+        toMonthTextField.setEnabled(false);
 
         fromPriceTextField.setEnabled(false);
         toPriceTextField.setEnabled(false);
@@ -50,6 +61,8 @@ public class FilterForm extends javax.swing.JFrame {
         creditRadioButton.setEnabled(false);
 
         accountNameComboBox.setEnabled(false);
+        
+        initAccountNames();
     }
 
     /**
@@ -71,15 +84,19 @@ public class FilterForm extends javax.swing.JFrame {
         dateFilterPanel = new javax.swing.JPanel();
         fromYearTextField = new javax.swing.JTextField();
         placeHolderDate1 = new javax.swing.JLabel();
-        fromMonthComboBox = new javax.swing.JComboBox<>();
         taarikhLabel = new javax.swing.JLabel();
         dailyButton = new javax.swing.JRadioButton();
         monthlyButton = new javax.swing.JRadioButton();
         yearlyButton = new javax.swing.JRadioButton();
         toYearTextField = new javax.swing.JTextField();
         placeHolderDate2 = new javax.swing.JLabel();
-        toMonthComboBox = new javax.swing.JComboBox<>();
         taarikhLabel1 = new javax.swing.JLabel();
+        placeHolderDate3 = new javax.swing.JLabel();
+        placeHolderDate4 = new javax.swing.JLabel();
+        fromDayTextField = new javax.swing.JTextField();
+        fromMonthTextField = new javax.swing.JTextField();
+        toDayTextField = new javax.swing.JTextField();
+        toMonthTextField = new javax.swing.JTextField();
         priceFilterPanel = new javax.swing.JPanel();
         debtRadioButton = new javax.swing.JRadioButton();
         creditRadioButton = new javax.swing.JRadioButton();
@@ -97,7 +114,6 @@ public class FilterForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        showAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,9 +138,6 @@ public class FilterForm extends javax.swing.JFrame {
 
         placeHolderDate1.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         placeHolderDate1.setText("/");
-
-        fromMonthComboBox.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
-        fromMonthComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         taarikhLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         taarikhLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -164,19 +177,30 @@ public class FilterForm extends javax.swing.JFrame {
         placeHolderDate2.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
         placeHolderDate2.setText("/");
 
-        toMonthComboBox.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
-        toMonthComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
-
         taarikhLabel1.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         taarikhLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         taarikhLabel1.setText(" تا تاریخ:");
+
+        placeHolderDate3.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
+        placeHolderDate3.setText("/");
+
+        placeHolderDate4.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
+        placeHolderDate4.setText("/");
+
+        fromDayTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+
+        fromMonthTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+
+        toDayTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+
+        toMonthTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
 
         javax.swing.GroupLayout dateFilterPanelLayout = new javax.swing.GroupLayout(dateFilterPanel);
         dateFilterPanel.setLayout(dateFilterPanelLayout);
         dateFilterPanelLayout.setHorizontalGroup(
             dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dateFilterPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dateFilterPanelLayout.createSequentialGroup()
                         .addComponent(yearlyButton)
@@ -186,25 +210,32 @@ public class FilterForm extends javax.swing.JFrame {
                         .addComponent(dailyButton)
                         .addGap(49, 49, 49))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dateFilterPanelLayout.createSequentialGroup()
-                        .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(dateFilterPanelLayout.createSequentialGroup()
+                        .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dateFilterPanelLayout.createSequentialGroup()
                                 .addComponent(toYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(placeHolderDate2)
-                                .addGap(18, 18, 18)
-                                .addComponent(toMonthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(dateFilterPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(toMonthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(placeHolderDate4, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(toDayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dateFilterPanelLayout.createSequentialGroup()
                                 .addComponent(fromYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(placeHolderDate1)
-                                .addGap(18, 18, 18)
-                                .addComponent(fromMonthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(42, 42, 42)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(fromMonthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(placeHolderDate3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fromDayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addComponent(taarikhLabel)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dateFilterPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(taarikhLabel1))
+                        .addContainerGap())
+                    .addComponent(taarikhLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         dateFilterPanelLayout.setVerticalGroup(
             dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,17 +246,22 @@ public class FilterForm extends javax.swing.JFrame {
                     .addComponent(dailyButton)
                     .addComponent(yearlyButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(taarikhLabel)
-                    .addComponent(fromMonthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(placeHolderDate1)
-                    .addComponent(fromYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fromDayTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(taarikhLabel)
+                        .addComponent(placeHolderDate1)
+                        .addComponent(fromYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fromMonthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(placeHolderDate3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(dateFilterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(taarikhLabel1)
-                    .addComponent(toMonthComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(placeHolderDate2)
-                    .addComponent(toYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(toYearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(placeHolderDate4)
+                    .addComponent(toDayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toMonthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -353,14 +389,6 @@ public class FilterForm extends javax.swing.JFrame {
             }
         });
 
-        showAll.setFont(new java.awt.Font("IRANSansX", 1, 13)); // NOI18N
-        showAll.setText("نمایش همه");
-        showAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showAllActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -386,7 +414,7 @@ public class FilterForm extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(priceFilterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 22, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(dateFilterRadioButton)
@@ -402,10 +430,8 @@ public class FilterForm extends javax.swing.JFrame {
                         .addComponent(filterTarikhHeaderLabel)
                         .addGap(123, 123, 123))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(120, 120, 120)
                 .addComponent(filterApply)
-                .addGap(18, 18, 18)
-                .addComponent(showAll, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -435,10 +461,8 @@ public class FilterForm extends javax.swing.JFrame {
                 .addComponent(accountFilterRadioButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(filterApply, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(showAll, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(filterApply, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(dateValidationErrorLabel)
                 .addGap(14, 14, 14))
@@ -461,61 +485,85 @@ public class FilterForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void filterApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterApplyActionPerformed
-        TransactionFilter transactionFilter = new TransactionFilter(accountManager.accounts,
+        TransactionFilter transactionFilter = new TransactionFilter(
                 paidManager.paids,
                 prePaidManager.prePaids);
+
+        // Check what fillter type selected
         if (dateFilterRadioButton.isSelected()) {
             if (!isDateValid() && yearlyButton.isSelected()) {
                 dateValidationErrorLabel.setText("تاریخ معتبر نیست!");
                 dateValidationErrorLabel.setVisible(true);
             } else {
+                // Presenting FilltredDataForm with date fillter
                 if (yearlyButton.isSelected()) {
-                    transactionFilter.getYearlyPaidTransactions(Integer.parseInt(fromYearTextField.getText()),
-                            Integer.parseInt(toYearTextField.getText()));
-                   // DaftarKolForm daftarKolForm = new DaftarKolForm(accountManager, paidManager, prePaidManager)
+                    paids = transactionFilter.getYearlyPaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(toYearTextField.getText()));
+                    prePaids = transactionFilter.getYearlyPrePaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(toYearTextField.getText()));
                 } else if (monthlyButton.isSelected()) {
-                    // call monthly filter
+                    paids = transactionFilter.getMonthlyPaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(fromMonthTextField.getText()), Integer.parseInt(toMonthTextField.getText()));
+                    prePaids = transactionFilter.getMonthlyPrePaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(fromMonthTextField.getText()), Integer.parseInt(toMonthTextField.getText()));
                 } else if (dailyButton.isSelected()) {
-                    // call daily filter
+                    paids = transactionFilter.getDailyPaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(fromMonthTextField.getText()), Integer.parseInt(fromDayTextField.getText()), Integer.parseInt(toDayTextField.getText()));
+                    prePaids = transactionFilter.getDailyPrePaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(fromMonthTextField.getText()), Integer.parseInt(fromDayTextField.getText()), Integer.parseInt(toDayTextField.getText()));
                 }
             }
         } else if (transactionTypeRadioButton.isSelected()) {
+            // Presenting FilltredDataForm with transaction type fillter
             if (creditRadioButton.isSelected()) {
-                // call debts transaction filter
+                paids = transactionFilter.getPaidTransactionsTypes(TransactionType.CREDIT);
+                prePaids = transactionFilter.getPrePaidTransactionsTypes(TransactionType.CREDIT);
             } else if (debtRadioButton.isSelected()) {
-                // call creadit transaction filter
+                paids = transactionFilter.getPaidTransactionsTypes(TransactionType.DEBT);
+                prePaids = transactionFilter.getPrePaidTransactionsTypes(TransactionType.DEBT);
             }
         } else if (priceFilterRadioButton.isSelected()) {
+            // Presenting FilltredDataForm with price fillter
             if (!isPriceValid()) {
                 dateValidationErrorLabel.setText("فیلدهای قیمت معتبر نیست!");
                 dateValidationErrorLabel.setVisible(true);
             } else {
-                dateValidationErrorLabel.setVisible(false);
+                paids = transactionFilter.getPaidTransactionsWithPriceRange(Integer.parseInt(fromPriceTextField.getText()), Integer.parseInt(toPriceTextField.getText()));
+                prePaids = transactionFilter.getPrePaidTransactionsWithPriceRange(Integer.parseInt(fromPriceTextField.getText()), Integer.parseInt(toPriceTextField.getText()));
             }
         } else if (accountFilterRadioButton.isSelected()) {
-            // call account filter
+            // Presenting FilltredDataForm with account id fillter
+            paids = transactionFilter.getPaidTransactionOfAAccount(accountNameComboBox.getSelectedIndex() + 1);
+            prePaids = transactionFilter.getPrePaidTransactionOfAAccount(accountNameComboBox.getSelectedIndex() + 1);
         }
+
+        presentFillterForm(accountManager.accounts, paids, prePaids);
     }//GEN-LAST:event_filterApplyActionPerformed
 
     private void yearlyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlyButtonActionPerformed
-        fromMonthComboBox.setEnabled(false);
+        fromMonthTextField.setEnabled(false);
+        toMonthTextField.setEnabled(false);
+
         fromYearTextField.setEnabled(true);
+        toYearTextField.setEnabled(true);
+        toYearTextField.setVisible(true);
     }//GEN-LAST:event_yearlyButtonActionPerformed
 
     private void monthlyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlyButtonActionPerformed
-        fromMonthComboBox.setEnabled(true);
-        fromYearTextField.setEnabled(false);
+        fromMonthTextField.setEnabled(true);
+        toMonthTextField.setEnabled(true);
+
+        fromYearTextField.setEnabled(true);
+        toYearTextField.setVisible(false);
     }//GEN-LAST:event_monthlyButtonActionPerformed
 
     private void dailyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyButtonActionPerformed
-        fromMonthComboBox.setEnabled(false);
+        fromMonthTextField.setEnabled(false);
+        toMonthTextField.setEnabled(false);
         fromYearTextField.setEnabled(false);
+        toYearTextField.setEnabled(false);
     }//GEN-LAST:event_dailyButtonActionPerformed
 
     private void dateFilterRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFilterRadioButtonActionPerformed
         dailyButton.setEnabled(true);
         monthlyButton.setEnabled(true);
         yearlyButton.setEnabled(true);
+        //fromYearTextField.setEnabled(true);
+        //toYearTextField.setEnabled(true);
 
         fromPriceTextField.setEnabled(false);
         toPriceTextField.setEnabled(false);
@@ -530,8 +578,10 @@ public class FilterForm extends javax.swing.JFrame {
         dailyButton.setEnabled(false);
         monthlyButton.setEnabled(false);
         yearlyButton.setEnabled(false);
-        fromMonthComboBox.setEnabled(false);
+        fromMonthTextField.setEnabled(false);
         fromYearTextField.setEnabled(false);
+        toMonthTextField.setEnabled(false);
+        toYearTextField.setEnabled(false);
 
         fromPriceTextField.setEnabled(false);
         toPriceTextField.setEnabled(false);
@@ -546,8 +596,10 @@ public class FilterForm extends javax.swing.JFrame {
         dailyButton.setEnabled(false);
         monthlyButton.setEnabled(false);
         yearlyButton.setEnabled(false);
-        fromMonthComboBox.setEnabled(false);
+        fromMonthTextField.setEnabled(false);
         fromYearTextField.setEnabled(false);
+        toMonthTextField.setEnabled(false);
+        toYearTextField.setEnabled(false);
 
         fromPriceTextField.setEnabled(true);
         toPriceTextField.setEnabled(true);
@@ -562,8 +614,10 @@ public class FilterForm extends javax.swing.JFrame {
         dailyButton.setEnabled(false);
         monthlyButton.setEnabled(false);
         yearlyButton.setEnabled(false);
-        fromMonthComboBox.setEnabled(false);
+        fromMonthTextField.setEnabled(false);
         fromYearTextField.setEnabled(false);
+        toMonthTextField.setEnabled(false);
+        toYearTextField.setEnabled(false);
 
         fromPriceTextField.setEnabled(false);
         toPriceTextField.setEnabled(false);
@@ -573,11 +627,6 @@ public class FilterForm extends javax.swing.JFrame {
 
         accountNameComboBox.setEnabled(true);
     }//GEN-LAST:event_accountFilterRadioButtonActionPerformed
-
-    private void showAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAllActionPerformed
-        DaftarKolForm daftarKolForm = new DaftarKolForm(accountManager, paidManager, prePaidManager);
-        daftarKolForm.setVisible(true);
-    }//GEN-LAST:event_showAllActionPerformed
 
     private boolean isDateValid() {
         Matcher fromYearMathcher = VALID_DATE_REGEX.matcher(fromYearTextField.getText());
@@ -589,6 +638,20 @@ public class FilterForm extends javax.swing.JFrame {
         Matcher fromPriceMatcher = VALID_PRICE_REGEX.matcher(fromPriceTextField.getText());
         Matcher toPriceMathcher = VALID_PRICE_REGEX.matcher(toPriceTextField.getText());
         return fromPriceMatcher.matches() && toPriceMathcher.matches();
+    }
+    
+    private void initAccountNames() {
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        accountNameComboBox.setModel(model);
+        for (Account account : accountManager.accounts) {
+            model.addElement(account.getName());
+        }
+    }
+
+    private void presentFillterForm(ArrayList<Account> accounts, ArrayList<Paid> paids, ArrayList<PrePaid> prePaids) {
+        FiltredDataFrom filtredDataFrom = new FiltredDataFrom(accounts, paids, prePaids);
+        filtredDataFrom.setVisible(true);
+        setVisible(false);
     }
 
     /**
@@ -644,7 +707,8 @@ public class FilterForm extends javax.swing.JFrame {
     private javax.swing.JButton filterApply;
     private javax.swing.JLabel filterTarikhHeaderLabel;
     private javax.swing.ButtonGroup filterTypeButtonGroup;
-    private javax.swing.JComboBox<String> fromMonthComboBox;
+    private javax.swing.JTextField fromDayTextField;
+    private javax.swing.JTextField fromMonthTextField;
     private javax.swing.JLabel fromPriceLabel;
     private javax.swing.JTextField fromPriceTextField;
     private javax.swing.JTextField fromYearTextField;
@@ -657,12 +721,14 @@ public class FilterForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton monthlyButton;
     private javax.swing.JLabel placeHolderDate1;
     private javax.swing.JLabel placeHolderDate2;
+    private javax.swing.JLabel placeHolderDate3;
+    private javax.swing.JLabel placeHolderDate4;
     private javax.swing.JPanel priceFilterPanel;
     private javax.swing.JRadioButton priceFilterRadioButton;
-    private javax.swing.JButton showAll;
     private javax.swing.JLabel taarikhLabel;
     private javax.swing.JLabel taarikhLabel1;
-    private javax.swing.JComboBox<String> toMonthComboBox;
+    private javax.swing.JTextField toDayTextField;
+    private javax.swing.JTextField toMonthTextField;
     private javax.swing.JLabel toPriceLabel;
     private javax.swing.JTextField toPriceTextField;
     private javax.swing.JTextField toYearTextField;
