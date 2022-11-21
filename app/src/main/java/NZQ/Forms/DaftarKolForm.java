@@ -24,6 +24,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
     private PaidManager paidManager;
     private PrePaidManager prePaidManager;
     private boolean isPaidShows = true;
+    private boolean isShowToIranEnabled = false;
 
     public DaftarKolForm(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
         this.accountManager = accountManager;
@@ -46,6 +47,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
 
         jToolBar1 = new javax.swing.JToolBar();
         showTypeButtonGroup = new javax.swing.ButtonGroup();
+        dateTypeButtonGroup = new javax.swing.ButtonGroup();
         daftarKolPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,6 +55,8 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         ShowPaidRadioButton = new javax.swing.JRadioButton();
         showPrePaidRadioButton = new javax.swing.JRadioButton();
         deleteButton = new javax.swing.JButton();
+        iranTimeRadioButton = new javax.swing.JRadioButton();
+        gmtTimeRadioButton = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jToolBar1.setRollover(true);
@@ -104,36 +108,64 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
             }
         });
 
+        dateTypeButtonGroup.add(iranTimeRadioButton);
+        iranTimeRadioButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        iranTimeRadioButton.setText("نمایش تاریخ شمسی");
+        iranTimeRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iranTimeRadioButtonActionPerformed(evt);
+            }
+        });
+
+        dateTypeButtonGroup.add(gmtTimeRadioButton);
+        gmtTimeRadioButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        gmtTimeRadioButton.setSelected(true);
+        gmtTimeRadioButton.setText("نمایش تاریخ میلادی");
+        gmtTimeRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gmtTimeRadioButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout daftarKolPanelLayout = new javax.swing.GroupLayout(daftarKolPanel);
         daftarKolPanel.setLayout(daftarKolPanelLayout);
         daftarKolPanelLayout.setHorizontalGroup(
             daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 865, Short.MAX_VALUE)
             .addGroup(daftarKolPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
-                        .addComponent(ShowPaidRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(showPrePaidRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 595, Short.MAX_VALUE)
-                        .addComponent(deleteButton))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(gmtTimeRadioButton)
+                    .addComponent(ShowPaidRadioButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(showPrePaidRadioButton)
+                    .addComponent(iranTimeRadioButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         daftarKolPanelLayout.setVerticalGroup(
             daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(daftarKolPanelLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(daftarKolPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 7, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ShowPaidRadioButton)
+                            .addComponent(showPrePaidRadioButton))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteButton)
-                    .addComponent(ShowPaidRadioButton)
-                    .addComponent(showPrePaidRadioButton))
-                .addGap(0, 16, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iranTimeRadioButton)
+                    .addComponent(gmtTimeRadioButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         setJMenuBar(jMenuBar1);
@@ -166,14 +198,23 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         if (isPaidShows) {
             paidManager.delete(transactionTable.getSelectedRow() + 1);
             paidManager.save();
-        }else {
+        } else {
             prePaidManager.delete(transactionTable.getSelectedRow() + 1);
             prePaidManager.save();
         }
-        
-        
+
         transactionTable.updateUI();
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void gmtTimeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gmtTimeRadioButtonActionPerformed
+        isShowToIranEnabled = false;
+        transactionTable.updateUI();
+    }//GEN-LAST:event_gmtTimeRadioButtonActionPerformed
+
+    private void iranTimeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iranTimeRadioButtonActionPerformed
+        isShowToIranEnabled = true;
+        transactionTable.updateUI();
+    }//GEN-LAST:event_iranTimeRadioButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,7 +257,10 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ShowPaidRadioButton;
     private javax.swing.JPanel daftarKolPanel;
+    private javax.swing.ButtonGroup dateTypeButtonGroup;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JRadioButton gmtTimeRadioButton;
+    private javax.swing.JRadioButton iranTimeRadioButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -375,31 +419,86 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
             if (columnIndex == 1) {
                 name = accountManager.accounts.get(paidManager.paids.get(rowIndex).getAccountId() - 1).getName();
             }
-            
-            return switch (columnIndex) {
-                case 0 -> paidManager.paids.get(rowIndex).getId();
-                case 1 -> name;
-                case 2 -> paidManager.paids.get(rowIndex).getTime();
-                case 3 -> paidManager.paids.get(rowIndex).getDescription();
-                case 4 -> paidManager.paids.get(rowIndex).getPrice();
-                case 5 -> paidManager.paids.get(rowIndex).getTransactionType();
-                default -> "";
-            };
+
+            if (isShowToIranEnabled) {
+                return switch (columnIndex) {
+                    case 0 ->
+                        paidManager.paids.get(rowIndex).getId();
+                    case 1 ->
+                        name;
+                    case 2 ->
+                        paidManager.paids.get(rowIndex).getTime().toIran();
+                    case 3 ->
+                        paidManager.paids.get(rowIndex).getDescription();
+                    case 4 ->
+                        paidManager.paids.get(rowIndex).getPrice();
+                    case 5 ->
+                        paidManager.paids.get(rowIndex).getTransactionType();
+                    default ->
+                        "";
+                };
+            } else {
+                return switch (columnIndex) {
+                    case 0 ->
+                        paidManager.paids.get(rowIndex).getId();
+                    case 1 ->
+                        name;
+                    case 2 ->
+                        paidManager.paids.get(rowIndex).getTime();
+                    case 3 ->
+                        paidManager.paids.get(rowIndex).getDescription();
+                    case 4 ->
+                        paidManager.paids.get(rowIndex).getPrice();
+                    case 5 ->
+                        paidManager.paids.get(rowIndex).getTransactionType();
+                    default ->
+                        "";
+                };
+            }
         } else {
             if (columnIndex == 1) {
                 name = accountManager.accounts.get(prePaidManager.prePaids.get(rowIndex).getAccountId() - 1).getName();
             }
-            
-            return switch (columnIndex) {
-                case 0 -> prePaidManager.prePaids.get(rowIndex).getId();
-                case 1 -> name;
-                case 2 -> prePaidManager.prePaids.get(rowIndex).getTime();
-                case 3 -> prePaidManager.prePaids.get(rowIndex).getDescription();
-                case 4 -> prePaidManager.prePaids.get(rowIndex).getPrice();
-                case 5 -> prePaidManager.prePaids.get(rowIndex).getTransactionType();
-                case 6 -> prePaidManager.prePaids.get(rowIndex).isPrePaidPassed();
-                default -> "";
-            };
+
+            if (isShowToIranEnabled) {
+                return switch (columnIndex) {
+                    case 0 ->
+                        prePaidManager.prePaids.get(rowIndex).getId();
+                    case 1 ->
+                        name;
+                    case 2 ->
+                        prePaidManager.prePaids.get(rowIndex).getTime().toIran();
+                    case 3 ->
+                        prePaidManager.prePaids.get(rowIndex).getDescription();
+                    case 4 ->
+                        prePaidManager.prePaids.get(rowIndex).getPrice();
+                    case 5 ->
+                        prePaidManager.prePaids.get(rowIndex).getTransactionType();
+                    case 6 ->
+                        prePaidManager.prePaids.get(rowIndex).isPrePaidPassed();
+                    default ->
+                        "";
+                };
+            } else {
+                return switch (columnIndex) {
+                    case 0 ->
+                        prePaidManager.prePaids.get(rowIndex).getId();
+                    case 1 ->
+                        name;
+                    case 2 ->
+                        prePaidManager.prePaids.get(rowIndex).getTime();
+                    case 3 ->
+                        prePaidManager.prePaids.get(rowIndex).getDescription();
+                    case 4 ->
+                        prePaidManager.prePaids.get(rowIndex).getPrice();
+                    case 5 ->
+                        prePaidManager.prePaids.get(rowIndex).getTransactionType();
+                    case 6 ->
+                        prePaidManager.prePaids.get(rowIndex).isPrePaidPassed();
+                    default ->
+                        "";
+                };
+            }
         }
     }
 
