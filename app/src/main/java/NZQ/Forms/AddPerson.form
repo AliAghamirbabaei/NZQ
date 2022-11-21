@@ -37,17 +37,12 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="emailTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="tellTextField" min="-2" pref="155" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="emailTextField" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
+                                  <Component id="tellTextField" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                                   <Component id="addressTextField" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                                   <Component id="nationalCodeTextField" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="nationalCodeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="addressLabel" alignment="1" min="-2" max="-2" attributes="0"/>

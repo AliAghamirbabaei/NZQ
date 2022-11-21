@@ -170,9 +170,7 @@ public class AddPerson extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitPersonButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitPersonButtonMouseClicked
-        if (isFieldsValid()) {
-            // TODO: implements account.
-        }
+
     }//GEN-LAST:event_submitPersonButtonMouseClicked
 
     private void nationalCodeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nationalCodeTextFieldActionPerformed
@@ -187,10 +185,9 @@ public class AddPerson extends javax.swing.JFrame {
                     addressTextField.getText(),
                     tellTextField.getText(),
                     emailTextField.getText());
+            accountManager.save();
+            setVisible(false);
         }
-        
-        accountManager.save();
-        setVisible(false);
     }//GEN-LAST:event_submitPersonButtonActionPerformed
 
     private boolean isFieldsValid() {
