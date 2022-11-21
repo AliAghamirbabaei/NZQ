@@ -1,20 +1,23 @@
 package Model;
 
+import ir.huri.jcal.JalaliCalendar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class Date {
+
     private int day;
     private int month;
     private int year;
     private int hour;
     private int minute;
 
-    public Date(int day, int month, int year, int hour, int minute) {
+    public Date(int year, int month, int day, int hour, int minute) {
         this.day = day;
         this.month = month;
         this.year = year;
@@ -62,13 +65,17 @@ public class Date {
         this.minute = minute;
     }
 
-    public Date toIran() {
+    public String toIran() {
+        JalaliCalendar jalaliDate = new JalaliCalendar(new GregorianCalendar(year, month, day, hour, minute)); 
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("IRST"));
         calendar.set(year, month - 1, day, hour, minute);
         java.util.Date date = calendar.getTime();
-        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
         String formatted = simpleDateFormat.format(date);
-        return stringToDate(formatted);
+        StringBuilder sb = new StringBuilder(jalaliDate.toString());
+        sb.append(" ");
+        sb.append(formatted);
+        return sb.toString();
     }
 
     @Override
@@ -101,23 +108,23 @@ public class Date {
             sMinute = String.valueOf(minute);
         }
 
-        return sDay + "-" + sMonth + "-" + year + " " + sHour + ":" + sMinute;
+        return year + "-" + sMonth + "-" + sDay + " " + sHour + ":" + sMinute;
     }
 
     public static Date stringToDate(String time) {
         String[] formattedTimeAndDate = time.split(" ");
         String[] formattedDate = formattedTimeAndDate[0].split("-");
         String[] formattedTime = formattedTimeAndDate[1].split(":");
-        return new Date(Integer.parseInt(formattedDate[2]),
+        return new Date(Integer.parseInt(formattedDate[0]),
                 Integer.parseInt(formattedDate[1]),
-                Integer.parseInt(formattedDate[0]),
+                Integer.parseInt(formattedDate[2]),
                 Integer.parseInt(formattedTime[0]),
                 Integer.parseInt(formattedTime[1]));
     }
 
     public static int getDifferentBetweenTwoDates(String date1, String date2) {
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.ENGLISH);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
             java.util.Date firstDate = simpleDateFormat.parse(date1);
             java.util.Date secondDate = simpleDateFormat.parse(date2);
 
@@ -127,6 +134,7 @@ public class Date {
             return -1;
         }
     }
+
     public static Boolean isDeadlinePassed(Date date) {
         int deadline = Integer.parseInt(date.getYear() + "" + date.getMonth() + "" + date.getDay());
         Date currentDate = getCurrentDate();
