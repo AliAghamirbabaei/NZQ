@@ -12,6 +12,7 @@ import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
 import java.awt.ComponentOrientation;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 /**
@@ -25,6 +26,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
     private PrePaidManager prePaidManager;
     private boolean isPaidShows = true;
     private boolean isShowToIranEnabled = false;
+    TableColumn prePaidStatusColumn = new TableColumn();
 
     public DaftarKolForm(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
         this.accountManager = accountManager;
@@ -33,6 +35,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         initComponents();
         transactionTable.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         transactionTable.setModel(this);
+        prePaidStatusColumn.setHeaderValue("آیا وصول شده؟");
 
     }
 
@@ -70,13 +73,13 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         transactionTable.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
         transactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "صاحب حساب", "تاریح", "مبلغ", "بدهکار", "لستانکار"
+                "صاحب حساب", "تاریح", "مبلغ", "بدهکار", "لستانکار", "وصول شده؟"
             }
         ));
         jScrollPane1.setViewportView(transactionTable);
@@ -186,14 +189,19 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
 
     private void ShowPaidRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPaidRadioButtonActionPerformed
         isPaidShows = true;
+        transactionTable.removeColumn(prePaidStatusColumn);
         transactionTable.updateUI();
     }//GEN-LAST:event_ShowPaidRadioButtonActionPerformed
 
+    
     private void showPrePaidRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrePaidRadioButtonActionPerformed
         isPaidShows = false;
+        prePaidStatusColumn.setModelIndex(6);
+        transactionTable.addColumn(prePaidStatusColumn);
         transactionTable.updateUI();
+        
     }//GEN-LAST:event_showPrePaidRadioButtonActionPerformed
-
+    
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         if (isPaidShows) {
             paidManager.delete(transactionTable.getSelectedRow() + 1);

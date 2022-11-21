@@ -29,8 +29,10 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
     private PaidManager paidManager;
     private PrePaidManager prePaidManager;
     private boolean isPaidShows = true;
-    private DefaultComboBoxModel<String> accountNameListModel = new DefaultComboBoxModel<>();
+    private DefaultComboBoxModel<String> accountNameModel = new DefaultComboBoxModel<>();
+    private DefaultComboBoxModel<String> transactionTypeModel = new DefaultComboBoxModel<>();
     private JComboBox accountNameComboBox = new JComboBox();
+    private JComboBox transactionTypeComboBox = new JComboBox();
 
     public NewGroupSanad(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
         this.accountManager = accountManager;
@@ -40,6 +42,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
         transactionTable.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         transactionTable.setModel(this);
         initAccountComboBox();
+        initTransactionTypeComboBox();
     }
 
     /**
@@ -146,12 +149,13 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
             .addGroup(daftarKolPanelLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton)
+                .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(ShowPaidRadioButton)
                         .addComponent(showPrePaidRadioButton))
-                    .addComponent(addButton))
+                    .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(deleteButton)
+                        .addComponent(addButton)))
                 .addGap(0, 16, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -180,6 +184,8 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
     private void showPrePaidRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrePaidRadioButtonActionPerformed
         isPaidShows = false;
         transactionTable.updateUI();
+        
+        transactionTable.getColumnModel().getColumn(6).setCellEditor(new DefaultCellEditor(transactionTypeComboBox));
     }//GEN-LAST:event_showPrePaidRadioButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -198,7 +204,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         if (isPaidShows) {
             paidManager.add(paidManager.paids.size() + 1,
-                    1, 
+                    1,
                     Date.getCurrentDate(),
                     "",
                     0,
@@ -218,12 +224,29 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void initAccountComboBox() {
-        accountNameComboBox.setModel(accountNameListModel);
+        accountNameComboBox.setModel(accountNameModel);
         for (Account account : accountManager.accounts) {
-            accountNameListModel.addElement(getAccountNameAndNationalCode(account));
+            accountNameModel.addElement(getAccountNameAndNationalCode(account));
         }
 
         transactionTable.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(accountNameComboBox));
+    }
+
+    private void initTransactionTypeComboBox() {
+        transactionTypeComboBox.setModel(transactionTypeModel);
+        for (TransactionType transactionType : TransactionType.values()) {
+            transactionTypeModel.addElement(transactionType.getName());
+        }
+
+        transactionTable.getColumnModel().getColumn(5).setCellEditor(new DefaultCellEditor(transactionTypeComboBox));
+    }
+
+    private String getAccountNameAndNationalCode(Account account) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(account.getName());
+        stringBuilder.append(" - ");
+        stringBuilder.append(account.getNationalCode());
+        return stringBuilder.toString();
     }
 
     /**
@@ -265,13 +288,6 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
         });
     }
 
-    private String getAccountNameAndNationalCode(Account account) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(account.getName());
-        stringBuilder.append(" - ");
-        stringBuilder.append(account.getNationalCode());
-        return stringBuilder.toString();
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ShowPaidRadioButton;
@@ -361,7 +377,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 4 ->
                     Integer.class;
                 case 5 ->
-                    TransactionType.class;
+                    String.class;
                 default ->
                     String.class;
             };
@@ -378,7 +394,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 4 ->
                     Integer.class;
                 case 5 ->
-                    TransactionType.class;
+                    String.class;
                 case 6 ->
                     PrePaidStatus.class;
                 default ->
@@ -404,7 +420,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 5 ->
                     true;
                 default ->
-                    true;
+                    false;
             };
         } else {
             return switch (columnIndex) {
@@ -423,7 +439,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 6 ->
                     true;
                 default ->
-                    true;
+                    false;
             };
         }
     }
@@ -483,7 +499,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                     "";
             };
         }
-        
+
     }
 
     @Override
@@ -505,7 +521,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 5 ->
                     paidManager.paids.get(rowIndex).setTransactionType(TransactionType.findByName(String.valueOf(aValue)));
             }
-             paidManager.save();
+            paidManager.save();
         } else {
             switch (columnIndex) {
                 case 0 ->
@@ -526,7 +542,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                     prePaidManager.prePaids.get(rowIndex).setPrePaidPassed(PrePaidStatus.findByName(String.valueOf(aValue)));
             }
             prePaidManager.save();
-        }        
+        }
     }
 
     @Override
