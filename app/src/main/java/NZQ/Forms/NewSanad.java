@@ -324,7 +324,7 @@ public class NewSanad extends javax.swing.JFrame {
             if (transactionType != null) {
                 transactionType = ((bedehkaarTypeButton.isSelected()) ? TransactionType.DEBT : TransactionType.CREDIT);
                 paidManager.add(paidManager.paids.size() + 1,
-                        selectedAccount,
+                        selectedAccount + 1,
                         Date.getCurrentDate(),
                         descriptionTextField.getText(),
                         Integer.parseInt(priceTextField.getText()),
@@ -337,7 +337,7 @@ public class NewSanad extends javax.swing.JFrame {
             if (transactionType != null) {
                 transactionType = ((bedehkaarTypeButton.isSelected()) ? TransactionType.DEBT : TransactionType.CREDIT);
                 prePaidManager.add(prePaidManager.prePaids.size() + 1,
-                        selectedAccount,
+                        selectedAccount + 1,
                         Date.getCurrentDate(),
                         descriptionTextField.getText(),
                         Integer.parseInt(priceTextField.getText()),
@@ -373,8 +373,16 @@ public class NewSanad extends javax.swing.JFrame {
         DefaultListModel<String> listModel = new DefaultListModel<>();
         accountList.setModel(listModel);
         for (Account account : accountManager.accounts) {
-            listModel.addElement(account.getName());
+            listModel.addElement(getAccountNameAndNationalCode(account));
         }
+    }
+    
+    private String getAccountNameAndNationalCode(Account account) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(account.getName());
+        stringBuilder.append(" - ");
+        stringBuilder.append(account.getNationalCode());
+        return stringBuilder.toString();
     }
 
     /**
