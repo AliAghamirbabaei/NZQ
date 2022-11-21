@@ -23,7 +23,7 @@ public class DashboardForm extends javax.swing.JFrame {
         menuBar.setBackground(Color.BLUE);
         menuBar.setForeground(Color.BLUE);
         usernameLabel.setText("نام کاربری: " + username);
-        timer.schedule(task, 1000, 5000);
+        timer.schedule(task, 1, 5000);
         //addPersonMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
         //addGroupMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
     }
@@ -277,6 +277,7 @@ public class DashboardForm extends javax.swing.JFrame {
             Date.getCurrentDate().getMinute());
             
             timerLabel.setText("تاریخ سیستم: " + date.toIran().toString());
+            System.out.println("salam");
         }
     }
 
