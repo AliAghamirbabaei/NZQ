@@ -71,7 +71,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ثبت سند گروهی");
 
-        transactionTable.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        transactionTable.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
         transactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -184,9 +184,12 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         if (isPaidShows) {
+            // fix bug
             paidManager.delete(transactionTable.getSelectedRow() + 1);
+            paidManager.save();
         } else {
             prePaidManager.delete(transactionTable.getSelectedRow() + 1);
+            prePaidManager.save();
         }
 
         transactionTable.updateUI();
@@ -200,6 +203,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                     "",
                     0,
                     TransactionType.CREDIT);
+            paidManager.save();
         } else {
             prePaidManager.add(prePaidManager.prePaids.size() + 1,
                     1,
@@ -207,6 +211,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                     "",
                     0,
                     TransactionType.CREDIT);
+            paidManager.save();
         }
 
         transactionTable.updateUI();
