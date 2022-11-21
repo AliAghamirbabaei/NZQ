@@ -4,6 +4,7 @@
  */
 package NZQ.Forms;
 
+import Model.Account;
 import Model.Date;
 import Model.Transaction.PrePaidStatus;
 import Model.Transaction.TransactionType;
@@ -11,6 +12,9 @@ import ViewModel.AccountManager;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
 import java.awt.ComponentOrientation;
+import javax.swing.DefaultCellEditor;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -24,6 +28,8 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
     private PaidManager paidManager;
     private PrePaidManager prePaidManager;
     private boolean isPaidShows = true;
+    private DefaultComboBoxModel<String> accountNameListModel = new DefaultComboBoxModel<>();
+    private JComboBox accountNameComboBox = new JComboBox();
 
     public NewGroupSanad(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
         this.accountManager = accountManager;
@@ -32,7 +38,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
         initComponents();
         transactionTable.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         transactionTable.setModel(this);
-
+        initAccountComboBox();
     }
 
     /**
@@ -173,6 +179,19 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
         transactionTable.updateUI();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
+    private void initAccountComboBox() {
+        accountNameComboBox.setModel(accountNameListModel);
+        for (Account account : accountManager.accounts) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(account.getName());
+            stringBuilder.append(" - ");
+            stringBuilder.append(account.getNationalCode());
+            accountNameListModel.addElement(stringBuilder.toString());
+        }
+        
+        transactionTable.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(accountNameComboBox));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -291,7 +310,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 0 ->
                     Integer.class;
                 case 1 ->
-                    String.class;
+                    accountNameListModel.getClass();
                 case 2 ->
                     Date.class;
                 case 3 ->
@@ -342,7 +361,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 5 ->
                     true;
                 default ->
-                    false;
+                    true;
             };
         } else {
             return switch (columnIndex) {
@@ -361,7 +380,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 6 ->
                     true;
                 default ->
-                    false;
+                    true;
             };
         }
     }
@@ -402,14 +421,18 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
         }
     }
 
-    @Override
+    @Override 
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         if (isPaidShows) {
+            
             switch (columnIndex) {
                 case 0 ->
                     paidManager.paids.get(rowIndex).setId((int) aValue);
-                case 1 ->
-                    paidManager.paids.get(rowIndex).setAccountId((int) aValue);
+                case 1 -> {
+                    //paidManager.paids.get(rowIndex).setAccountId((int) aValue);
+                    System.out.print(transactionTable.getModel().getValueAt(rowIndex, columnIndex));
+                    
+                }
                 case 2 ->
                     paidManager.paids.get(rowIndex).setTime(Date.stringToDate(aValue.toString()));
                 case 3 ->
@@ -447,5 +470,6 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
-    }
+    } 
 }
+
