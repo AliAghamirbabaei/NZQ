@@ -63,7 +63,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("دفتر کل");
 
-        transactionTable.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        transactionTable.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
         transactionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -165,9 +165,12 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         if (isPaidShows) {
             paidManager.delete(transactionTable.getSelectedRow() + 1);
+            paidManager.save();
         }else {
             prePaidManager.delete(transactionTable.getSelectedRow() + 1);
+            prePaidManager.save();
         }
+        
         
         transactionTable.updateUI();
     }//GEN-LAST:event_deleteButtonActionPerformed
