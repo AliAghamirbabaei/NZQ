@@ -370,7 +370,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
 
         if (isPaidShows) {
             if (columnIndex == 1) {
-                name = accountManager.accounts.get(paidManager.paids.get(rowIndex).getAccountId()).getName();
+                name = accountManager.accounts.get(paidManager.paids.get(rowIndex).getAccountId() - 1).getName();
             }
             
             return switch (columnIndex) {
@@ -384,7 +384,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
             };
         } else {
             if (columnIndex == 1) {
-                name = accountManager.accounts.get(prePaidManager.prePaids.get(rowIndex).getAccountId()).getName();
+                name = accountManager.accounts.get(prePaidManager.prePaids.get(rowIndex).getAccountId() - 1).getName();
             }
             
             return switch (columnIndex) {

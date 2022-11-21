@@ -55,10 +55,24 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="IRANSansX" size="13" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#x633;&#x646;&#x62f; &#x62c;&#x62f;&#x6cc;&#x62f;"/>
+                <Property name="text" type="java.lang.String" value="&#x62b;&#x628;&#x62a; &#x633;&#x646;&#x62f; &#x62c;&#x62f;&#x6cc;&#x62f;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newTransactionMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="newGroupTransactionMenuItem">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+Alt+N"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="IRANSansX" size="13" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x62b;&#x628;&#x62a; &#x633;&#x646;&#x62f; &#x6af;&#x631;&#x648;&#x647;&#x6cc;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newGroupTransactionMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

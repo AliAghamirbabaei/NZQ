@@ -42,6 +42,7 @@ public class DashboardForm extends javax.swing.JFrame {
         addPersonMenuItem = new javax.swing.JMenuItem();
         newSanadMenu = new javax.swing.JMenu();
         newTransactionMenuItem = new javax.swing.JMenuItem();
+        newGroupTransactionMenuItem = new javax.swing.JMenuItem();
         gozareshaatMenu = new javax.swing.JMenu();
         tarazNamehMenuItem = new javax.swing.JMenuItem();
         daftarKolMenuItem = new javax.swing.JMenuItem();
@@ -97,13 +98,23 @@ public class DashboardForm extends javax.swing.JFrame {
 
         newTransactionMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         newTransactionMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        newTransactionMenuItem.setText("سند جدید");
+        newTransactionMenuItem.setText("ثبت سند جدید");
         newTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newTransactionMenuItemActionPerformed(evt);
             }
         });
         newSanadMenu.add(newTransactionMenuItem);
+
+        newGroupTransactionMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        newGroupTransactionMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        newGroupTransactionMenuItem.setText("ثبت سند گروهی");
+        newGroupTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newGroupTransactionMenuItemActionPerformed(evt);
+            }
+        });
+        newSanadMenu.add(newGroupTransactionMenuItem);
 
         menuBar.add(newSanadMenu);
 
@@ -216,6 +227,11 @@ public class DashboardForm extends javax.swing.JFrame {
         tarazNamehForm.setVisible(true);
     }//GEN-LAST:event_tarazNamehMenuItemActionPerformed
 
+    private void newGroupTransactionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGroupTransactionMenuItemActionPerformed
+        NewGroupSanad newGroupSanad = new NewGroupSanad(accountManager, paidManager, prePaidManager);
+        newGroupSanad.setVisible(true);
+    }//GEN-LAST:event_newGroupTransactionMenuItemActionPerformed
+
     private void logout() {
         LoginForm loginform = new LoginForm();
         loginform.setVisible(true);
@@ -276,6 +292,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JButton logoutButton;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem newGroupTransactionMenuItem;
     private javax.swing.JMenu newSanadMenu;
     private javax.swing.JMenuItem newTransactionMenuItem;
     private javax.swing.JMenuItem tarazNamehMenuItem;

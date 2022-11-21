@@ -52,6 +52,16 @@ public class AccountManager {
     public Account findById(int id) {
         return accounts.get(id - 1);
     }
+    
+    public Account findByNationalCode(String nationalCode) {
+        for (Account account : accounts) {
+            if (nationalCode.equals(account.getNationalCode())) {
+                return account;
+            }
+        }
+        
+        return null;
+    }
 
     private void init() {
         List<String[]> data = AccountFileManager.loadData();

@@ -12,6 +12,7 @@ import ViewModel.AccountManager;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
 import java.awt.ComponentOrientation;
+import static java.lang.System.out;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -59,6 +60,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
         ShowPaidRadioButton = new javax.swing.JRadioButton();
         showPrePaidRadioButton = new javax.swing.JRadioButton();
         deleteButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jToolBar1.setRollover(true);
@@ -110,11 +112,19 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
             }
         });
 
+        addButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        addButton.setText("افزودن");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout daftarKolPanelLayout = new javax.swing.GroupLayout(daftarKolPanel);
         daftarKolPanel.setLayout(daftarKolPanelLayout);
         daftarKolPanelLayout.setHorizontalGroup(
             daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -125,8 +135,10 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                         .addComponent(ShowPaidRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(showPrePaidRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 595, Short.MAX_VALUE)
-                        .addComponent(deleteButton)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addButton)))
                 .addContainerGap())
         );
         daftarKolPanelLayout.setVerticalGroup(
@@ -138,7 +150,8 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                     .addComponent(deleteButton)
                     .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(ShowPaidRadioButton)
-                        .addComponent(showPrePaidRadioButton)))
+                        .addComponent(showPrePaidRadioButton))
+                    .addComponent(addButton))
                 .addGap(0, 16, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -172,26 +185,42 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         if (isPaidShows) {
             paidManager.delete(transactionTable.getSelectedRow() + 1);
-        }else {
+        } else {
             prePaidManager.delete(transactionTable.getSelectedRow() + 1);
         }
-        
+
         transactionTable.updateUI();
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        if (isPaidShows) {
+            paidManager.add(paidManager.paids.size() + 1,
+                    1, 
+                    Date.getCurrentDate(),
+                    "",
+                    0,
+                    TransactionType.CREDIT);
+        } else {
+            prePaidManager.add(prePaidManager.prePaids.size() + 1,
+                    1,
+                    Date.getCurrentDate(),
+                    "",
+                    0,
+                    TransactionType.CREDIT);
+        }
+
+        transactionTable.updateUI();
+    }//GEN-LAST:event_addButtonActionPerformed
 
     private void initAccountComboBox() {
         accountNameComboBox.setModel(accountNameListModel);
         for (Account account : accountManager.accounts) {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(account.getName());
-            stringBuilder.append(" - ");
-            stringBuilder.append(account.getNationalCode());
-            accountNameListModel.addElement(stringBuilder.toString());
+            accountNameListModel.addElement(getAccountNameAndNationalCode(account));
         }
-        
+
         transactionTable.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(accountNameComboBox));
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -231,8 +260,17 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
         });
     }
 
+    private String getAccountNameAndNationalCode(Account account) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(account.getName());
+        stringBuilder.append(" - ");
+        stringBuilder.append(account.getNationalCode());
+        return stringBuilder.toString();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ShowPaidRadioButton;
+    private javax.swing.JButton addButton;
     private javax.swing.JPanel daftarKolPanel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
@@ -310,7 +348,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 0 ->
                     Integer.class;
                 case 1 ->
-                    accountNameListModel.getClass();
+                    String.class;
                 case 2 ->
                     Date.class;
                 case 3 ->
@@ -391,47 +429,67 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
 
         if (isPaidShows) {
             if (columnIndex == 1) {
-                name = accountManager.accounts.get(paidManager.paids.get(rowIndex).getAccountId()).getName();
+                int accountId = paidManager.paids.get(rowIndex).getAccountId();
+                int normalId = accountId - 1;
+                String accountNameAndNationalCode = getAccountNameAndNationalCode(accountManager.accounts.get(normalId));
+                name = accountNameAndNationalCode;
             }
-            
+
             return switch (columnIndex) {
-                case 0 -> paidManager.paids.get(rowIndex).getId();
-                case 1 -> name;
-                case 2 -> paidManager.paids.get(rowIndex).getTime();
-                case 3 -> paidManager.paids.get(rowIndex).getDescription();
-                case 4 -> paidManager.paids.get(rowIndex).getPrice();
-                case 5 -> paidManager.paids.get(rowIndex).getTransactionType();
-                default -> "";
+                case 0 ->
+                    paidManager.paids.get(rowIndex).getId();
+                case 1 ->
+                    name;
+                case 2 ->
+                    paidManager.paids.get(rowIndex).getTime();
+                case 3 ->
+                    paidManager.paids.get(rowIndex).getDescription();
+                case 4 ->
+                    paidManager.paids.get(rowIndex).getPrice();
+                case 5 ->
+                    paidManager.paids.get(rowIndex).getTransactionType();
+                default ->
+                    "";
             };
         } else {
             if (columnIndex == 1) {
-                name = accountManager.accounts.get(prePaidManager.prePaids.get(rowIndex).getAccountId()).getName();
+                int accountId = prePaidManager.prePaids.get(rowIndex).getAccountId();
+                int normalId = accountId - 1;
+                String accountNameAndNationalCode = getAccountNameAndNationalCode(accountManager.accounts.get(normalId));
+                name = accountNameAndNationalCode;
             }
-            
+
             return switch (columnIndex) {
-                case 0 -> prePaidManager.prePaids.get(rowIndex).getId();
-                case 1 -> name;
-                case 2 -> prePaidManager.prePaids.get(rowIndex).getTime();
-                case 3 -> prePaidManager.prePaids.get(rowIndex).getDescription();
-                case 4 -> prePaidManager.prePaids.get(rowIndex).getPrice();
-                case 5 -> prePaidManager.prePaids.get(rowIndex).getTransactionType();
-                case 6 -> prePaidManager.prePaids.get(rowIndex).isPrePaidPassed();
-                default -> "";
+                case 0 ->
+                    prePaidManager.prePaids.get(rowIndex).getId();
+                case 1 ->
+                    name;
+                case 2 ->
+                    prePaidManager.prePaids.get(rowIndex).getTime();
+                case 3 ->
+                    prePaidManager.prePaids.get(rowIndex).getDescription();
+                case 4 ->
+                    prePaidManager.prePaids.get(rowIndex).getPrice();
+                case 5 ->
+                    prePaidManager.prePaids.get(rowIndex).getTransactionType();
+                case 6 ->
+                    prePaidManager.prePaids.get(rowIndex).isPrePaidPassed();
+                default ->
+                    "";
             };
         }
+        
     }
 
-    @Override 
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         if (isPaidShows) {
-            
             switch (columnIndex) {
                 case 0 ->
                     paidManager.paids.get(rowIndex).setId((int) aValue);
                 case 1 -> {
-                    //paidManager.paids.get(rowIndex).setAccountId((int) aValue);
-                    System.out.print(transactionTable.getModel().getValueAt(rowIndex, columnIndex));
-                    
+                    String[] name = String.valueOf(aValue).split(" - ");
+                    paidManager.paids.get(rowIndex).setAccountId((int) (accountManager.findByNationalCode(name[1]).getId()));
                 }
                 case 2 ->
                     paidManager.paids.get(rowIndex).setTime(Date.stringToDate(aValue.toString()));
@@ -442,13 +500,15 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                 case 5 ->
                     paidManager.paids.get(rowIndex).setTransactionType(TransactionType.findByName(String.valueOf(aValue)));
             }
-            paidManager.save();
+             paidManager.save();
         } else {
             switch (columnIndex) {
                 case 0 ->
                     prePaidManager.prePaids.get(rowIndex).setId((int) aValue);
-                case 1 ->
-                    prePaidManager.prePaids.get(rowIndex).setAccountId((int) aValue);
+                case 1 -> {
+                    String[] name = String.valueOf(aValue).split(" - ");
+                    prePaidManager.prePaids.get(rowIndex).setAccountId((int) (accountManager.findByNationalCode(name[1]).getId()));
+                }
                 case 2 ->
                     prePaidManager.prePaids.get(rowIndex).setTime(Date.stringToDate(aValue.toString()));
                 case 3 ->
@@ -461,7 +521,7 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
                     prePaidManager.prePaids.get(rowIndex).setPrePaidPassed(PrePaidStatus.findByName(String.valueOf(aValue)));
             }
             prePaidManager.save();
-        }
+        }        
     }
 
     @Override
@@ -470,6 +530,5 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
-    } 
+    }
 }
-
