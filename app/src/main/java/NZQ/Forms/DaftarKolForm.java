@@ -5,6 +5,7 @@
 package NZQ.Forms;
 
 import Model.Date;
+import Model.Transaction.PrePaid;
 import Model.Transaction.PrePaidStatus;
 import Model.Transaction.TransactionType;
 import ViewModel.AccountManager;
@@ -36,6 +37,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         transactionTable.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         transactionTable.setModel(this);
         prePaidStatusColumn.setHeaderValue("آیا وصول شده؟");
+        cashPrePaidButton.setVisible(false);
 
     }
 
@@ -60,6 +62,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         deleteButton = new javax.swing.JButton();
         iranTimeRadioButton = new javax.swing.JRadioButton();
         gmtTimeRadioButton = new javax.swing.JRadioButton();
+        cashPrePaidButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jToolBar1.setRollover(true);
@@ -130,6 +133,14 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
             }
         });
 
+        cashPrePaidButton.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        cashPrePaidButton.setText("وصول کردن");
+        cashPrePaidButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashPrePaidButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout daftarKolPanelLayout = new javax.swing.GroupLayout(daftarKolPanel);
         daftarKolPanel.setLayout(daftarKolPanelLayout);
         daftarKolPanelLayout.setHorizontalGroup(
@@ -142,12 +153,16 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
                     .addComponent(ShowPaidRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(showPrePaidRadioButton)
-                    .addComponent(iranTimeRadioButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(daftarKolPanelLayout.createSequentialGroup()
+                        .addComponent(showPrePaidRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(daftarKolPanelLayout.createSequentialGroup()
+                        .addComponent(iranTimeRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cashPrePaidButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         daftarKolPanelLayout.setVerticalGroup(
@@ -155,18 +170,19 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
             .addGroup(daftarKolPanelLayout.createSequentialGroup()
                 .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(daftarKolPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 7, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 27, Short.MAX_VALUE)
                         .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ShowPaidRadioButton)
-                            .addComponent(showPrePaidRadioButton))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(showPrePaidRadioButton)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, daftarKolPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(daftarKolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deleteButton)
                     .addComponent(iranTimeRadioButton)
-                    .addComponent(gmtTimeRadioButton))
+                    .addComponent(gmtTimeRadioButton)
+                    .addComponent(cashPrePaidButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -189,6 +205,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
 
     private void ShowPaidRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPaidRadioButtonActionPerformed
         isPaidShows = true;
+        cashPrePaidButton.setVisible(false);
         transactionTable.removeColumn(prePaidStatusColumn);
         transactionTable.updateUI();
     }//GEN-LAST:event_ShowPaidRadioButtonActionPerformed
@@ -196,6 +213,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
     
     private void showPrePaidRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrePaidRadioButtonActionPerformed
         isPaidShows = false;
+        cashPrePaidButton.setVisible(true);
         prePaidStatusColumn.setModelIndex(6);
         transactionTable.addColumn(prePaidStatusColumn);
         transactionTable.updateUI();
@@ -223,6 +241,22 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
         isShowToIranEnabled = true;
         transactionTable.updateUI();
     }//GEN-LAST:event_iranTimeRadioButtonActionPerformed
+
+    private void cashPrePaidButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashPrePaidButtonActionPerformed
+        if (!isPaidShows) {
+            PrePaid selectedPrePaid = prePaidManager.prePaids.get(transactionTable.getSelectedRow());
+            selectedPrePaid.setPrePaidPassed(PrePaidStatus.YES);
+            paidManager.add(paidManager.paids.size() + 1,
+                    selectedPrePaid.getAccountId(),
+                    selectedPrePaid.getTime(),
+                    selectedPrePaid.getDescription(),
+                    selectedPrePaid.getPrice(),
+                    selectedPrePaid.getTransactionType());
+            paidManager.save();
+            prePaidManager.save();
+            transactionTable.updateUI();
+        }
+    }//GEN-LAST:event_cashPrePaidButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +298,7 @@ public class DaftarKolForm extends javax.swing.JFrame implements TableModel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton ShowPaidRadioButton;
+    private javax.swing.JButton cashPrePaidButton;
     private javax.swing.JPanel daftarKolPanel;
     private javax.swing.ButtonGroup dateTypeButtonGroup;
     private javax.swing.JButton deleteButton;
