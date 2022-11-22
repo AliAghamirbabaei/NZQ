@@ -55,7 +55,7 @@ public class AddPerson extends javax.swing.JFrame {
         emailLabel.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         emailLabel.setText("ایمیل");
 
-        nameTextField.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
+        nameTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         nameTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         addressTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
@@ -85,6 +85,7 @@ public class AddPerson extends javax.swing.JFrame {
         validationErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         validationErrorLabel.setText("Validation Error Text");
 
+        nationalCodeTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         nationalCodeTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         nationalCodeTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +138,7 @@ public class AddPerson extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(addPersonLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameLabel))
