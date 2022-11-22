@@ -225,19 +225,19 @@ public class AddPerson extends javax.swing.JFrame {
         }
 
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailTextField.getText());
-        if (!matcher.find()) {
+        if (!matcher.matches()) {
             validationErrorLabel.setText("ایمیل معتبر نیست.");
             validationErrorLabel.setVisible(true);
             return false;
         }
         Matcher tellTextFieldMatcher = VALID_TELL.matcher(tellTextField.getText());
-        if (!tellTextFieldMatcher.find()) {
+        if (!tellTextFieldMatcher.matches()) {
             validationErrorLabel.setText(".تلفن معتبر نیست");
             validationErrorLabel.setVisible(true);
             return false;
         }
-        Matcher nationalIdTextFieldMatcher = VALID_NATIONAL_ID_REGEX.matcher(tellTextField.getText());
-        if (!nationalIdTextFieldMatcher.find()) {
+        Matcher nationalIdTextFieldMatcher = VALID_NATIONAL_ID_REGEX.matcher(nationalCodeTextField.getText());
+        if (!nationalIdTextFieldMatcher.matches()) {
             validationErrorLabel.setText(".کد ملی معتبر نیست");
             validationErrorLabel.setVisible(true);
             return false;
