@@ -93,11 +93,10 @@
                               <Component id="jPanel4" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="sanadTypeLabel2" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="sanadTypeLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="sanadTypeLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="sanadTypeLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -141,13 +140,15 @@
                       <Component id="sanadTypeLabel2" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="placeHolderDate3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="monthTextField" alignment="1" min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="yearTextField" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="dayTextField" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="sanadTypeLabel1" alignment="3" max="32767" attributes="0"/>
-                      <Component id="placeHolderDate2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="placeHolderDate3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dayTextField" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="sanadTypeLabel1" alignment="3" max="32767" attributes="0"/>
+                          <Component id="placeHolderDate2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   <Component id="validatoinLabel" min="-2" max="-2" attributes="0"/>

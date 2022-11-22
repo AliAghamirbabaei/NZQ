@@ -33,7 +33,6 @@ public class PaidManager implements Transactable {
     }
 
     public void delete(int id) {
-        System.out.println(paids.size());
         paids.remove(id - 1);
         System.out.println(paids.size());
         for (int i = id; i <= paids.size(); i++) {
