@@ -134,13 +134,28 @@ public class Date {
             return -1;
         }
     }
-
-    public static Boolean isDeadlinePassed(Date date) {
-        int deadline = Integer.parseInt(date.getYear() + "" + date.getMonth() + "" + date.getDay());
-        Date currentDate = getCurrentDate();
-        int now = Integer.parseInt(currentDate.getYear() + "" + currentDate.getMonth() + "" + currentDate.getDay());
-        return now >= deadline;
+    
+    public static boolean isDateDead(Date date) {
+        Date currentDate = Date.getCurrentDate();
+        if (date.getYear() < currentDate.getYear()) {
+            return true;
+        }
+        if (date.getMonth() < currentDate.getMonth()) {
+            return true;
+        }
+        
+        if (date.getDay() < currentDate.getDay()) {
+            return true;
+        }
+        return false;
     }
+//
+//    public static Boolean isDeadlinePassed(Date date) {
+//        int deadline = Integer.parseInt(date.getYear() + "" + date.getMonth() + "" + date.getDay());
+//        Date currentDate = getCurrentDate();
+//        int now = Integer.parseInt(currentDate.getYear() + "" + currentDate.getMonth() + "" + currentDate.getDay());
+//        return now >= deadline;
+//    }
 
     public static Date getCurrentDate() {
         final java.util.Date currentTime = new java.util.Date();
