@@ -1,7 +1,6 @@
 package ViewModel.Transaction;
 
 import Model.Date;
-import Model.Transaction.Paid;
 import Model.Transaction.PrePaid;
 import Model.Transaction.PrePaidStatus;
 import Model.Transaction.TransactionType;
@@ -62,18 +61,6 @@ public class PrePaidManager implements Transactable {
     public void reloadData() {
         prePaids.clear();
         init();
-    }
-
-    public void checkPrePaidsDeadline(PaidManager paidManager) {
-        for (PrePaid prePaid : prePaids) {
-            if (Date.isDeadlinePassed(prePaid.getTime()) && prePaid.isPrePaidPassed() == PrePaidStatus.NO) {
-                prePaid.setPrePaidPassed(PrePaidStatus.YES);
-                paidManager.add(paidManager.paids.size() + 1, prePaid.getAccountId(), prePaid.getTime(), prePaid.getDescription(), prePaid.getPrice(), prePaid.getTransactionType());
-                prePaids.set(prePaid.getId() - 1, prePaid);
-            }
-        }
-        paidManager.save();
-        save();
     }
 
     private void init() {
