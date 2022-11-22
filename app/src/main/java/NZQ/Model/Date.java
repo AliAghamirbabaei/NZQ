@@ -124,7 +124,7 @@ public class Date {
 
     public static int getDifferentBetweenTwoDates(String date1, String date2) {
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
             java.util.Date firstDate = simpleDateFormat.parse(date1);
             java.util.Date secondDate = simpleDateFormat.parse(date2);
 
