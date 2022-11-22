@@ -18,6 +18,8 @@ import javax.swing.DefaultListModel;
 public class NewSanad extends javax.swing.JFrame {
 
     public static final Pattern VALID_PRICE = Pattern.compile("[0-9]+");
+    public static final Pattern VALID_YEAR = Pattern.compile("[0-9]{4}");
+    public static final Pattern VALID_DATE = Pattern.compile("[0-9]{2}");
     private AccountManager accountManager;
     private PaidManager paidManager;
     private PrePaidManager prePaidManager;
@@ -69,6 +71,12 @@ public class NewSanad extends javax.swing.JFrame {
         validatoinLabel = new javax.swing.JLabel();
         sanadTypeLabel1 = new javax.swing.JLabel();
         descriptionTextField = new javax.swing.JTextField();
+        yearTextField = new javax.swing.JTextField();
+        monthTextField = new javax.swing.JTextField();
+        placeHolderDate2 = new javax.swing.JLabel();
+        placeHolderDate3 = new javax.swing.JLabel();
+        dayTextField = new javax.swing.JTextField();
+        sanadTypeLabel2 = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
 
@@ -82,6 +90,7 @@ public class NewSanad extends javax.swing.JFrame {
         sanadOwnerAccount.setText("صاحب حساب");
 
         sanadPriceLabel.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
+        sanadPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         sanadPriceLabel.setText("مبلغ ");
 
         accountList.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
@@ -181,7 +190,7 @@ public class NewSanad extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 54, Short.MAX_VALUE)
                 .addComponent(sanadTypeLabel))
         );
         jPanel4Layout.setVerticalGroup(
@@ -206,46 +215,77 @@ public class NewSanad extends javax.swing.JFrame {
         validatoinLabel.setText("Validation");
 
         sanadTypeLabel1.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
-        sanadTypeLabel1.setText("توضیحات");
+        sanadTypeLabel1.setText("تاریخ");
 
         descriptionTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         descriptionTextField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+
+        yearTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        yearTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        monthTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        monthTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        placeHolderDate2.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
+        placeHolderDate2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        placeHolderDate2.setText("/");
+
+        placeHolderDate3.setFont(new java.awt.Font("IRANSansX", 0, 14)); // NOI18N
+        placeHolderDate3.setText("/");
+
+        dayTextField.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        dayTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        sanadTypeLabel2.setFont(new java.awt.Font("IRANSansX", 0, 18)); // NOI18N
+        sanadTypeLabel2.setText("توضیحات");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(sabtSanadLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(priceTextField)
                             .addComponent(jScrollPane1))
-                        .addGap(10, 10, 10)
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(sanadOwnerAccount)
-                            .addComponent(sanadPriceLabel))
-                        .addGap(7, 7, 7))
+                            .addComponent(sanadPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(149, 149, 149))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(yearTextField)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(placeHolderDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(placeHolderDate3)
+                                .addGap(17, 17, 17)
+                                .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(descriptionTextField))
+                            .addComponent(descriptionTextField, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sanadTypeLabel2))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                                .addComponent(sanadTypeLabel1))))
-                    .addComponent(validatoinLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sanadTypeLabel1)))))
                 .addContainerGap())
+            .addComponent(validatoinLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +297,7 @@ public class NewSanad extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(41, 41, 41)
                         .addComponent(sanadOwnerAccount)))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -269,15 +309,23 @@ public class NewSanad extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(descriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                    .addComponent(sanadTypeLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(placeHolderDate3)
+                    .addComponent(monthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(yearTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dayTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sanadTypeLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(descriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(placeHolderDate2))
+                .addGap(71, 71, 71)
                 .addComponent(validatoinLabel)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -295,58 +343,46 @@ public class NewSanad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        if (isTransactionRadioButtonNull == true) {
-            validatoinLabel.setText("لطفا چک یا نقدی را انتخاب کنید.");
-            validatoinLabel.setVisible(true);
-            return;
-        }
+        if (isInputsAreValid()) {
+            Date dateSelectedByUser = new Date(Integer.parseInt(yearTextField.getText()),
+                    Integer.parseInt(monthTextField.getText()),
+                    Integer.parseInt(dayTextField.getText()),
+                    Date.getCurrentDate().getHour(), Date.getCurrentDate().getMinute());
 
-        if (transactionType == null) {
-            validatoinLabel.setText("لطفا طرف حساب را وارد کنید.");
-            validatoinLabel.setVisible(true);
-            return;
-        }
-
-        if (priceTextField.getText().equals("")) {
-            validatoinLabel.setText("لطفا قیمت را وارد کنید.");
-            validatoinLabel.setVisible(true);
-            return;
-        }
-
-        Matcher priceTextFieldMatcher = VALID_PRICE.matcher(priceTextField.getText());
-        if (!priceTextFieldMatcher.matches()) {
-            validatoinLabel.setText(".قیمت معتبر نیست");
-            validatoinLabel.setVisible(true);
-            return;
-        }
-
-        if (paidTypeSanadButton.isSelected()) {
-            if (transactionType != null) {
-                transactionType = ((bedehkaarTypeButton.isSelected()) ? TransactionType.DEBT : TransactionType.CREDIT);
-                paidManager.add(paidManager.paids.size() + 1,
-                        selectedAccount + 1,
-                        Date.getCurrentDate(),
-                        descriptionTextField.getText(),
-                        Integer.parseInt(priceTextField.getText()),
-                        transactionType);
-                paidManager.save();
+            if (Date.isDateDead(dateSelectedByUser)) {
+                validatoinLabel.setText("نمی‌توانید تاریخ گذشته را وارد کنید!");
+                validatoinLabel.setVisible(true);
+                return;
             }
-        }
 
-        if (prepaidTypeSanadButton.isSelected()) {
-            if (transactionType != null) {
-                transactionType = ((bedehkaarTypeButton.isSelected()) ? TransactionType.DEBT : TransactionType.CREDIT);
-                prePaidManager.add(prePaidManager.prePaids.size() + 1,
-                        selectedAccount + 1,
-                        Date.getCurrentDate(),
-                        descriptionTextField.getText(),
-                        Integer.parseInt(priceTextField.getText()),
-                        transactionType);
-                prePaidManager.save();
+            if (paidTypeSanadButton.isSelected()) {
+                if (transactionType != null) {
+                    transactionType = ((bedehkaarTypeButton.isSelected()) ? TransactionType.DEBT : TransactionType.CREDIT);
+                    paidManager.add(paidManager.paids.size() + 1,
+                            selectedAccount + 1,
+                            dateSelectedByUser,
+                            descriptionTextField.getText(),
+                            Integer.parseInt(priceTextField.getText()),
+                            transactionType);
+                    paidManager.save();
+                }
             }
-        }
 
-        setVisible(false);
+            if (prepaidTypeSanadButton.isSelected()) {
+                if (transactionType != null) {
+                    transactionType = ((bedehkaarTypeButton.isSelected()) ? TransactionType.DEBT : TransactionType.CREDIT);
+                    prePaidManager.add(prePaidManager.prePaids.size() + 1,
+                            selectedAccount + 1,
+                            dateSelectedByUser,
+                            descriptionTextField.getText(),
+                            Integer.parseInt(priceTextField.getText()),
+                            transactionType);
+                    prePaidManager.save();
+                }
+            }
+
+            setVisible(false);
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void accountListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_accountListValueChanged
@@ -376,13 +412,56 @@ public class NewSanad extends javax.swing.JFrame {
             listModel.addElement(getAccountNameAndNationalCode(account));
         }
     }
-    
+
     private String getAccountNameAndNationalCode(Account account) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(account.getName());
         stringBuilder.append(" - ");
         stringBuilder.append(account.getNationalCode());
         return stringBuilder.toString();
+    }
+
+    private boolean isInputsAreValid() {
+        if (isTransactionRadioButtonNull == true) {
+            validatoinLabel.setText("لطفا چک یا نقدی را انتخاب کنید.");
+            validatoinLabel.setVisible(true);
+            return false;
+        }
+
+        if (transactionType == null) {
+            validatoinLabel.setText("لطفا طرف حساب را وارد کنید.");
+            validatoinLabel.setVisible(true);
+            return false;
+        }
+
+        if (priceTextField.getText().equals("")) {
+            validatoinLabel.setText("لطفا قیمت را وارد کنید.");
+            validatoinLabel.setVisible(true);
+            return false;
+        }
+
+        if (yearTextField.getText().equals("") && monthTextField.getText().equals("") && dayTextField.getText().equals("")) {
+            validatoinLabel.setText("تاریخ را وارد کنید.");
+            validatoinLabel.setVisible(true);
+            return false;
+        }
+
+        Matcher priceTextFieldMatcher = VALID_PRICE.matcher(priceTextField.getText());
+        if (!priceTextFieldMatcher.matches()) {
+            validatoinLabel.setText(".قیمت معتبر نیست");
+            validatoinLabel.setVisible(true);
+            return false;
+        }
+
+        Matcher yearTextFieldMatcher = VALID_YEAR.matcher(yearTextField.getText());
+        Matcher mmonthTextFieldMatcher = VALID_DATE.matcher(monthTextField.getText());
+        Matcher dayTextFieldMatcher = VALID_DATE.matcher(dayTextField.getText());
+        if (!yearTextFieldMatcher.matches() && !mmonthTextFieldMatcher.matches() && !dayTextFieldMatcher.matches()) {
+            validatoinLabel.setText(".تاریخ معتبر نیست");
+            validatoinLabel.setVisible(true);
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -429,6 +508,7 @@ public class NewSanad extends javax.swing.JFrame {
     private javax.swing.JRadioButton bestankaarTypeButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JTextField dayTextField;
     private javax.swing.JTextField descriptionTextField;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -436,7 +516,10 @@ public class NewSanad extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField monthTextField;
     private javax.swing.JRadioButton paidTypeSanadButton;
+    private javax.swing.JLabel placeHolderDate2;
+    private javax.swing.JLabel placeHolderDate3;
     private javax.swing.JRadioButton prepaidTypeSanadButton;
     private javax.swing.JTextField priceTextField;
     private javax.swing.JLabel sabtSanadLabel;
@@ -444,8 +527,10 @@ public class NewSanad extends javax.swing.JFrame {
     private javax.swing.JLabel sanadPriceLabel;
     private javax.swing.JLabel sanadTypeLabel;
     private javax.swing.JLabel sanadTypeLabel1;
+    private javax.swing.JLabel sanadTypeLabel2;
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel validatoinLabel;
+    private javax.swing.JTextField yearTextField;
     // End of variables declaration//GEN-END:variables
 
 }
