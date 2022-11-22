@@ -12,12 +12,12 @@ import ViewModel.AccountManager;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
 import java.awt.ComponentOrientation;
-import static java.lang.System.out;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
+
 
 /**
  *
