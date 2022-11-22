@@ -3,11 +3,13 @@ package ViewModel.Report;
 import Model.Date;
 import Model.Transaction.Paid;
 import Model.Transaction.PrePaid;
+import Model.Transaction.PrePaidStatus;
 import Model.Transaction.TransactionType;
 
 import java.util.ArrayList;
 
 public class DebtCreditReport {
+
     private final ArrayList<Paid> paids;
     private final ArrayList<PrePaid> prePaids;
 
@@ -91,14 +93,15 @@ public class DebtCreditReport {
         return result;
     }
 
-//    public int getVertex() {
-//        int sum = 0;
-//        for (PrePaid prePaid : prePaids) {
-//            //sum += prePaid.getPrice() * Date.getDifferentBetweenTwoDates(prePaid.getTime().toString(), Date.getCurrentDate().toString());
-//            System.out.println(Date.getCurrentDate().toString());
-//            sum = Date.getDifferentBetweenTwoDates(prePaid.getTime().toString(), Date.getCurrentDate().toString());
-//            System.out.println(sum);
-//        }
-//        return 0;
-//    }
+    public int getVertex() {
+        int sum = 0;
+        int sumOfAllPrePaids = 0;
+        for (PrePaid prePaid : prePaids) {
+            if (prePaid.isPrePaidPassed() == PrePaidStatus.NO) {
+                sum += prePaid.getPrice() * Date.getDifferentBetweenTwoDates(prePaid.getTime().toString(), Date.getCurrentDate().toString());
+                sumOfAllPrePaids += prePaid.getPrice();
+            }
+        }
+        return sum / sumOfAllPrePaids;
+    }
 }

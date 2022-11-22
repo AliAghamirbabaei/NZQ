@@ -62,6 +62,15 @@ public class AccountManager {
         
         return null;
     }
+    
+    public boolean isUserExist(String nationalCode) {
+        for (Account account : accounts) {
+            if (account.getNationalCode().equals(nationalCode)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void init() {
         List<String[]> data = AccountFileManager.loadData();

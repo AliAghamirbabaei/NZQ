@@ -4,7 +4,6 @@ import ViewModel.AccountManager;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class AddPerson extends javax.swing.JFrame {
 
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -180,14 +179,19 @@ public class AddPerson extends javax.swing.JFrame {
 
     private void submitPersonButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitPersonButtonActionPerformed
         if (isFieldsValid()) {
-            accountManager.add(accountManager.accounts.size() + 1,
-                    nameTextField.getText(),
-                    nationalCodeTextField.getText(),
-                    addressTextField.getText(),
-                    tellTextField.getText(),
-                    emailTextField.getText());
-            accountManager.save();
-            setVisible(false);
+            if (!accountManager.isUserExist(nationalCodeTextField.getText())) {
+                accountManager.add(accountManager.accounts.size() + 1,
+                        nameTextField.getText(),
+                        nationalCodeTextField.getText(),
+                        addressTextField.getText(),
+                        tellTextField.getText(),
+                        emailTextField.getText());
+                accountManager.save();
+                setVisible(false);
+            } else {
+                validationErrorLabel.setText("این حساب قبلا ثبت شده");
+                validationErrorLabel.setVisible(true);
+            }
         }
     }//GEN-LAST:event_submitPersonButtonActionPerformed
 
