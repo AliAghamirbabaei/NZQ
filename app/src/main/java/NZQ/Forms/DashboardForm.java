@@ -22,9 +22,9 @@ public class DashboardForm extends javax.swing.JFrame {
         menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         menuBar.setBackground(Color.BLUE);
         menuBar.setForeground(Color.BLUE);
-        usernameLabel.setText("نام کاربری: " + username);
+        usernameLabel.setText(username);
         timer.schedule(task, 1, 5000);
-        //addPersonMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
+        timerLabel.setComponentOrientation( ComponentOrientation.LEFT_TO_RIGHT );
         //addGroupMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
     }
 
@@ -73,6 +73,7 @@ public class DashboardForm extends javax.swing.JFrame {
         usernameLabel.setText("user name");
 
         timerLabel.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
+        timerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timerLabel.setText("system time");
 
         menuBar.setBackground(new java.awt.Color(53, 103, 152));
@@ -270,14 +271,7 @@ public class DashboardForm extends javax.swing.JFrame {
 
     public class TimerHandler extends TimerTask {
         public void run() {
-            Date date = new Date(Date.getCurrentDate().getDay(),
-                    Date.getCurrentDate().getMonth(),
-            Date.getCurrentDate().getYear(),
-            Date.getCurrentDate().getHour(),
-            Date.getCurrentDate().getMinute());
-            
-            timerLabel.setText("تاریخ سیستم: " + date.toIran().toString());
-            System.out.println("salam");
+            timerLabel.setText(Date.getCurrentDate().toString());
         }
     }
 
