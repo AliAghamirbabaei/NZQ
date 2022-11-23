@@ -94,14 +94,17 @@ public class DebtCreditReport {
     }
 
     public int getVertex() {
-        int sum = 0;
-        int sumOfAllPrePaids = 0;
-        for (PrePaid prePaid : prePaids) {
-            if (prePaid.isPrePaidPassed() == PrePaidStatus.NO) {
-                sum += prePaid.getPrice() * Date.getDifferentBetweenTwoDates(prePaid.getTime().toString(), Date.getCurrentDate().toString());
-                sumOfAllPrePaids += prePaid.getPrice();
+        if (!prePaids.isEmpty()) {
+            int sum = 0;
+            int sumOfAllPrePaids = 0;
+            for (PrePaid prePaid : prePaids) {
+                if (prePaid.isPrePaidPassed() == PrePaidStatus.NO) {
+                    sum += prePaid.getPrice() * Date.getDifferentBetweenTwoDates(prePaid.getTime().toString(), Date.getCurrentDate().toString());
+                    sumOfAllPrePaids += prePaid.getPrice();
+                }
             }
+            return sum / sumOfAllPrePaids;
         }
-        return sum / sumOfAllPrePaids;
+        return -1;
     }
 }
