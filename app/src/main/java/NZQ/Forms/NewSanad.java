@@ -28,7 +28,6 @@ public class NewSanad extends javax.swing.JFrame {
     private TransactionType transactionType;
     private boolean isTransactionRadioButtonNull = true;
 
-    
     public NewSanad(AccountManager accountManager, PaidManager paidManager, PrePaidManager prePaidManager) {
         this.accountManager = accountManager;
         this.paidManager = paidManager;
@@ -42,7 +41,6 @@ public class NewSanad extends javax.swing.JFrame {
         initList();
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -452,7 +450,7 @@ public class NewSanad extends javax.swing.JFrame {
             validatoinLabel.setVisible(true);
             return false;
         }
-
+/*
         Matcher yearTextFieldMatcher = VALID_YEAR.matcher(yearTextField.getText());
         Matcher monthTextFieldMatcher = VALID_MONTH_DATE.matcher(monthTextField.getText());
         Matcher dayTextFieldMatcher = VALID_DAY_DATE.matcher(dayTextField.getText());
@@ -464,9 +462,18 @@ public class NewSanad extends javax.swing.JFrame {
             validatoinLabel.setVisible(true);
             return false;
         }
+        */
 
-        if (Integer.parseInt(dayTextField.getText()) >= 1
-                && Integer.parseInt(dayTextField.getText()) <= 31) {
+        if (yearTextField.getText().length() > 4
+                && monthTextField.getText().length() > 2
+                && dayTextField.getText().length() > 2) {
+            validatoinLabel.setText(".تاریخ معتبر نیست");
+            validatoinLabel.setVisible(true);
+            return false;
+        }
+
+        if (Integer.parseInt(dayTextField.getText()) <= 1
+                && Integer.parseInt(dayTextField.getText()) >= 31) {
             validatoinLabel.setText(".روز معتبر نیست");
             validatoinLabel.setVisible(true);
             System.out.println("log day");
