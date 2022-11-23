@@ -2,12 +2,17 @@ package NZQ.Forms;
 
 import Model.Date;
 import ViewModel.AccountManager;
+import ViewModel.Report.DebtCreditReport;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class DashboardForm extends javax.swing.JFrame {
 
@@ -16,7 +21,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private PrePaidManager prePaidManager = new PrePaidManager();
     private Timer timer = new Timer();
     private TimerTask task = new TimerHandler();
-    
+
     public DashboardForm(String username) {
         initComponents();
         menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -24,7 +29,7 @@ public class DashboardForm extends javax.swing.JFrame {
         menuBar.setForeground(Color.BLUE);
         usernameLabel.setText(username);
         timer.schedule(task, 1, 5000);
-        timerLabel.setComponentOrientation( ComponentOrientation.LEFT_TO_RIGHT );
+        timerLabel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
         //addGroupMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
     }
 
@@ -47,6 +52,7 @@ public class DashboardForm extends javax.swing.JFrame {
         tarazNamehMenuItem = new javax.swing.JMenuItem();
         daftarKolMenuItem = new javax.swing.JMenuItem();
         AccountViewerMenuItem = new javax.swing.JMenuItem();
+        vertexMenuItem = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -149,6 +155,15 @@ public class DashboardForm extends javax.swing.JFrame {
         });
         gozareshaatMenu.add(AccountViewerMenuItem);
 
+        vertexMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        vertexMenuItem.setText("نمایش راس چک‌ها");
+        vertexMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vertexMenuItemActionPerformed(evt);
+            }
+        });
+        gozareshaatMenu.add(vertexMenuItem);
+
         menuBar.add(gozareshaatMenu);
 
         exitMenu.setText("خروج");
@@ -233,6 +248,25 @@ public class DashboardForm extends javax.swing.JFrame {
         newGroupSanad.setVisible(true);
     }//GEN-LAST:event_newGroupTransactionMenuItemActionPerformed
 
+    private void vertexMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vertexMenuItemActionPerformed
+        DebtCreditReport debtCreditReport = new DebtCreditReport(paidManager.paids, prePaidManager.prePaids);
+        StringBuilder dialogMessage = new StringBuilder();
+
+        if (debtCreditReport.getVertex() != -1) {
+            dialogMessage.append("راس چک‌ها برابر است با: ");
+            dialogMessage.append(String.valueOf(debtCreditReport.getVertex()));
+        } else {
+            dialogMessage.append("هیچ چکی موجود نیست!");
+        }
+
+        try {
+            ImageIcon dialogBoxIcon = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResource("Images/Wallet.png")));
+            JOptionPane.showMessageDialog(null, dialogMessage.toString(), "راس چک‌ها", 1, dialogBoxIcon);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, dialogMessage.toString(), "راس چک‌ها", 1);
+        }
+    }//GEN-LAST:event_vertexMenuItemActionPerformed
+
     private void logout() {
         LoginForm loginform = new LoginForm();
         loginform.setVisible(true);
@@ -270,6 +304,7 @@ public class DashboardForm extends javax.swing.JFrame {
     }
 
     public class TimerHandler extends TimerTask {
+
         public void run() {
             timerLabel.setText(Date.getCurrentDate().toString());
         }
@@ -293,6 +328,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem tarazNamehMenuItem;
     private javax.swing.JLabel timerLabel;
     private javax.swing.JLabel usernameLabel;
+    private javax.swing.JMenuItem vertexMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
