@@ -36,13 +36,13 @@
           <Component id="jScrollPane1" alignment="0" pref="919" max="32767" attributes="0"/>
           <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="605" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="sumLabel" min="-2" pref="62" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="sumBedehkaarLabel" min="-2" pref="110" max="-2" attributes="0"/>
+                      <Component id="sumBedehkaarLabel" min="-2" pref="150" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="sumBestankaarLabel" min="-2" pref="110" max="-2" attributes="0"/>
+                      <Component id="sumBestankaarLabel" min="-2" pref="152" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -136,21 +136,27 @@
     </Component>
     <Component class="javax.swing.JLabel" name="sumBedehkaarLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="IRANSansFaNum" size="13" style="0"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="sumBestankaarLabel">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="IRANSansFaNum" size="13" style="0"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="sumLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Lucida Grande" size="12" style="1"/>
+          <Font name="IRANSansX" size="13" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="&#x645;&#x62c;&#x645;&#x648;&#x639; :"/>
+        <Property name="text" type="java.lang.String" value="&#x645;&#x62c;&#x645;&#x648;&#x639;:"/>
       </Properties>
     </Component>
   </SubComponents>

@@ -4,6 +4,7 @@ import Model.Date;
 import Model.Transaction.Paid;
 import Model.Transaction.PrePaid;
 import Model.Transaction.PrePaidStatus;
+import Model.Transaction.TransactionType;
 
 import java.util.ArrayList;
 
@@ -131,5 +132,27 @@ public class DebtCreditReport {
             return sum / sumOfAllPrePaids;
         }
         return -1;
+    }
+    
+    public int getSumOfDebts() {
+        int sum = 0;
+        
+        for (Paid paid : paids) {
+            if (paid.getTransactionType() == TransactionType.DEBT) {
+                sum += paid.getPrice();
+            }
+        } 
+        return sum;
+    }
+    
+    public int getSumOfCredits() {
+        int sum = 0;
+        
+        for (Paid paid : paids) {
+            if (paid.getTransactionType() == TransactionType.CREDIT) {
+                sum += paid.getPrice();
+            }
+        }       
+        return sum;
     }
 }

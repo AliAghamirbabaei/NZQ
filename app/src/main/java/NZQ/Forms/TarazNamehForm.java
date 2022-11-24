@@ -7,9 +7,9 @@ package NZQ.Forms;
 import Model.Date;
 import Model.Transaction.TransactionType;
 import ViewModel.AccountManager;
+import ViewModel.Report.DebtCreditReport;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
-import java.awt.Color;
 import java.awt.ComponentOrientation;
 import javax.swing.JLabel;
 import javax.swing.event.TableModelListener;
@@ -37,6 +37,7 @@ public class TarazNamehForm extends javax.swing.JFrame implements TableModel {
         taraznamehTable.setDefaultRenderer(java.lang.String.class, centerRenderer);
 
         taraznamehTable.getTableHeader().setDefaultRenderer(centerRenderer);
+        initialSumLabels();
     }
 
     /**
@@ -87,13 +88,15 @@ public class TarazNamehForm extends javax.swing.JFrame implements TableModel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ترازنامه");
 
+        sumBedehkaarLabel.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
         sumBedehkaarLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
+        sumBestankaarLabel.setFont(new java.awt.Font("IRANSansFaNum", 0, 13)); // NOI18N
         sumBestankaarLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
-        sumLabel.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
+        sumLabel.setFont(new java.awt.Font("IRANSansX", 1, 13)); // NOI18N
         sumLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        sumLabel.setText("مجموع :");
+        sumLabel.setText("مجموع:");
         setJMenuBar(taraznamehMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,13 +106,13 @@ public class TarazNamehForm extends javax.swing.JFrame implements TableModel {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 919, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(605, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(sumLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(sumBedehkaarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sumBedehkaarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sumBestankaarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(sumBestankaarLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -133,6 +136,13 @@ public class TarazNamehForm extends javax.swing.JFrame implements TableModel {
     /**
      * @param args the command line arguments
      */
+    private void initialSumLabels() {
+        PrePaidManager prePaidManager = new PrePaidManager();
+        DebtCreditReport debtCreditReport = new DebtCreditReport(paidManager.paids, prePaidManager.prePaids);
+        sumBedehkaarLabel.setText("بدهکار: " + String.valueOf(debtCreditReport.getSumOfDebts()));
+        sumBestankaarLabel.setText("بستانکار: " + String.valueOf(debtCreditReport.getSumOfCredits()));
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
