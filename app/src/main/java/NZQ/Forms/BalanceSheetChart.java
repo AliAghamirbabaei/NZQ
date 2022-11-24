@@ -24,12 +24,12 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author aliaghamirbabaei
  */
-public class BarChartExample extends javax.swing.JFrame {
+public class BalanceSheetChart extends javax.swing.JFrame {
     private final ArrayList<Paid> paids;
     private final ArrayList<PrePaid> prePaids;
     private static final long serialVersionUID = 1L;
 
-    public BarChartExample(String appTitle, ArrayList<Paid> paids, ArrayList<PrePaid> prePaids) {
+    public BalanceSheetChart(String appTitle, ArrayList<Paid> paids, ArrayList<PrePaid> prePaids) {
         super(appTitle);
         this.paids = paids;
         this.prePaids = prePaids;
@@ -88,7 +88,7 @@ public class BarChartExample extends javax.swing.JFrame {
         PaidManager paidManager = new PaidManager();
         PrePaidManager prePaidManager = new PrePaidManager();
         SwingUtilities.invokeAndWait(() -> {
-            BarChartExample example = new BarChartExample("نمودار ترازنامه", paidManager.paids, prePaidManager.prePaids);
+            BalanceSheetChart example = new BalanceSheetChart("نمودار ترازنامه", paidManager.paids, prePaidManager.prePaids);
             example.setSize(800, 400);
             example.setLocationRelativeTo(null);
             example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
