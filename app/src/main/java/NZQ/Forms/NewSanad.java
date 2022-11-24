@@ -485,7 +485,23 @@ public class NewSanad extends javax.swing.JFrame {
                     && Integer.parseInt(dayTextField.getText()) <= 30) {
                 return true;
             }
+            else if((Integer.parseInt(monthTextField.getText()) == 1
+                || Integer.parseInt(monthTextField.getText()) == 3
+                || Integer.parseInt(monthTextField.getText()) == 5
+                || Integer.parseInt(monthTextField.getText()) == 7
+                || Integer.parseInt(monthTextField.getText()) == 8
+                || Integer.parseInt(monthTextField.getText()) == 10
+                || Integer.parseInt(monthTextField.getText()) == 12)
+                && Integer.parseInt(dayTextField.getText()) <= 31) {
+            return true;
+            }
+            else{
+            validatoinLabel.setText(".روز معتبر نیست");
+            validatoinLabel.setVisible(true);
+            return false;
+            }
         }
+        /*
         // days of monthes validation 2
         if ((Integer.parseInt(monthTextField.getText()) == 1
                 || Integer.parseInt(monthTextField.getText()) == 3
@@ -497,6 +513,7 @@ public class NewSanad extends javax.swing.JFrame {
                 && Integer.parseInt(dayTextField.getText()) <= 31) {
             return true;
         }
+        */
 
         // leap year validation 
         if (Integer.parseInt(monthTextField.getText()) == 2) {
@@ -520,6 +537,8 @@ public class NewSanad extends javax.swing.JFrame {
                 }
             }
         }
+        
+        
         return true;
     }
 
