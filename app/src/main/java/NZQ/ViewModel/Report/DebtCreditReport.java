@@ -4,6 +4,7 @@ import Model.Date;
 import Model.Transaction.Paid;
 import Model.Transaction.PrePaid;
 import Model.Transaction.PrePaidStatus;
+import Model.Transaction.Transaction;
 import Model.Transaction.TransactionType;
 
 import java.util.ArrayList;
@@ -16,6 +17,18 @@ public class DebtCreditReport {
     public DebtCreditReport(ArrayList<Paid> paids, ArrayList<PrePaid> prePaids) {
         this.paids = paids;
         this.prePaids = prePaids;
+    }
+    
+    public ArrayList<Transaction> generateDateRangeDebt(int fromYear, int toYear, int fromMonth, int toMonth, int fromDay, int toDay) {
+        ArrayList<Transaction> result = new ArrayList<>();
+        
+        for (Paid paid : paids) {
+            //if (paid.getTime().) {
+        
+            //}
+        }
+            
+        return result;
     }
 
     public ArrayList<Integer> generateDailyDebt() {
