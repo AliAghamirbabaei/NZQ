@@ -450,44 +450,76 @@ public class NewSanad extends javax.swing.JFrame {
             validatoinLabel.setVisible(true);
             return false;
         }
-/*
-        Matcher yearTextFieldMatcher = VALID_YEAR.matcher(yearTextField.getText());
-        Matcher monthTextFieldMatcher = VALID_MONTH_DATE.matcher(monthTextField.getText());
-        Matcher dayTextFieldMatcher = VALID_DAY_DATE.matcher(dayTextField.getText());
 
-        if (!yearTextFieldMatcher.matches()
-                && !monthTextFieldMatcher.matches()
-                && !dayTextFieldMatcher.matches()) {
-            validatoinLabel.setText(".تاریخ معتبر نیست");
-            validatoinLabel.setVisible(true);
-            return false;
-        }
-        */
-
-        if (yearTextField.getText().length() > 4
-                && monthTextField.getText().length() > 2
-                && dayTextField.getText().length() > 2) {
-            validatoinLabel.setText(".تاریخ معتبر نیست");
-            validatoinLabel.setVisible(true);
-            return false;
-        }
-
-        if (Integer.parseInt(dayTextField.getText()) <= 1
-                && Integer.parseInt(dayTextField.getText()) >= 31) {
+        // day digits and value validation
+        if (dayTextField.getText().length() > 2
+                || Integer.parseInt(dayTextField.getText()) < 1
+                || Integer.parseInt(dayTextField.getText()) > 31) {
             validatoinLabel.setText(".روز معتبر نیست");
             validatoinLabel.setVisible(true);
-            System.out.println("log day");
             return false;
         }
 
-        if (Integer.parseInt(monthTextField.getText()) >= 1
-                && Integer.parseInt(monthTextField.getText()) <= 12) {
+        // month digits and value validation
+        if (monthTextField.getText().length() > 2
+                || Integer.parseInt(monthTextField.getText()) < 1
+                || Integer.parseInt(monthTextField.getText()) > 12) {
             validatoinLabel.setText(".ماه معتبر نیست");
             validatoinLabel.setVisible(true);
-            System.out.println("log month");
             return false;
         }
-        System.out.println("log");
+
+        // year digits validation
+        if (yearTextField.getText().length() > 4) {
+            validatoinLabel.setText(".سال معتبر نیست");
+            validatoinLabel.setVisible(true);
+            return false;
+        }
+        // days of monthes validation 1
+
+        if (Integer.parseInt(dayTextField.getText()) >= 1) {
+            if ((Integer.parseInt(monthTextField.getText()) == 4
+                    || Integer.parseInt(monthTextField.getText()) == 6
+                    || Integer.parseInt(monthTextField.getText()) == 9
+                    || Integer.parseInt(monthTextField.getText()) == 11)
+                    && Integer.parseInt(dayTextField.getText()) <= 30) {
+                return true;
+            }
+        }
+        // days of monthes validation 2
+        if ((Integer.parseInt(monthTextField.getText()) == 1
+                || Integer.parseInt(monthTextField.getText()) == 3
+                || Integer.parseInt(monthTextField.getText()) == 5
+                || Integer.parseInt(monthTextField.getText()) == 7
+                || Integer.parseInt(monthTextField.getText()) == 8
+                || Integer.parseInt(monthTextField.getText()) == 10
+                || Integer.parseInt(monthTextField.getText()) == 12)
+                && Integer.parseInt(dayTextField.getText()) <= 31) {
+            return true;
+        }
+
+        // leap year validation 
+        if (Integer.parseInt(monthTextField.getText()) == 2) {
+            if (Integer.parseInt(dayTextField.getText()) <= 28) {
+                return true;
+            }
+
+            if (Integer.parseInt(yearTextField.getText()) % 4 == 0) {
+                if (Integer.parseInt(yearTextField.getText()) % 100 == 0) {
+                    if (Integer.parseInt(yearTextField.getText()) % 400 == 0) {
+                        validatoinLabel.setText(".سال کبیسه است");
+                        validatoinLabel.setVisible(true);
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    validatoinLabel.setText(".سال کبیسه است");
+                    validatoinLabel.setVisible(true);
+                    return false;
+                }
+            }
+        }
         return true;
     }
 

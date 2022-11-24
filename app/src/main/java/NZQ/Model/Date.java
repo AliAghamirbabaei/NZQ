@@ -66,7 +66,7 @@ public class Date {
     }
 
     public String toIran() {
-        JalaliCalendar jalaliDate = new JalaliCalendar(new GregorianCalendar(year, month, day, hour, minute)); 
+        JalaliCalendar jalaliDate = new JalaliCalendar(new GregorianCalendar(year, month, day, hour, minute));
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("IRST"));
         calendar.set(year, month - 1, day, hour, minute);
         java.util.Date date = calendar.getTime();
@@ -134,29 +134,20 @@ public class Date {
             return -1;
         }
     }
-    
+
     public static boolean isDateDead(Date date) {
         Date currentDate = Date.getCurrentDate();
-        if (date.getYear() < currentDate.getYear()) {
-            return true;
-        }
-        if (date.getMonth() < currentDate.getMonth()) {
-            return true;
-        }
-        
-        if (date.getDay() < currentDate.getDay()) {
-            return true;
+        if (date.getYear() > currentDate.getYear()) {
+            if (date.getMonth() > currentDate.getMonth()) {
+                if (date.getDay() > currentDate.getDay()) {
+                    return true;
+                }
+            }
         }
         return false;
     }
-//
-//    public static Boolean isDeadlinePassed(Date date) {
-//        int deadline = Integer.parseInt(date.getYear() + "" + date.getMonth() + "" + date.getDay());
-//        Date currentDate = getCurrentDate();
-//        int now = Integer.parseInt(currentDate.getYear() + "" + currentDate.getMonth() + "" + currentDate.getDay());
-//        return now >= deadline;
-//    }
 
+ 
     public static Date getCurrentDate() {
         final java.util.Date currentTime = new java.util.Date();
         final SimpleDateFormat formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -164,69 +155,3 @@ public class Date {
         return stringToDate(formattedDate.format(currentTime));
     }
 }
-/*
-boolean dayDateValidation(String day) {
-        this.day = day;
-        int monthValue = Integer.parseInt(month);
-        int dayValue = Integer.parseInt(day);
-        int yearValue = Integer.parseInt(year);
-
-        if (day.length() > 2) {
-            return false;
-        }
-
-        if (dayValue < 1) {
-            return false;
-        }
-
-        if (dayValue >= 1) {
-            if ((monthValue == 4
-                    || monthValue == 6
-                    || monthValue == 9
-                    || monthValue == 11)
-                    && dayValue <= 30) {
-                return true;
-            }
-            }
-            if ((monthValue == 1
-                    || monthValue == 3
-                    || monthValue == 5
-                    || monthValue == 7
-                    || monthValue == 8
-                    || monthValue == 10
-                    || monthValue == 12)
-                    && dayValue <= 31) {
-                return true;
-            }
-            if (monthValue == 2) {
-                if (dayValue <= 28) {
-                    return true;
-                } else if (dayValue == 29) {
-                    if ((yearValue % 4 == 0
-                            && yearValue % 100 != 0)
-                            | yearValue % 400 == 0) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-        return true;
-                }
-
-
-    boolean monthDateValidation(String month) {
-        this.month = month;
-        if (month.length() > 2) {
-            return false;
-        }
-        if (Integer.parseInt(month) > 12) {
-            return false;
-        }
-        if (Integer.parseInt(month) < 1) {
-            return false;
-        }
-        return true;
-    }
-*/
