@@ -3,8 +3,8 @@
 Just simple accounting app in Java
 
 ## Dependencies <br />
-- [JfreeChart](https://www.jfree.org/jfreechart/download.html) <br />
- - [OpenCSV](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi1o7KQ9cb7AhXyiIsKHTOJDTMQFnoECA8QAQ&url=https://sourceforge.net/projects/opencsv/&usg=AOvVaw3aiOg7Anx61Ms9cJscoj_p)  (Also you should have jcommon library.) <br />
+- [JfreeChart](https://www.jfree.org/jfreechart/download.html) (Also you should have jcommon library.) <br />
+ - [OpenCSV](https://sourceforge.net/projects/opencsv/) <br />
  - [JalaliCalender](https://github.com/razeghi71/JalaliCalendar) <br />
 
 ## Installation
