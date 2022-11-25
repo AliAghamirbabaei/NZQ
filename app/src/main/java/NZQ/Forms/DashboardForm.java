@@ -7,12 +7,15 @@ import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.Font;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 
 public class DashboardForm extends javax.swing.JFrame {
 
@@ -25,12 +28,9 @@ public class DashboardForm extends javax.swing.JFrame {
     public DashboardForm(String username) {
         initComponents();
         menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        menuBar.setBackground(Color.BLUE);
-        menuBar.setForeground(Color.BLUE);
         usernameLabel.setText(username);
         timer.schedule(task, 1, 5000);
         timerLabel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        //addGroupMenuItem.setComponentOrientation( ComponentOrientation.RIGHT_TO_LEFT );
     }
 
     @SuppressWarnings("unchecked")
@@ -260,7 +260,7 @@ public class DashboardForm extends javax.swing.JFrame {
         }
 
         try {
-            ImageIcon dialogBoxIcon = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResource("Images/Wallet.png")));
+            ImageIcon dialogBoxIcon = new ImageIcon(ImageIO.read(getClass().getClassLoader().getResource("Images/Chart.png")));
             JOptionPane.showMessageDialog(null, dialogMessage.toString(), "راس چک‌ها", 1, dialogBoxIcon);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, dialogMessage.toString(), "راس چک‌ها", 1);
