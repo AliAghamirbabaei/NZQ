@@ -184,8 +184,6 @@ public class NewGroupSanad extends javax.swing.JFrame implements TableModel {
     private void showPrePaidRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPrePaidRadioButtonActionPerformed
         isPaidShows = false;
         transactionTable.updateUI();
-        
-        transactionTable.getColumnModel().getColumn(6).setCellEditor(new DefaultCellEditor(transactionTypeComboBox));
     }//GEN-LAST:event_showPrePaidRadioButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
