@@ -10,7 +10,7 @@ Just simple accounting app in Java
 ## Installation
 
 There are different ways to run this project. Any Java environment that can run Java with custom libraries, can run this application. 😊 <br />
-You just need to provide the libraries. <br />
+You just need to provide the libraries. ☝️ <br />
 **Easyest way:** <br />
 1- Download NetBeans from [here](https://netbeans.apache.org/download/index.html). <br />
 2- Clone and open project. <br />
