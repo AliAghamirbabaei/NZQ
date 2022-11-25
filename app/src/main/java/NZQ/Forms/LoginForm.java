@@ -1,8 +1,7 @@
 package NZQ.Forms;
 
 public class LoginForm extends javax.swing.JFrame {
-    //private final String username = "صادق";
-    private final String username = "Ali";
+    private final String username = "QQQ";
     private final String password = "123";
 
     public LoginForm() {
