@@ -250,7 +250,7 @@ public class TarazNamehForm extends javax.swing.JFrame implements TableModel {
         String name = "";
         int price = 0;
         if (columnIndex == 1) {
-            name = accountManager.accounts.get(paidManager.paids.get(rowIndex).getAccountId()).getName();
+            name = accountManager.accounts.get(paidManager.paids.get(rowIndex).getAccountId() - 1).getName();
         }
 
         if (columnIndex == 3 || columnIndex == 4) {
