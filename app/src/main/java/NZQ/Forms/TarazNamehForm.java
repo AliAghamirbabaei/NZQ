@@ -60,7 +60,7 @@ public class TarazNamehForm extends javax.swing.JFrame implements TableModel {
 
         jMenuItem1.setText("jMenuItem1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         taraznamehTable.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         taraznamehTable.setModel(new javax.swing.table.DefaultTableModel(
