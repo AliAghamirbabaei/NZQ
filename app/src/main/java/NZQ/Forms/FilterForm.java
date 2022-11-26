@@ -5,6 +5,7 @@
 package NZQ.Forms;
 
 import Model.Account;
+import Model.Date;
 import Model.Transaction.Paid;
 import Model.Transaction.PrePaid;
 import Model.Transaction.TransactionType;
@@ -53,6 +54,8 @@ public class FilterForm extends javax.swing.JFrame {
         fromYearTextField.setEnabled(false);
         toYearTextField.setEnabled(false);
         toMonthTextField.setEnabled(false);
+        fromDayTextField.setEnabled(false);
+        toDayTextField.setEnabled(false);
 
         fromPriceTextField.setEnabled(false);
         toPriceTextField.setEnabled(false);
@@ -503,8 +506,8 @@ public class FilterForm extends javax.swing.JFrame {
                     paids = transactionFilter.getMonthlyPaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(fromMonthTextField.getText()), Integer.parseInt(toMonthTextField.getText()));
                     prePaids = transactionFilter.getMonthlyPrePaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(fromMonthTextField.getText()), Integer.parseInt(toMonthTextField.getText()));
                 } else if (dailyButton.isSelected()) {
-                    paids = transactionFilter.getDailyPaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(fromMonthTextField.getText()), Integer.parseInt(fromDayTextField.getText()), Integer.parseInt(toDayTextField.getText()));
-                    prePaids = transactionFilter.getDailyPrePaidTransactions(Integer.parseInt(fromYearTextField.getText()), Integer.parseInt(fromMonthTextField.getText()), Integer.parseInt(fromDayTextField.getText()), Integer.parseInt(toDayTextField.getText()));
+                    paids = transactionFilter.getDailyPaidTransactions(Date.getCurrentDate().getYear(), Date.getCurrentDate().getMonth(), Integer.parseInt(fromDayTextField.getText()), Integer.parseInt(toDayTextField.getText()));
+                    prePaids = transactionFilter.getDailyPrePaidTransactions(Date.getCurrentDate().getYear(), Date.getCurrentDate().getMonth(), Integer.parseInt(fromDayTextField.getText()), Integer.parseInt(toDayTextField.getText()));
                 }
             }
         } else if (transactionTypeRadioButton.isSelected()) {
@@ -537,6 +540,8 @@ public class FilterForm extends javax.swing.JFrame {
     private void yearlyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yearlyButtonActionPerformed
         fromMonthTextField.setEnabled(false);
         toMonthTextField.setEnabled(false);
+        fromDayTextField.setEnabled(false);
+        toDayTextField.setEnabled(false);
 
         fromYearTextField.setEnabled(true);
         toYearTextField.setEnabled(true);
@@ -549,6 +554,8 @@ public class FilterForm extends javax.swing.JFrame {
 
         fromYearTextField.setEnabled(true);
         toYearTextField.setVisible(false);
+        fromDayTextField.setEnabled(false);
+        toDayTextField.setEnabled(false);
     }//GEN-LAST:event_monthlyButtonActionPerformed
 
     private void dailyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyButtonActionPerformed
@@ -556,14 +563,17 @@ public class FilterForm extends javax.swing.JFrame {
         toMonthTextField.setEnabled(false);
         fromYearTextField.setEnabled(false);
         toYearTextField.setEnabled(false);
+        
+        fromDayTextField.setEnabled(true);
+        toDayTextField.setEnabled(true);
     }//GEN-LAST:event_dailyButtonActionPerformed
 
     private void dateFilterRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFilterRadioButtonActionPerformed
         dailyButton.setEnabled(true);
         monthlyButton.setEnabled(true);
         yearlyButton.setEnabled(true);
-        //fromYearTextField.setEnabled(true);
-        //toYearTextField.setEnabled(true);
+        fromDayTextField.setEnabled(true);
+        toDayTextField.setEnabled(true);
 
         fromPriceTextField.setEnabled(false);
         toPriceTextField.setEnabled(false);
@@ -582,6 +592,9 @@ public class FilterForm extends javax.swing.JFrame {
         fromYearTextField.setEnabled(false);
         toMonthTextField.setEnabled(false);
         toYearTextField.setEnabled(false);
+        fromDayTextField.setEnabled(false);
+        toDayTextField.setEnabled(false);
+        
 
         fromPriceTextField.setEnabled(false);
         toPriceTextField.setEnabled(false);
@@ -600,6 +613,8 @@ public class FilterForm extends javax.swing.JFrame {
         fromYearTextField.setEnabled(false);
         toMonthTextField.setEnabled(false);
         toYearTextField.setEnabled(false);
+        fromDayTextField.setEnabled(false);
+        toDayTextField.setEnabled(false);
 
         fromPriceTextField.setEnabled(true);
         toPriceTextField.setEnabled(true);
@@ -618,6 +633,8 @@ public class FilterForm extends javax.swing.JFrame {
         fromYearTextField.setEnabled(false);
         toMonthTextField.setEnabled(false);
         toYearTextField.setEnabled(false);
+        fromDayTextField.setEnabled(false);
+        toDayTextField.setEnabled(false);
 
         fromPriceTextField.setEnabled(false);
         toPriceTextField.setEnabled(false);
