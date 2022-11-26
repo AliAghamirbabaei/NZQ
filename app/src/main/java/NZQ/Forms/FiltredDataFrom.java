@@ -293,7 +293,7 @@ public class FiltredDataFrom extends javax.swing.JFrame implements TableModel {
 
         if (isPaidShows) {
             if (columnIndex == 1) {
-                name = accounts.get(paids.get(rowIndex).getAccountId()).getName();
+                name = accounts.get(paids.get(rowIndex).getAccountId() - 1).getName();
             }
 
             return switch (columnIndex) {
