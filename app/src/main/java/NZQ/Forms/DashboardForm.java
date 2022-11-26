@@ -5,17 +5,13 @@ import ViewModel.AccountManager;
 import ViewModel.Report.DebtCreditReport;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
-import java.awt.Color;
 import java.awt.ComponentOrientation;
-import java.awt.Font;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.plaf.FontUIResource;
 
 public class DashboardForm extends javax.swing.JFrame {
 
@@ -51,6 +47,7 @@ public class DashboardForm extends javax.swing.JFrame {
         gozareshaatMenu = new javax.swing.JMenu();
         tarazNamehMenuItem = new javax.swing.JMenuItem();
         daftarKolMenuItem = new javax.swing.JMenuItem();
+        transactionFilter = new javax.swing.JMenuItem();
         AccountViewerMenuItem = new javax.swing.JMenuItem();
         vertexMenuItem = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenu();
@@ -91,6 +88,7 @@ public class DashboardForm extends javax.swing.JFrame {
         addPersonMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_DOWN_MASK));
         addPersonMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         addPersonMenuItem.setText("افزودن شخص");
+        addPersonMenuItem.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         addPersonMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addPersonMenuItemActionPerformed(evt);
@@ -106,6 +104,8 @@ public class DashboardForm extends javax.swing.JFrame {
         newTransactionMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         newTransactionMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         newTransactionMenuItem.setText("ثبت سند جدید");
+        newTransactionMenuItem.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        newTransactionMenuItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         newTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newTransactionMenuItemActionPerformed(evt);
@@ -116,6 +116,8 @@ public class DashboardForm extends javax.swing.JFrame {
         newGroupTransactionMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
         newGroupTransactionMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         newGroupTransactionMenuItem.setText("ثبت سند گروهی");
+        newGroupTransactionMenuItem.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        newGroupTransactionMenuItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         newGroupTransactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newGroupTransactionMenuItemActionPerformed(evt);
@@ -130,6 +132,8 @@ public class DashboardForm extends javax.swing.JFrame {
 
         tarazNamehMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         tarazNamehMenuItem.setText("ترازنامه");
+        tarazNamehMenuItem.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        tarazNamehMenuItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         tarazNamehMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tarazNamehMenuItemActionPerformed(evt);
@@ -139,6 +143,8 @@ public class DashboardForm extends javax.swing.JFrame {
 
         daftarKolMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
         daftarKolMenuItem.setText("دفتر کل");
+        daftarKolMenuItem.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        daftarKolMenuItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         daftarKolMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 daftarKolMenuItemActionPerformed(evt);
@@ -146,8 +152,20 @@ public class DashboardForm extends javax.swing.JFrame {
         });
         gozareshaatMenu.add(daftarKolMenuItem);
 
+        transactionFilter.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        transactionFilter.setText("فیلتر اسناد");
+        transactionFilter.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        transactionFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionFilterActionPerformed(evt);
+            }
+        });
+        gozareshaatMenu.add(transactionFilter);
+
         AccountViewerMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        AccountViewerMenuItem.setText("نمایش اشخاص");
+        AccountViewerMenuItem.setText("اشخاص");
+        AccountViewerMenuItem.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        AccountViewerMenuItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         AccountViewerMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AccountViewerMenuItemActionPerformed(evt);
@@ -156,7 +174,9 @@ public class DashboardForm extends javax.swing.JFrame {
         gozareshaatMenu.add(AccountViewerMenuItem);
 
         vertexMenuItem.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
-        vertexMenuItem.setText("نمایش راس چک‌ها");
+        vertexMenuItem.setText("راس چک‌ها");
+        vertexMenuItem.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        vertexMenuItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         vertexMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vertexMenuItemActionPerformed(evt);
@@ -267,6 +287,11 @@ public class DashboardForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_vertexMenuItemActionPerformed
 
+    private void transactionFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionFilterActionPerformed
+        FilterForm filterForm = new FilterForm(accountManager, paidManager, prePaidManager);
+        filterForm.setVisible(true);
+    }//GEN-LAST:event_transactionFilterActionPerformed
+
     private void logout() {
         LoginForm loginform = new LoginForm();
         loginform.setVisible(true);
@@ -327,6 +352,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem newTransactionMenuItem;
     private javax.swing.JMenuItem tarazNamehMenuItem;
     private javax.swing.JLabel timerLabel;
+    private javax.swing.JMenuItem transactionFilter;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JMenuItem vertexMenuItem;
     // End of variables declaration//GEN-END:variables
