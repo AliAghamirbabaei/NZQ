@@ -6,6 +6,7 @@ Just simple accounting app in Java
 - [JfreeChart](https://www.jfree.org/jfreechart/download.html) (Also you should have jcommon library.) <br />
  - [OpenCSV](https://sourceforge.net/projects/opencsv/) <br />
  - [JalaliCalender](https://github.com/razeghi71/JalaliCalendar) <br />
+ - We used IranSansX font for better user interface, PLEASE install it before run the application. You can find it [here](https://fontiran.com/خانواده-فونت-ایران-سن-سریف-iran-sans-پنج-وزن-هم-2/).
 
 ## Installation
 
