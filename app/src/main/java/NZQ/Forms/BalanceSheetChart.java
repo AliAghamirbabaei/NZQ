@@ -64,18 +64,6 @@ public class BalanceSheetChart extends javax.swing.JFrame {
             dataset.addValue(balanceModel.getPrice(), balanceModel.getTransactionType().getName(), balanceModel.getDate().getYear() + "-" + balanceModel.getDate().getMonth() + "-" + balanceModel.getDate().getDay());
         }
         
-        // Population in 2005  
-//        dataset.addValue(90000, "بدهکار", "2022-11-24");
-//        dataset.addValue(70000, "بستانکار", "2022-11-24");
-//
-//        // Population in 2010
-//        dataset.addValue(12000, "بدهکار", "2022-11-25");
-//        dataset.addValue(10000, "بستانکار", "2022-11-25");
-//
-//        // Population in 2015
-//        dataset.addValue(50000, "بدهکار", "2022-11-27");
-//        dataset.addValue(40000, "بستانکار", "2022-11-27");
-
         return dataset;
     }
 
