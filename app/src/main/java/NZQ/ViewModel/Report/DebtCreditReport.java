@@ -5,6 +5,7 @@ import Model.Transaction.Paid;
 import Model.Transaction.PrePaid;
 import Model.Transaction.PrePaidStatus;
 import Model.Transaction.TransactionType;
+import NZQ.Model.Chart.BalanceModel;
 
 import java.util.ArrayList;
 
@@ -18,33 +19,33 @@ public class DebtCreditReport {
         this.prePaids = prePaids;
     }
 
-//    public ArrayList<BalanceModel> generatePaidDateRangeDebt(Date fromDate, Date toDate) {
-//        ArrayList<BalanceModel> result = new ArrayList<>();
-//
-//        int sumDebt = 0;
-//
-//        for (Paid paid : paids) {
-//            if (paid.getTime().getYear() >= fromDate.getYear()
-//                    && paid.getTime().getYear() <= toDate.getYear()
-//                    && paid.getTime().getMonth() >= fromDate.getMonth()
-//                    && paid.getTime().getMonth() <= toDate.getMonth()
-//                    && paid.getTime().getDay() >= fromDate.getDay()
-//                    && paid.getTime().getDay() <= toDate.getDay()) {
-//                if (paid.getTime().getDay() == result.lastIndexOf(paid)) {
-//                    if (paid.getTransactionType() == TransactionType.DEBT) {
-//                        sumDebt += paid.getPrice();
-//                    }
-//                } else {
-//                    currentDay = paid.getTime().getDay();
-//                    result.add(new BalanceModel(sumDebt, paid.getTime(), TransactionType.DEBT));
-//                }
-//            }
-//        }
-//
-//        return result;
-//    }
+    public ArrayList<BalanceModel> generatePaidDateRange() {
+        ArrayList<BalanceModel> result = new ArrayList<>();
 
-//    public ArrayList<Integer> generateDailyDebt() {
+        int sumCredit = 0;
+        Date lastPaidDate = new Date(0,0,0,0,0);
+        TransactionType transactionType;
+
+        for (Paid paid : paids) {
+            if (lastPaidDate.getYear() == 0 && lastPaidDate.getMonth() == 0 && lastPaidDate.getDay() == 0) {
+                lastPaidDate = paid.getTime();
+            }
+
+            if (paid.getTime().getDay() == lastPaidDate.getDay()) {
+                sumCredit += paid.getPrice();
+                transactionType = paid.getTransactionType();
+            } else {
+                result.add(new BalanceModel(sumCredit, paid.getTime(), paid.getTransactionType()));
+                sumCredit = 0;
+                sumCredit += paid.getPrice();
+                transactionType = paid.getTransactionType();
+            }
+        }
+
+        return result;
+    }
+
+    //    public ArrayList<Integer> generateDailyDebt() {
 //        ArrayList<Integer> result = new ArrayList<>();
 //        Date currentDate = Date.getCurrentDate();
 //        for (Paid paid : paids) {
@@ -129,30 +130,35 @@ public class DebtCreditReport {
                     sumOfAllPrePaids += prePaid.getPrice();
                 }
             }
-            return sum / sumOfAllPrePaids;
+            int result = sum / sumOfAllPrePaids;
+            if (result < 0) {
+                return Math.abs(result);
+            } else {
+                return result;
+            }
         }
         return -1;
     }
-    
+
     public int getSumOfDebts() {
         int sum = 0;
-        
+
         for (Paid paid : paids) {
             if (paid.getTransactionType() == TransactionType.DEBT) {
                 sum += paid.getPrice();
             }
-        } 
+        }
         return sum;
     }
-    
+
     public int getSumOfCredits() {
         int sum = 0;
-        
+
         for (Paid paid : paids) {
             if (paid.getTransactionType() == TransactionType.CREDIT) {
                 sum += paid.getPrice();
             }
-        }       
+        }
         return sum;
     }
 }

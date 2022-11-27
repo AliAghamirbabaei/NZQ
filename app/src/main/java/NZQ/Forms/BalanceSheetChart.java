@@ -6,6 +6,7 @@ package NZQ.Forms;
 
 import Model.Transaction.Paid;
 import Model.Transaction.PrePaid;
+import NZQ.Model.Chart.BalanceModel;
 import ViewModel.Report.DebtCreditReport;
 import ViewModel.Transaction.PaidManager;
 import ViewModel.Transaction.PrePaidManager;
@@ -25,6 +26,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  * @author aliaghamirbabaei
  */
 public class BalanceSheetChart extends javax.swing.JFrame {
+
     private final ArrayList<Paid> paids;
     private final ArrayList<PrePaid> prePaids;
     private static final long serialVersionUID = 1L;
@@ -55,30 +57,24 @@ public class BalanceSheetChart extends javax.swing.JFrame {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         DebtCreditReport debtCreditReport = new DebtCreditReport(paids, prePaids);
         
-//        ArrayList<Integer> yearlyDebts = debtCreditReport.generateYearlyDebt(2022);
-//        for (Integer yearlyDebt : yearlyDebts) {
-//            dataset.addValue(yearlyDebt, "بدهکار", "2022");
-//            System.out.println(yearlyDebt);
-//        }
-//        
-//        ArrayList<Integer> yearlyCredits = debtCreditReport.generateYearlyCredit(2022);
-//        for (Integer yearlyCredit : yearlyCredits) {
-//            dataset.addValue(yearlyCredit, "بستانکار", "2022");
-//            System.out.println(yearlyCredit);
-//        }
+        ArrayList<BalanceModel> debtData = debtCreditReport.generatePaidDateRange();
 
-    // Population in 2005  
-    dataset.addValue(90000, "بدهکار", "2022-11-24");  
-    dataset.addValue(70000, "بستانکار", "2022-11-24");  
-  
-    // Population in 2010  
-    dataset.addValue(12000, "بدهکار", "2022-11-25");  
-    dataset.addValue(10000, "بستانکار", "2022-11-25");  
-  
-    // Population in 2015  
-    dataset.addValue(50000, "بدهکار", "2022-11-27");  
-    dataset.addValue(40000, "بستانکار", "2022-11-27");  
-  
+        System.out.println(debtData.size());
+        for (BalanceModel balanceModel : debtData) {
+            dataset.addValue(balanceModel.getPrice(), balanceModel.getTransactionType().getName(), balanceModel.getDate().getYear() + "-" + balanceModel.getDate().getMonth() + "-" + balanceModel.getDate().getDay());
+        }
+        
+        // Population in 2005  
+//        dataset.addValue(90000, "بدهکار", "2022-11-24");
+//        dataset.addValue(70000, "بستانکار", "2022-11-24");
+//
+//        // Population in 2010
+//        dataset.addValue(12000, "بدهکار", "2022-11-25");
+//        dataset.addValue(10000, "بستانکار", "2022-11-25");
+//
+//        // Population in 2015
+//        dataset.addValue(50000, "بدهکار", "2022-11-27");
+//        dataset.addValue(40000, "بستانکار", "2022-11-27");
 
         return dataset;
     }
@@ -89,9 +85,9 @@ public class BalanceSheetChart extends javax.swing.JFrame {
         PrePaidManager prePaidManager = new PrePaidManager();
         SwingUtilities.invokeAndWait(() -> {
             BalanceSheetChart example = new BalanceSheetChart("نمودار ترازنامه", paidManager.paids, prePaidManager.prePaids);
-            example.setSize(800, 400);
+            example.setSize(1024, 720);
             example.setLocationRelativeTo(null);
-            example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            example.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             example.setVisible(true);
         });
     }
