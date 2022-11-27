@@ -56,7 +56,6 @@ public class DashboardForm extends javax.swing.JFrame {
         balanceSheetChartMenuBar = new javax.swing.JMenuItem();
         debtCreditChartMenuBar = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -226,10 +225,11 @@ public class DashboardForm extends javax.swing.JFrame {
                 exitMenuMouseClicked(evt);
             }
         });
-
-        jMenuItem2.setText("jMenuItem2");
-        exitMenu.add(jMenuItem2);
-
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitMenuActionPerformed(evt);
+            }
+        });
         menuBar.add(exitMenu);
 
         setJMenuBar(menuBar);
@@ -344,6 +344,10 @@ public class DashboardForm extends javax.swing.JFrame {
         debtCreditPieChart.setVisible(true);
     }//GEN-LAST:event_debtCreditChartMenuBarActionPerformed
 
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
+        logout();
+    }//GEN-LAST:event_exitMenuActionPerformed
+
     private void logout() {
         LoginForm loginform = new LoginForm();
         loginform.setVisible(true);
@@ -400,7 +404,6 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JMenu gozareshaatMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JButton logoutButton;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newGroupTransactionMenuItem;
