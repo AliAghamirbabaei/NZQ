@@ -71,6 +71,7 @@ public class BalanceSheetChart extends javax.swing.JFrame {
     public static void main(String[] args) throws Exception {
         PaidManager paidManager = new PaidManager();
         PrePaidManager prePaidManager = new PrePaidManager();
+        
         SwingUtilities.invokeAndWait(() -> {
             BalanceSheetChart example = new BalanceSheetChart("نمودار ترازنامه", paidManager.paids, prePaidManager.prePaids);
             example.setSize(1024, 720);
