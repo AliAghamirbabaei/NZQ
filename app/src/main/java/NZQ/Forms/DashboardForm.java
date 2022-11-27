@@ -310,7 +310,7 @@ public class DashboardForm extends javax.swing.JFrame {
         StringBuilder dialogMessage = new StringBuilder();
 
         if (debtCreditReport.getVertex() != -1) {
-            dialogMessage.append("راس چک‌ها برابر است با: ");
+            dialogMessage.append("راس چک‌ها تا الان برابر است با: ");
             dialogMessage.append(String.valueOf(debtCreditReport.getVertex()));
         } else {
             dialogMessage.append("هیچ چکی موجود نیست!");
