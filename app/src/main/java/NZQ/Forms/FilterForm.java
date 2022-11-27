@@ -118,7 +118,7 @@ public class FilterForm extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         filterTarikhHeaderLabel.setFont(new java.awt.Font("IRANSansX", 1, 24)); // NOI18N
         filterTarikhHeaderLabel.setText("اعمال فیلتر");
