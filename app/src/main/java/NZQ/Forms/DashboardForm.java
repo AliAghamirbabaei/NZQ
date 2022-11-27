@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+import org.jfree.ui.RefineryUtilities;
 
 public class DashboardForm extends javax.swing.JFrame {
 
@@ -53,6 +54,7 @@ public class DashboardForm extends javax.swing.JFrame {
         balanceMenu = new javax.swing.JMenu();
         tarazNamehMenuItem = new javax.swing.JMenuItem();
         balanceSheetChartMenuBar = new javax.swing.JMenuItem();
+        debtCreditChartMenuBar = new javax.swing.JMenuItem();
         exitMenu = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
 
@@ -204,6 +206,17 @@ public class DashboardForm extends javax.swing.JFrame {
         });
         balanceMenu.add(balanceSheetChartMenuBar);
 
+        debtCreditChartMenuBar.setFont(new java.awt.Font("IRANSansX", 0, 13)); // NOI18N
+        debtCreditChartMenuBar.setText("نمودار بدهکار و بستانکار");
+        debtCreditChartMenuBar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        debtCreditChartMenuBar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        debtCreditChartMenuBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                debtCreditChartMenuBarActionPerformed(evt);
+            }
+        });
+        balanceMenu.add(debtCreditChartMenuBar);
+
         menuBar.add(balanceMenu);
 
         exitMenu.setText("خروج");
@@ -324,6 +337,13 @@ public class DashboardForm extends javax.swing.JFrame {
         balanceSheetChart.setVisible(true);
     }//GEN-LAST:event_balanceSheetChartMenuBarActionPerformed
 
+    private void debtCreditChartMenuBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_debtCreditChartMenuBarActionPerformed
+        DebtCreditPieChart debtCreditPieChart = new DebtCreditPieChart("نمودار بدهکار و بستانکار", paidManager.paids, prePaidManager.prePaids);
+        debtCreditPieChart.setSize(560, 367);
+        RefineryUtilities.centerFrameOnScreen(debtCreditPieChart);
+        debtCreditPieChart.setVisible(true);
+    }//GEN-LAST:event_debtCreditChartMenuBarActionPerformed
+
     private void logout() {
         LoginForm loginform = new LoginForm();
         loginform.setVisible(true);
@@ -375,6 +395,7 @@ public class DashboardForm extends javax.swing.JFrame {
     private javax.swing.JMenu balanceMenu;
     private javax.swing.JMenuItem balanceSheetChartMenuBar;
     private javax.swing.JMenuItem daftarKolMenuItem;
+    private javax.swing.JMenuItem debtCreditChartMenuBar;
     private javax.swing.JMenu exitMenu;
     private javax.swing.JMenu gozareshaatMenu;
     private javax.swing.JLabel jLabel1;
