@@ -530,8 +530,8 @@ public class FilterForm extends javax.swing.JFrame {
             }
         } else if (accountFilterRadioButton.isSelected()) {
             // Presenting FilltredDataForm with account id fillter
-            paids = transactionFilter.getPaidTransactionOfAAccount(accountNameComboBox.getSelectedIndex());
-            prePaids = transactionFilter.getPrePaidTransactionOfAAccount(accountNameComboBox.getSelectedIndex());
+            paids = transactionFilter.getPaidTransactionOfAAccount(accountNameComboBox.getSelectedIndex() + 1);
+            prePaids = transactionFilter.getPrePaidTransactionOfAAccount(accountNameComboBox.getSelectedIndex() + 1);
         }
 
         presentFillterForm(accountManager.accounts, paids, prePaids);
